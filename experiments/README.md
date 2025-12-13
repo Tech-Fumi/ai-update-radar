@@ -32,8 +32,8 @@ experiment = {
     "hypothesis": "GPT-4 Turbo has 2x faster response time",
     "method": "Run 100 identical prompts, measure latency",
     "results": {
-        "baseline": {"avg_latency": 2.3, "std": 0.4},
-        "new_version": {"avg_latency": 1.2, "std": 0.3},
+        "baseline": {"avg_latency_seconds": 2.3, "std_seconds": 0.4},
+        "new_version": {"avg_latency_seconds": 1.2, "std_seconds": 0.3},
         "conclusion": "Confirmed: ~48% faster"
     },
     "confidence": 0.95,
