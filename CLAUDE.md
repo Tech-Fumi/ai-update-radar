@@ -121,21 +121,22 @@ ai-update-radar/
 
 ## 開発フェーズ
 
-### Phase 1: 基盤構築（現在）
+### Phase 1: 基盤構築 ✅
 
 - [x] リポジトリ作成
 - [x] README.md で思想を明文化
 - [x] ディレクトリ構造構築
 - [x] CLAUDE.md 作成
-- [ ] 初期監視対象（sources/）を定義
-- [ ] GitHub にプッシュ
+- [x] 初期監視対象（sources/）を定義
+- [x] GitHub にプッシュ
 
-### Phase 2: 収集自動化
+### Phase 2: 収集自動化 ✅
 
-- [ ] rss_collector.py 実装
-- [ ] github_collector.py 実装
-- [ ] page_diff_collector.py 実装
-- [ ] 週次自動実行の設定
+- [x] rss_collector.py 実装
+- [x] github_collector.py 実装
+- [x] page_diff_collector.py 実装
+- [x] cli.py 統合ランナー実装
+- [x] 週次自動実行の設定（scripts/weekly_collect.sh）
 
 ### Phase 3: 評価自動化
 
