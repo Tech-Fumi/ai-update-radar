@@ -138,11 +138,12 @@ ai-update-radar/
 - [x] cli.py 統合ランナー実装
 - [x] 週次自動実行の設定（scripts/weekly_collect.sh）
 
-### Phase 3: 評価自動化
+### Phase 3: 評価自動化 ✅
 
-- [ ] category_classifier.py 実装
-- [ ] relevance_scorer.py 実装
-- [ ] 判断ログの自動出力
+- [x] category_classifier.py 実装
+- [x] relevance_scorer.py 実装
+- [x] 判断ログの自動出力（evaluation_logger.py）
+- [x] CLI に evaluate コマンド追加
 
 ### Phase 4: 他リポジトリ連携
 

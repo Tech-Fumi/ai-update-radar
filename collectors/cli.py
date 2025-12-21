@@ -314,5 +314,120 @@ def init():
     console.print("[green]✅ 初期化完了。次回 collect 時に全エントリが検出されます。[/green]")
 
 
+@app.command()
+def evaluate(
+    days: int = typer.Option(7, help="過去N日分を評価"),
+    layer: Optional[int] = typer.Option(None, help="レイヤーでフィルタ (1=無視, 2=検知, 3=深掘り)"),
+    log: bool = typer.Option(True, help="判断ログを保存"),
+    report: bool = typer.Option(False, help="サマリレポートを表示"),
+):
+    """
+    収集データを評価し、Layer 判定を行う
+
+    スコアリング要素: 適用可能性、コスト削減、リスク、緊急性
+    """
+    from evaluators import EvaluationLogger, Layer, RelevanceScorer
+
+    sources_dir, cache_dir, keywords_path, exports_dir = get_paths()
+
+    since = datetime.now(timezone.utc) - timedelta(days=days)
+
+    # 全ソースからエントリを収集
+    all_entries = []
+
+    console.print("[bold]📊 データ収集中...[/bold]")
+
+    # RSS
+    rss_collector = RSSCollector(sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path)
+    for result in rss_collector.collect_all(since=since):
+        all_entries.extend(result.entries)
+
+    # GitHub
+    github_collector = GitHubCollector(
+        sources_dir=sources_dir,
+        cache_dir=cache_dir,
+        token=os.environ.get("GITHUB_TOKEN"),
+        keywords_path=keywords_path,
+    )
+    for result in github_collector.collect_all(since=since):
+        all_entries.extend(result.entries)
+
+    if not all_entries:
+        console.print("[dim]評価対象のエントリがありません[/dim]")
+        return
+
+    console.print(f"[bold]🔍 {len(all_entries)} 件を評価中...[/bold]")
+
+    # 評価
+    scorer = RelevanceScorer()
+    results = scorer.evaluate_batch(all_entries)
+
+    # レイヤーフィルタ
+    if layer:
+        try:
+            layer_filter = Layer(layer)
+            results = [r for r in results if r.layer == layer_filter]
+        except ValueError:
+            console.print(f"[red]不正なレイヤー: {layer}[/red]")
+            console.print("有効なレイヤー: 1=無視, 2=検知, 3=深掘り")
+            return
+
+    # 結果表示
+    table = Table(title=f"評価結果 ({len(results)} 件)")
+    table.add_column("Layer", width=8)
+    table.add_column("Score", width=6)
+    table.add_column("Cat", width=10)
+    table.add_column("タイトル", width=40)
+    table.add_column("理由", width=30)
+
+    # レイヤー別にソート（高い方が上）
+    results.sort(key=lambda r: (r.layer.value, r.relevance_score), reverse=True)
+
+    layer_styles = {
+        Layer.EXPERIMENT: "bold green",
+        Layer.DETECT: "yellow",
+        Layer.IGNORE: "dim",
+    }
+
+    for result in results[:30]:  # 最大30件
+        style = layer_styles.get(result.layer, "")
+        table.add_row(
+            result.layer.name,
+            f"{result.relevance_score:.1f}",
+            result.classification.primary_category.value,
+            result.entry.title[:40],
+            result.reason[:30],
+            style=style,
+        )
+
+    console.print(table)
+
+    # 集計サマリ
+    by_layer = {Layer.EXPERIMENT: 0, Layer.DETECT: 0, Layer.IGNORE: 0}
+    for r in results:
+        by_layer[r.layer] += 1
+
+    summary_panel = Panel(
+        f"🎯 深掘り対象: [bold green]{by_layer[Layer.EXPERIMENT]}[/bold green] 件\n"
+        f"📋 検知のみ: [yellow]{by_layer[Layer.DETECT]}[/yellow] 件\n"
+        f"🔇 無視: [dim]{by_layer[Layer.IGNORE]}[/dim] 件",
+        title="評価サマリ",
+        border_style="blue",
+    )
+    console.print(summary_panel)
+
+    # ログ保存
+    if log:
+        logger = EvaluationLogger()
+        log_path = logger.log_batch(results)
+        console.print(f"[green]✅ 判断ログ保存: {log_path}[/green]")
+
+    # サマリレポート
+    if report:
+        logger = EvaluationLogger()
+        console.print()
+        console.print(logger.generate_summary_report(days=days))
+
+
 if __name__ == "__main__":
     app()
