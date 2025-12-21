@@ -1,0 +1,148 @@
+# 検知キーワード定義
+# 各カテゴリで反応すべきキーワードを定義
+
+categories:
+  # === 能力変化（Capability） ===
+  capability:
+    description: "新しい能力・機能の追加"
+    priority: high
+
+    # 新モデル
+    models:
+      - "gpt-5"
+      - "gpt-4.5"
+      - "o3"
+      - "o4"
+      - "claude 4"
+      - "opus"
+      - "sonnet"
+      - "gemini 2"
+      - "gemini 3"
+      - "llama 4"
+      - "mistral"
+      - "grok"
+
+    # 新機能
+    features:
+      - "agent"
+      - "multi-agent"
+      - "tool use"
+      - "function calling"
+      - "computer use"
+      - "browser"
+      - "code execution"
+      - "memory"
+      - "persistent"
+      - "realtime"
+      - "voice"
+      - "vision"
+      - "video"
+      - "multimodal"
+      - "reasoning"
+      - "chain of thought"
+
+    # 統合・プロトコル
+    integration:
+      - "mcp"
+      - "model context protocol"
+      - "a]agent protocol"
+      - "ide integration"
+      - "vscode"
+      - "cursor"
+      - "windsurf"
+
+  # === 制限解除（Constraint Removal） ===
+  constraint:
+    description: "制限の緩和・解除"
+    priority: high
+
+    # コンテキスト
+    context:
+      - "context length"
+      - "context window"
+      - "token limit"
+      - "1m tokens"
+      - "2m tokens"
+      - "extended context"
+
+    # レート制限
+    rate:
+      - "rate limit"
+      - "requests per minute"
+      - "rpm"
+      - "tpm"
+      - "quota"
+      - "tier"
+
+    # 出力
+    output:
+      - "max tokens"
+      - "output limit"
+      - "response length"
+
+    # 地域・アクセス
+    access:
+      - "new region"
+      - "availability"
+      - "beta"
+      - "general availability"
+      - "ga"
+
+  # === 価格変化（Pricing） ===
+  pricing:
+    description: "料金・プランの変更"
+    priority: medium
+
+    # 価格
+    cost:
+      - "price"
+      - "pricing"
+      - "cost"
+      - "per token"
+      - "per million"
+      - "mtok"
+
+    # プラン
+    plans:
+      - "free tier"
+      - "free credits"
+      - "new plan"
+      - "enterprise"
+      - "pro"
+      - "team"
+
+    # 変更
+    changes:
+      - "price reduction"
+      - "price increase"
+      - "deprecation"
+      - "sunset"
+
+  # === その他（Other） ===
+  other:
+    description: "UI変更、ドキュメント更新など"
+    priority: low
+
+    ui:
+      - "dashboard"
+      - "playground"
+      - "console"
+      - "ui update"
+
+    docs:
+      - "documentation"
+      - "guide"
+      - "tutorial"
+
+# === 無視キーワード ===
+ignore:
+  description: "これらを含む場合は Layer 1（無視）"
+  keywords:
+    - "opinion"
+    - "review"
+    - "comparison"
+    - "vs"
+    - "best practices"
+    - "tutorial"
+    - "getting started"
+    - "beginner"

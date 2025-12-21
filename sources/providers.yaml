@@ -1,0 +1,112 @@
+# AI プロバイダー監視対象
+# 各プロバイダーの公式ブログ・リリースノートを定義
+
+providers:
+  # === Tier 1: 毎日チェック ===
+
+  openai:
+    name: "OpenAI"
+    priority: 1
+    sources:
+      - type: blog
+        url: "https://openai.com/blog"
+        rss: "https://openai.com/blog/rss.xml"
+        check_frequency: daily
+      - type: changelog
+        url: "https://platform.openai.com/docs/changelog"
+        check_frequency: daily
+      - type: pricing
+        url: "https://openai.com/api/pricing"
+        check_frequency: weekly
+    keywords:
+      capability: ["gpt-5", "o3", "agent", "tool", "vision", "memory", "realtime"]
+      constraint: ["context", "rate limit", "token", "tier"]
+      pricing: ["price", "cost", "credit", "free"]
+
+  anthropic:
+    name: "Anthropic"
+    priority: 1
+    sources:
+      - type: blog
+        url: "https://www.anthropic.com/news"
+        check_frequency: daily
+      - type: docs
+        url: "https://docs.anthropic.com/en/release-notes"
+        check_frequency: daily
+      - type: pricing
+        url: "https://www.anthropic.com/pricing"
+        check_frequency: weekly
+    keywords:
+      capability: ["claude", "opus", "sonnet", "haiku", "mcp", "computer use", "agent"]
+      constraint: ["context", "rate", "output", "beta"]
+      pricing: ["price", "mtok", "tier"]
+
+  google:
+    name: "Google AI"
+    priority: 1
+    sources:
+      - type: blog
+        url: "https://ai.google/discover/latest-news"
+        check_frequency: daily
+      - type: vertex
+        url: "https://cloud.google.com/vertex-ai/docs/release-notes"
+        check_frequency: daily
+    keywords:
+      capability: ["gemini", "2.0", "agent", "grounding", "search"]
+      constraint: ["quota", "limit", "region"]
+      pricing: ["pricing", "cost", "free tier"]
+
+  # === Tier 2: 週2-3回チェック ===
+
+  mistral:
+    name: "Mistral AI"
+    priority: 2
+    sources:
+      - type: blog
+        url: "https://mistral.ai/news"
+        check_frequency: twice_weekly
+    keywords:
+      capability: ["mistral", "mixtral", "codestral", "agent"]
+      pricing: ["pricing", "api"]
+
+  meta:
+    name: "Meta AI"
+    priority: 2
+    sources:
+      - type: blog
+        url: "https://ai.meta.com/blog"
+        check_frequency: twice_weekly
+    keywords:
+      capability: ["llama", "code llama", "open source"]
+
+  xai:
+    name: "xAI"
+    priority: 2
+    sources:
+      - type: blog
+        url: "https://x.ai/blog"
+        check_frequency: twice_weekly
+    keywords:
+      capability: ["grok", "colossus"]
+
+  # === Tier 3: 週1回チェック ===
+
+  cohere:
+    name: "Cohere"
+    priority: 3
+    sources:
+      - type: blog
+        url: "https://cohere.com/blog"
+        check_frequency: weekly
+    keywords:
+      capability: ["command", "embed", "rerank"]
+
+  perplexity:
+    name: "Perplexity"
+    priority: 3
+    sources:
+      - type: blog
+        url: "https://www.perplexity.ai/hub"
+        check_frequency: weekly
+    keywords:
+      capability: ["sonar", "search", "api"]

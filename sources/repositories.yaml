@@ -1,0 +1,143 @@
+# GitHub リポジトリ監視対象
+# Releases と重要なコミットを監視
+
+repositories:
+  # === SDK・クライアントライブラリ ===
+
+  openai_python:
+    repo: "openai/openai-python"
+    priority: 1
+    watch:
+      - releases
+      - breaking_changes
+    keywords:
+      - "BREAKING"
+      - "deprecat"
+      - "new feature"
+
+  anthropic_python:
+    repo: "anthropics/anthropic-sdk-python"
+    priority: 1
+    watch:
+      - releases
+    keywords:
+      - "mcp"
+      - "tool"
+      - "beta"
+
+  anthropic_typescript:
+    repo: "anthropics/anthropic-sdk-typescript"
+    priority: 2
+    watch:
+      - releases
+
+  # === フレームワーク ===
+
+  langchain:
+    repo: "langchain-ai/langchain"
+    priority: 2
+    watch:
+      - releases
+      - breaking_changes
+    keywords:
+      - "agent"
+      - "tool"
+      - "BREAKING"
+
+  langgraph:
+    repo: "langchain-ai/langgraph"
+    priority: 2
+    watch:
+      - releases
+    keywords:
+      - "agent"
+      - "graph"
+      - "workflow"
+
+  autogen:
+    repo: "microsoft/autogen"
+    priority: 2
+    watch:
+      - releases
+    keywords:
+      - "agent"
+      - "multi-agent"
+      - "conversation"
+
+  crewai:
+    repo: "crewAIInc/crewAI"
+    priority: 3
+    watch:
+      - releases
+    keywords:
+      - "agent"
+      - "crew"
+      - "task"
+
+  # === MCP 関連 ===
+
+  mcp_specification:
+    repo: "modelcontextprotocol/specification"
+    priority: 1
+    watch:
+      - releases
+      - all_commits
+    keywords:
+      - "spec"
+      - "protocol"
+      - "breaking"
+
+  mcp_servers:
+    repo: "modelcontextprotocol/servers"
+    priority: 1
+    watch:
+      - releases
+      - new_servers
+    keywords:
+      - "new server"
+      - "feature"
+
+  mcp_python:
+    repo: "modelcontextprotocol/python-sdk"
+    priority: 1
+    watch:
+      - releases
+    keywords:
+      - "feature"
+      - "fix"
+
+  # === Claude Code 関連 ===
+
+  claude_code:
+    repo: "anthropics/claude-code"
+    priority: 1
+    watch:
+      - releases
+      - issues
+    keywords:
+      - "feature"
+      - "hook"
+      - "mcp"
+      - "agent"
+
+  # === インフラ・ツール ===
+
+  vercel_ai:
+    repo: "vercel/ai"
+    priority: 2
+    watch:
+      - releases
+    keywords:
+      - "provider"
+      - "stream"
+      - "tool"
+
+  litellm:
+    repo: "BerriAI/litellm"
+    priority: 2
+    watch:
+      - releases
+    keywords:
+      - "provider"
+      - "model"
+      - "proxy"
