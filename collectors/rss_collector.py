@@ -2,7 +2,6 @@
 RSS/Atom フィード収集
 """
 
-import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -84,7 +83,10 @@ class RSSCollector:
                     for kw in sub_keywords:
                         if kw.lower() in text:
                             matched_keywords.append(kw)
-                            cat = Category(cat_name) if cat_name in Category._value2member_map_ else Category.OTHER
+                            if cat_name in Category._value2member_map_:
+                                cat = Category(cat_name)
+                            else:
+                                cat = Category.OTHER
                             if cat not in categories:
                                 categories.append(cat)
 
@@ -208,6 +210,7 @@ class RSSCollector:
 def main():
     """CLI エントリポイント"""
     import argparse
+
     from rich.console import Console
     from rich.table import Table
 

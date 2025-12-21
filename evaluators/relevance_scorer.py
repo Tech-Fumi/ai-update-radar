@@ -9,12 +9,10 @@ AI Update Radar - 関連性スコアラー
 - urgency: 緊急性（競合優位性に影響するか）
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import IntEnum
 from pathlib import Path
 from typing import Optional
-
-import yaml
 
 from collectors.models import Category, CollectedEntry
 from evaluators.category_classifier import CategoryClassifier, ClassificationResult
@@ -277,7 +275,9 @@ class RelevanceScorer:
                 layer=Layer.IGNORE,
                 relevance_score=0.0,
                 decision="ignore",
-                reason=self._generate_reason(entry, classification, ScoringBreakdown(), Layer.IGNORE),
+                reason=self._generate_reason(
+                    entry, classification, ScoringBreakdown(), Layer.IGNORE
+                ),
                 next_action="なし",
             )
 

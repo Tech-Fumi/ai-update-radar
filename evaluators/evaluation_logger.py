@@ -5,7 +5,6 @@ AI Update Radar - 判断ログ出力
 出力先: .private/logs/evaluations/
 """
 
-import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -245,7 +244,7 @@ class EvaluationLogger:
 
 if __name__ == "__main__":
     # テスト
-    from collectors.models import SourceType, CollectedEntry
+    from collectors.models import CollectedEntry, SourceType
     from evaluators.relevance_scorer import RelevanceScorer
 
     scorer = RelevanceScorer()

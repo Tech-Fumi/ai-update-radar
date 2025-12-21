@@ -45,7 +45,8 @@ def format_results_table(results: list[CollectionResult], title: str) -> None:
         return
 
     # 日付でソート
-    all_entries.sort(key=lambda e: e.published_at or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
+    min_dt = datetime.min.replace(tzinfo=timezone.utc)
+    all_entries.sort(key=lambda e: e.published_at or min_dt, reverse=True)
 
     table = Table(title=f"{title} ({len(all_entries)} 件)")
     table.add_column("日付", style="dim", width=6)
@@ -187,7 +188,9 @@ def summary(
     all_entries = []
 
     # RSS
-    rss_collector = RSSCollector(sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path)
+    rss_collector = RSSCollector(
+        sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path
+    )
     for result in rss_collector.collect_all(since=since):
         all_entries.extend(result.entries)
 
@@ -338,7 +341,9 @@ def evaluate(
     console.print("[bold]📊 データ収集中...[/bold]")
 
     # RSS
-    rss_collector = RSSCollector(sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path)
+    rss_collector = RSSCollector(
+        sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path
+    )
     for result in rss_collector.collect_all(since=since):
         all_entries.extend(result.entries)
 
@@ -455,7 +460,9 @@ def export(
     console.print("[bold]📊 データ収集中...[/bold]")
 
     # RSS
-    rss_collector = RSSCollector(sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path)
+    rss_collector = RSSCollector(
+        sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path
+    )
     for result in rss_collector.collect_all(since=since):
         all_entries.extend(result.entries)
 
@@ -536,7 +543,8 @@ def export(
             # Layer 3 の判断を記録
             experiment_results = [r for r in results if r.layer == Layer.EXPERIMENT]
             if experiment_results:
-                console.print(f"[yellow]  記録対象: {len(experiment_results)} 件の深掘り判断[/yellow]")
+                cnt = len(experiment_results)
+                console.print(f"[yellow]  記録対象: {cnt} 件の深掘り判断[/yellow]")
                 console.print("[dim]  ※ MCP decision-ledger 経由で記録推奨[/dim]")
             else:
                 console.print("[dim]  記録対象なし（深掘り判断なし）[/dim]")

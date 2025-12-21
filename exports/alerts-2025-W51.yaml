@@ -1,0 +1,25 @@
+week: 2025-W51
+generated_at: '2025-12-21T01:58:36.858996+00:00'
+alerts:
+- type: notice
+  source: openai-blog
+  title: AI literacy resources for teens and parents
+  message: OpenAI shares new AI literacy resources to help teens and parents use ChatGPT
+    thoughtfully, safely, and with confidence. The guides include expert-vetted tips
+    for responsible use, critical thinking, h
+  url: https://openai.com/index/ai-literacy-resources-for-teens-and-parents
+  detected_at: '2025-12-21T01:58:36.858908+00:00'
+- type: security
+  source: openai-blog
+  title: Introducing GPT-5.2-Codex
+  message: GPT-5.2-Codex is OpenAI’s most advanced coding model, offering long-horizon
+    reasoning, large-scale code transformations, and enhanced cybersecurity capabilities.
+  url: https://openai.com/index/introducing-gpt-5-2-codex
+  detected_at: '2025-12-21T01:58:36.858936+00:00'
+- type: security
+  source: openai-blog
+  title: Introducing GPT-5.2-Codex
+  message: GPT-5.2-Codex is OpenAI’s most advanced coding model, offering long-horizon
+    reasoning, large-scale code transformations, and enhanced cybersecurity capabilities.
+  url: https://openai.com/index/gpt-5-2-codex
+  detected_at: '2025-12-21T01:58:36.858959+00:00'
