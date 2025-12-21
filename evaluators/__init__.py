@@ -5,6 +5,7 @@
 
 from evaluators.category_classifier import CategoryClassifier, ClassificationResult
 from evaluators.evaluation_logger import EvaluationLogger
+from evaluators.exporter import ExportConfig, Exporter
 from evaluators.relevance_scorer import (
     EvaluationResult,
     Layer,
@@ -17,6 +18,8 @@ __all__ = [
     "ClassificationResult",
     "EvaluationLogger",
     "EvaluationResult",
+    "ExportConfig",
+    "Exporter",
     "Layer",
     "RelevanceScorer",
     "ScoringBreakdown",

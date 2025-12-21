@@ -145,11 +145,11 @@ ai-update-radar/
 - [x] 判断ログの自動出力（evaluation_logger.py）
 - [x] CLI に evaluate コマンド追加
 
-### Phase 4: 他リポジトリ連携
+### Phase 4: 他リポジトリ連携 ✅
 
-- [ ] exports/ の自動生成
-- [ ] infra-automation への通知
-- [ ] decision-ledger への記録
+- [x] exports/ の自動生成（exporter.py）
+- [x] infra-automation への通知（CLI --notify オプション）
+- [x] decision-ledger への記録（CLI --ledger オプション）
 
 ---
 

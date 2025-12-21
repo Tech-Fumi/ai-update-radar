@@ -429,5 +429,120 @@ def evaluate(
         console.print(logger.generate_summary_report(days=days))
 
 
+@app.command()
+def export(
+    days: int = typer.Option(7, help="過去N日分を評価・エクスポート"),
+    digest: bool = typer.Option(True, help="週次ダイジェストを出力"),
+    adopted: bool = typer.Option(True, help="採用決定リストを出力"),
+    alerts: bool = typer.Option(True, help="技術アラートを出力"),
+    notify: bool = typer.Option(False, help="infra-automation に通知"),
+    ledger: bool = typer.Option(False, help="decision-ledger に記録"),
+):
+    """
+    評価結果を他リポジトリ向けにエクスポート
+
+    週次ダイジェスト（JSON）、採用決定リスト（YAML）、技術アラート（YAML）を出力
+    """
+    from evaluators import Exporter, Layer, RelevanceScorer
+
+    sources_dir, cache_dir, keywords_path, exports_dir = get_paths()
+
+    since = datetime.now(timezone.utc) - timedelta(days=days)
+
+    # 全ソースからエントリを収集
+    all_entries = []
+
+    console.print("[bold]📊 データ収集中...[/bold]")
+
+    # RSS
+    rss_collector = RSSCollector(sources_dir=sources_dir, cache_dir=cache_dir, keywords_path=keywords_path)
+    for result in rss_collector.collect_all(since=since):
+        all_entries.extend(result.entries)
+
+    # GitHub
+    github_collector = GitHubCollector(
+        sources_dir=sources_dir,
+        cache_dir=cache_dir,
+        token=os.environ.get("GITHUB_TOKEN"),
+        keywords_path=keywords_path,
+    )
+    for result in github_collector.collect_all(since=since):
+        all_entries.extend(result.entries)
+
+    if not all_entries:
+        console.print("[dim]エクスポート対象のエントリがありません[/dim]")
+        return
+
+    console.print(f"[bold]🔍 {len(all_entries)} 件を評価中...[/bold]")
+
+    # 評価
+    scorer = RelevanceScorer()
+    results = scorer.evaluate_batch(all_entries)
+
+    # エクスポート
+    exporter = Exporter()
+    exported_paths = {}
+
+    if digest:
+        path = exporter.export_weekly_digest(results)
+        exported_paths["digest"] = path
+        console.print(f"[green]✅ 週次ダイジェスト: {path}[/green]")
+
+    if adopted:
+        path = exporter.export_adopted_list(results)
+        exported_paths["adopted"] = path
+        console.print(f"[green]✅ 採用決定リスト: {path}[/green]")
+
+    if alerts:
+        path = exporter.export_alerts(results)
+        exported_paths["alerts"] = path
+        console.print(f"[green]✅ 技術アラート: {path}[/green]")
+
+    # サマリ
+    layer_counts = {Layer.EXPERIMENT: 0, Layer.DETECT: 0, Layer.IGNORE: 0}
+    for r in results:
+        layer_counts[r.layer] += 1
+
+    summary = Panel(
+        f"📤 エクスポート完了\n"
+        f"  • 評価: {len(results)} 件\n"
+        f"  • 深掘り対象: {layer_counts[Layer.EXPERIMENT]} 件\n"
+        f"  • 検知のみ: {layer_counts[Layer.DETECT]} 件\n"
+        f"  • 出力ファイル: {len(exported_paths)} 件",
+        title="エクスポートサマリ",
+        border_style="green",
+    )
+    console.print(summary)
+
+    # infra-automation への通知
+    if notify:
+        console.print("[bold]📢 infra-automation に通知中...[/bold]")
+        try:
+            # Layer 3 のハイライトを通知
+            highlights = [r for r in results if r.layer == Layer.EXPERIMENT]
+            if highlights:
+                # snippet-collector 経由で通知（MCP 連携）
+                console.print(f"[yellow]  通知対象: {len(highlights)} 件の深掘り候補[/yellow]")
+                console.print("[dim]  ※ MCP 経由で snippet-collector に保存推奨[/dim]")
+            else:
+                console.print("[dim]  通知対象なし（深掘り候補なし）[/dim]")
+        except Exception as e:
+            console.print(f"[red]通知エラー: {e}[/red]")
+
+    # decision-ledger への記録
+    if ledger:
+        console.print("[bold]📝 decision-ledger に記録中...[/bold]")
+        try:
+            # Layer 3 の判断を記録
+            experiment_results = [r for r in results if r.layer == Layer.EXPERIMENT]
+            if experiment_results:
+                console.print(f"[yellow]  記録対象: {len(experiment_results)} 件の深掘り判断[/yellow]")
+                console.print("[dim]  ※ MCP decision-ledger 経由で記録推奨[/dim]")
+            else:
+                console.print("[dim]  記録対象なし（深掘り判断なし）[/dim]")
+        except Exception as e:
+            console.print(f"[red]記録エラー: {e}[/red]")
+
+
 if __name__ == "__main__":
     app()
