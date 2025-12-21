@@ -46,13 +46,24 @@ Layer 3 に分類された項目の実験を行う隔離環境。
 ```
 experiments/
 ├── README.md
-├── YYYY-MM-DD-{名前}/
-│   ├── README.md      # 実験記録（必須）
-│   ├── src/           # 実験コード
-│   ├── data/          # テストデータ（.gitignore対象）
-│   └── results/       # 結果（.gitignore対象）
-└── _templates/
-    └── experiment.md  # テンプレート
+├── _template/
+│   ├── README.md      # 実験テンプレート
+│   └── setup.sh       # 新規実験作成スクリプト
+└── YYYY-MM-DD-{名前}/
+    ├── README.md      # 実験記録（必須）
+    ├── src/           # 実験コード
+    ├── data/          # テストデータ（.gitignore対象）
+    └── results/       # 結果（.gitignore対象）
+```
+
+## クイックスタート
+
+```bash
+# 新しい実験を開始
+./experiments/_template/setup.sh "experiment-name"
+
+# 例
+./experiments/_template/setup.sh "claude-mcp-vision"
 ```
 
 ## 判断基準
