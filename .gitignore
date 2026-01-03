@@ -42,3 +42,5 @@ experiments/**/results/
 # 本番設定
 **/config.prod.*
 **/secrets.*
+logs/
+drafts/

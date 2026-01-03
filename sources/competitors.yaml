@@ -1,0 +1,61 @@
+# 競合分析対象
+# 検索キーワードと監視対象を定義
+
+# 競合サービス
+competitors:
+  - name: "AI Tool Report"
+    type: newsletter
+    keywords: ["AI tools", "productivity"]
+    check_frequency: weekly
+
+  - name: "Ben's Bites"
+    type: newsletter
+    keywords: ["AI news", "startups"]
+    check_frequency: weekly
+
+  - name: "The Rundown AI"
+    type: newsletter
+    keywords: ["AI updates", "daily"]
+    check_frequency: weekly
+
+# 監視キーワード（WebSearch用）
+search_queries:
+  trends:
+    - "AI automation business 2025"
+    - "AI agent workflow"
+    - "Claude MCP server"
+    - "AI ops automation"
+
+  competitors:
+    - "AI update newsletter"
+    - "AI radar service"
+    - "AI monitoring tool"
+
+  opportunities:
+    - "AI運用 課題"
+    - "LLM コスト管理"
+    - "AI導入 失敗"
+
+  # 仮想通貨 × AI 監視
+  crypto_ai:
+    - "AI crypto trading 2025"
+    - "AI agents crypto DeFi"
+    - "LLM blockchain integration"
+    - "AI token prediction"
+
+  crypto_trends:
+    - "crypto AI newsletter"
+    - "仮想通貨 AI 自動売買"
+    - "DeFi AI automation"
+    - "crypto market AI analysis"
+
+  crypto_opportunities:
+    - "仮想通貨 AI botトレード"
+    - "crypto sentiment analysis AI"
+    - "NFT AI generation tool"
+
+# 除外キーワード（ノイズフィルター）
+exclude_keywords:
+  - "広告"
+  - "PR記事"
+  - "スポンサー"

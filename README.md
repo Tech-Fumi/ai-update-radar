@@ -146,6 +146,93 @@ ai-update-radar/
 週末: 週次サマリ作成 → exports/
 ```
 
+### 公開用ダイジェスト生成
+
+exports のデータから、ブログ/Note/X 向けの公開用コンテンツを自動生成：
+
+```bash
+# 最新週の全フォーマットを生成
+python3 scripts/generate-public-digest.py
+
+# 特定週を指定
+python3 scripts/generate-public-digest.py --week 2025-W51
+
+# X向けのみ生成
+python3 scripts/generate-public-digest.py --format x
+
+# プレビュー（ファイル出力なし）
+python3 scripts/generate-public-digest.py --dry-run
+```
+
+**出力先**: `docs/weekly/public-{week}-{format}.md`
+
+| フォーマット | 用途 | 特徴 |
+|-------------|------|------|
+| `blog` | ブログ記事 | フル構造、URL付き |
+| `note` | Note記事 | ブログと同等 |
+| `x` | X (Twitter) | 280字以内、ハッシュタグ付き |
+
+### 週次自動公開（全自動化）
+
+完全自動化スクリプトで、判定・通知・投稿準備を一括実行：
+
+```bash
+# 通常実行（Discord通知付き）
+python3 scripts/weekly-auto-publish.py
+
+# プレビュー（実行せず確認のみ）
+python3 scripts/weekly-auto-publish.py --dry-run
+
+# 強制レビューモード
+python3 scripts/weekly-auto-publish.py --force-review
+```
+
+**自動判定ロジック：**
+
+| 条件 | 動作 |
+|------|------|
+| Layer3 = 0 かつ 重要アラートなし | 🟢 自動投稿OK（Discord通知） |
+| Layer3 > 0 または security/breaking あり | 🟡 要確認（drafts/ に保存 + Discord通知） |
+
+**cron 設定例（毎週日曜 20:00）：**
+
+```bash
+# crontab -e で追加
+0 20 * * 0 cd /home/fumi/ai-update-radar && python3 scripts/weekly-auto-publish.py >> logs/auto-publish.log 2>&1
+```
+
+**環境変数：**
+
+```bash
+export DISCORD_ALERT_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+```
+
+### マーケティング機能
+
+競合分析・トレンド検知・SNS投稿候補生成・効果測定連携：
+
+```bash
+# トレンド検知 + SNS投稿候補生成
+python3 -m collectors.cli marketing
+
+# 効果測定サマリも表示
+python3 -m collectors.cli marketing --analytics
+
+# トレンド検知のみ
+python3 -m collectors.cli marketing --no-content
+```
+
+**機能一覧：**
+
+| 機能 | 説明 | 出力先 |
+|------|------|--------|
+| 競合分析 | WebSearchで競合情報を収集 | `.private/marketing/competitors/` |
+| トレンド検知 | キーワード頻度の変化を検出 | `.private/marketing/trends/` |
+| 効果測定連携 | 投稿パフォーマンス追跡 | `.private/marketing/analytics/` |
+| SNS投稿候補 | トレンド・ダイジェストから自動生成 | `.private/marketing/content/` |
+
+**監視対象設定：** `sources/competitors.yaml`
+
 ### 判断ログの義務化
 
 すべての判断に以下を記録：

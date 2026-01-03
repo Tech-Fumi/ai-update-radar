@@ -3,7 +3,7 @@
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Optional
 
@@ -24,6 +24,7 @@ class SourceType(str, Enum):
     GITHUB_RELEASE = "github_release"
     PAGE_DIFF = "page_diff"
     API = "api"
+    WEB_SEARCH = "web_search"
 
 
 @dataclass
@@ -39,6 +40,7 @@ class CollectedEntry:
     categories: list[Category] = field(default_factory=list)
     keywords: list[str] = field(default_factory=list)
     raw_content: str = ""
+    raw_data: Optional[dict] = None  # WebSearch 等の生データ保持用
 
     def to_dict(self) -> dict:
         """辞書に変換"""
@@ -60,7 +62,7 @@ class CollectionResult:
 
     source_name: str
     source_type: SourceType
-    collected_at: datetime
+    collected_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     entries: list[CollectedEntry] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
     success: bool = True

@@ -30,14 +30,19 @@ providers:
       - type: blog
         url: "https://www.anthropic.com/news"
         check_frequency: daily
-      - type: docs
-        url: "https://docs.anthropic.com/en/release-notes"
+      - type: release-notes
+        url: "https://docs.claude.com/en/release-notes/overview"
         check_frequency: daily
+        note: "旧 docs.anthropic.com からリダイレクト (2025-12更新)"
+      - type: agent-docs
+        url: "https://docs.claude.com/en/docs/agents"
+        check_frequency: weekly
+        note: "Agent Skills 等の設計指針ページ"
       - type: pricing
         url: "https://www.anthropic.com/pricing"
         check_frequency: weekly
     keywords:
-      capability: ["claude", "opus", "sonnet", "haiku", "mcp", "computer use", "agent"]
+      capability: ["claude", "opus", "sonnet", "haiku", "mcp", "computer use", "agent", "skill"]
       constraint: ["context", "rate", "output", "beta"]
       pricing: ["price", "mtok", "tier"]
 

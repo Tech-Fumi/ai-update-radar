@@ -552,5 +552,126 @@ def export(
             console.print(f"[red]記録エラー: {e}[/red]")
 
 
+@app.command()
+def marketing(
+    trends: bool = typer.Option(True, help="トレンド検知を実行"),
+    content: bool = typer.Option(True, help="SNS投稿候補を生成"),
+    analytics: bool = typer.Option(False, help="効果測定サマリを表示"),
+):
+    """
+    マーケティング機能
+
+    トレンド検知、SNS投稿候補生成、効果測定連携
+    """
+    from pathlib import Path
+
+    from evaluators.trend_detector import TrendDetector
+    from marketing.analytics import AnalyticsTracker
+    from marketing.content_generator import ContentGenerator
+
+    base_dir = Path(__file__).parent.parent
+    marketing_dir = base_dir / ".private" / "marketing"
+
+    console.print(Panel("🎯 マーケティング機能", style="bold"))
+
+    # トレンド検知
+    if trends:
+        console.print("[bold]📈 トレンド検知中...[/bold]")
+        detector = TrendDetector(
+            data_dir=marketing_dir,
+            output_dir=marketing_dir / "trends",
+        )
+        trend_results = detector.detect_trends()
+
+        rising = trend_results.get("trends", {}).get("rising", [])
+        if rising:
+            table = Table(title="上昇トレンド")
+            table.add_column("キーワード")
+            table.add_column("変化")
+            table.add_column("前週→今週")
+
+            for t in rising[:5]:
+                ratio = t.get("ratio", 0)
+                ratio_str = "∞" if ratio == float("inf") else f"{ratio}x"
+                table.add_row(
+                    t.get("keyword", ""),
+                    t.get("change", ""),
+                    f"{t.get('prev_count', 0)} → {t.get('current_count', 0)} ({ratio_str})",
+                )
+            console.print(table)
+        else:
+            console.print("[dim]  トレンド変化なし[/dim]")
+
+        # 保存
+        path = detector.save_trends(trend_results)
+        console.print(f"[green]✅ トレンド保存: {path}[/green]")
+
+    # SNS投稿候補生成
+    if content:
+        console.print()
+        console.print("[bold]📝 SNS投稿候補生成中...[/bold]")
+
+        generator = ContentGenerator(output_dir=marketing_dir / "content")
+
+        # トレンドから生成
+        if trends:
+            candidates = generator.generate_from_trends(trend_results)
+        else:
+            candidates = []
+
+        # 週次ダイジェストからも生成
+        exports_dir = base_dir / "exports"
+        import json
+
+        digests = sorted(exports_dir.glob("digest-*.json"), reverse=True)
+        if digests:
+            week = digests[0].stem.replace("digest-", "")
+            with open(digests[0], encoding="utf-8") as f:
+                digest_data = json.load(f)
+            candidates.extend(generator.generate_from_digest(week, digest_data))
+
+            # 保存
+            if candidates:
+                path = generator.save_candidates(candidates, week)
+                console.print(f"[green]✅ 投稿候補保存: {path}[/green]")
+
+                table = Table(title=f"投稿候補 ({len(candidates)}件)")
+                table.add_column("タイプ")
+                table.add_column("優先度")
+                table.add_column("内容（先頭50文字）")
+
+                for c in candidates[:5]:
+                    table.add_row(
+                        c.get("type", ""),
+                        c.get("priority", ""),
+                        c.get("content", "")[:50] + "...",
+                    )
+                console.print(table)
+        else:
+            console.print("[dim]  週次ダイジェストがありません[/dim]")
+
+    # 効果測定サマリ
+    if analytics:
+        console.print()
+        console.print("[bold]📊 効果測定サマリ[/bold]")
+
+        tracker = AnalyticsTracker(data_dir=marketing_dir / "analytics")
+        summary = tracker.get_performance_summary()
+
+        if summary.get("posts_count", 0) > 0:
+            panel = Panel(
+                f"📈 過去 {summary.get('period_weeks', 4)} 週間\n"
+                f"  • 投稿数: {summary.get('posts_count', 0)}\n"
+                f"  • インプレッション: {summary.get('total_impressions', 0)}\n"
+                f"  • エンゲージメント率: {summary.get('engagement_rate', 0)}%",
+                title="パフォーマンス",
+                border_style="blue",
+            )
+            console.print(panel)
+        else:
+            console.print("[dim]  効果測定データがありません[/dim]")
+            console.print("[dim]  ※ 投稿後に analytics.record_post() で記録してください[/dim]")
+
+
 if __name__ == "__main__":
     app()
