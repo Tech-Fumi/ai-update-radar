@@ -2,6 +2,37 @@
 const GITHUB_RELEASES_URL = "https://github.com/anthropics/claude-code/releases";
 const CHANGELOG_URL = "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md";
 
+// 最新リリース
+const latestReleases = [
+  {
+    version: "v2.1.4",
+    date: "2026-01-11",
+    highlights: [
+      "バックグラウンドタスク機能を無効化する環境変数 CLAUDE_CODE_DISABLE_BACKGROUND_TASKS を追加",
+      "OAuth トークン期限切れ時の設定取得を自動リトライするよう修正",
+    ],
+  },
+  {
+    version: "v2.1.3",
+    date: "2026-01-10",
+    highlights: [
+      "Skills のホットリロード機能を追加",
+      "セッションテレポーテーション（/teleport）を追加",
+      "サブエージェントのフォーク型コンテキストをサポート",
+    ],
+  },
+  {
+    version: "v2.1.2",
+    date: "2026-01-09",
+    highlights: [
+      "画像をターミナルにドラッグした際にソースパスメタデータを追加",
+      "OSC 8 対応ターミナルでファイルパスをクリック可能なハイパーリンクに",
+      "Windows Package Manager（winget）によるインストールをサポート",
+      "プランモードで Shift+Tab ショートカットを追加",
+    ],
+  },
+];
+
 const features = [
   {
     version: "2.1.x",
@@ -74,7 +105,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Recent Features */}
+        {/* Latest Releases */}
+        <section className="mb-12">
+          <h2 className="text-xl font-semibold mb-4">最新リリース</h2>
+          <div className="space-y-4">
+            {latestReleases.map((release) => (
+              <div
+                key={release.version}
+                className="p-4 bg-slate-900 border border-slate-800 rounded-lg"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-lg font-bold text-violet-400">{release.version}</span>
+                    <span className="text-sm text-slate-500">{release.date}</span>
+                  </div>
+                  <a
+                    href={`/releases/${release.version}`}
+                    className="text-sm text-slate-400 hover:text-slate-200"
+                  >
+                    詳細 →
+                  </a>
+                </div>
+                <ul className="text-slate-300 text-sm space-y-1">
+                  {release.highlights.map((h, i) => (
+                    <li key={i}>・{h}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Notable Features */}
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">注目機能（2.1.x / 2.0.x）</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -123,9 +185,9 @@ export default function Home() {
               <span className="font-semibold">監視中</span>
             </div>
             <ul className="text-slate-400 text-sm space-y-1">
-              <li>• GitHub Releases RSS を 2時間ごとにチェック</li>
-              <li>• 新しいリリースは Discord #claude-code-updates に通知</li>
-              <li>• スクリプト: ai-update-radar/collectors/claude_code/monitor.py</li>
+              <li>・GitHub Releases RSS を 2時間ごとにチェック</li>
+              <li>・新しいリリースは Discord #claude-code-updates に通知（日本語翻訳付き）</li>
+              <li>・スクリプト: ai-update-radar/collectors/claude_code/monitor.py</li>
             </ul>
           </div>
         </section>

@@ -8,6 +8,7 @@ GitHub Releases の Atom フィードを監視し、新しいリリースがあ�
 import hashlib
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -19,6 +20,48 @@ import requests
 FEED_URL = "https://github.com/anthropics/claude-code/releases.atom"
 STATE_FILE = Path(__file__).parent / ".last_release_state.json"
 DISCORD_WEBHOOK_URL = os.environ.get("CLAUDE_CODE_DISCORD_WEBHOOK")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+
+def translate_to_japanese(text: str) -> str:
+    """リリースノートを日本語に翻訳"""
+    if not OPENAI_API_KEY:
+        print("[WARN] OPENAI_API_KEY が設定されていないため翻訳をスキップ", file=sys.stderr)
+        return text
+
+    if not text.strip():
+        return text
+
+    try:
+        response = requests.post(
+            "https://api.openai.com/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "gpt-4o-mini",
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Claude Code のリリースノートを日本語で要約してください。開発者の目を引く内容に絞り、箇条書き（・で始める）で2-4項目。各項目は1行で簡潔に。絵文字は使わない。"
+                    },
+                    {
+                        "role": "user",
+                        "content": text
+                    }
+                ],
+                "max_tokens": 300,
+                "temperature": 0.3,
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        result = response.json()
+        return result["choices"][0]["message"]["content"].strip()
+    except Exception as e:
+        print(f"[WARN] 翻訳失敗: {e}", file=sys.stderr)
+        return text
 
 
 def get_feed() -> list[dict]:
@@ -61,27 +104,30 @@ def send_discord_notification(release: dict) -> bool:
         return False
 
     # リリースノートから主要な変更点を抽出（HTML タグを簡易除去）
-    import re
     summary = re.sub(r'<[^>]+>', '', release["summary"])
-    summary = summary.strip()[:400]
+    summary = summary.strip()[:500]
+
+    # 日本語に翻訳
+    summary_ja = translate_to_japanese(summary)
+    print(f"[INFO] 翻訳完了: {len(summary_ja)} 文字")
 
     embed = {
-        "title": f"🚀 {release['title']}",
+        "title": f"🚀 Claude Code {release['title']} リリース",
         "url": release["link"],
-        "description": summary if summary else "新しいリリースが公開されました",
+        "description": summary_ja if summary_ja else "新しいリリースが公開されました。詳細は GitHub で確認してください。",
         "color": 0x7C3AED,  # 紫色
         "timestamp": release["updated"],
         "footer": {
-            "text": "Claude Code Release Monitor"
+            "text": "Claude Code リリース監視"
         },
         "fields": [
             {
-                "name": "📎 リリースページ",
-                "value": f"[GitHub で見る]({release['link']})",
+                "name": "📎 詳細",
+                "value": f"[GitHub で確認]({release['link']})",
                 "inline": True
             },
             {
-                "name": "📅 更新日時",
+                "name": "📅 リリース日",
                 "value": release["updated"][:10],
                 "inline": True
             }
