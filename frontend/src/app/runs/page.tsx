@@ -1,0 +1,250 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+interface RunItem {
+  run_id: string;
+  trace_id: string | null;
+  task_id: string;
+  status: string;
+  passed: boolean;
+  duration_ms: number | null;
+  changes: number | null;
+  error_stage: string | null;
+  error_code: string | null;
+  output_preview: string | null;
+  created_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+}
+
+interface RunsResponse {
+  runs: RunItem[];
+  has_more: boolean;
+  next_cursor: string | null;
+}
+
+type StatusFilter = "all" | "completed" | "failed";
+
+export default function RunsPage() {
+  const [runs, setRuns] = useState<RunItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [traceIdFilter, setTraceIdFilter] = useState("");
+  const [hasMore, setHasMore] = useState(false);
+  const [nextCursor, setNextCursor] = useState<string | null>(null);
+
+  const fetchRuns = async (cursor?: string) => {
+    try {
+      setLoading(true);
+      const params = new URLSearchParams();
+      params.set("limit", "50");
+      if (cursor) params.set("cursor", cursor);
+      if (statusFilter !== "all") params.set("status", statusFilter);
+      if (traceIdFilter) params.set("trace_id", traceIdFilter);
+
+      const response = await fetch(`/api/runs?${params.toString()}`);
+      if (!response.ok) throw new Error("Failed to fetch runs");
+
+      const data: RunsResponse = await response.json();
+
+      if (cursor) {
+        setRuns((prev) => [...prev, ...data.runs]);
+      } else {
+        setRuns(data.runs);
+      }
+      setHasMore(data.has_more);
+      setNextCursor(data.next_cursor);
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchRuns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusFilter]);
+
+  const handleSearch = () => {
+    fetchRuns();
+  };
+
+  const handleLoadMore = () => {
+    if (nextCursor) fetchRuns(nextCursor);
+  };
+
+  const formatDate = (dateStr: string | null) => {
+    if (!dateStr) return "-";
+    const date = new Date(dateStr);
+    return date.toLocaleString("ja-JP", {
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const formatDuration = (ms: number | null) => {
+    if (ms === null) return "-";
+    if (ms < 1000) return `${ms}ms`;
+    return `${(ms / 1000).toFixed(1)}s`;
+  };
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Header */}
+        <header className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold">Runs</h1>
+            <Link
+              href="/"
+              className="text-slate-400 hover:text-slate-200 text-sm"
+            >
+              ← トップに戻る
+            </Link>
+          </div>
+
+          {/* Filters */}
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Status Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400 text-sm">Status:</span>
+              <div className="flex gap-1">
+                {(["all", "completed", "failed"] as StatusFilter[]).map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setStatusFilter(s)}
+                    className={`px-3 py-1 rounded text-sm transition-colors ${
+                      statusFilter === s
+                        ? s === "failed"
+                          ? "bg-red-600 text-white"
+                          : s === "completed"
+                          ? "bg-green-600 text-white"
+                          : "bg-violet-600 text-white"
+                        : "bg-slate-800 text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Trace ID Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400 text-sm">trace_id:</span>
+              <input
+                type="text"
+                value={traceIdFilter}
+                onChange={(e) => setTraceIdFilter(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                placeholder="部分一致検索"
+                className="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-sm text-white placeholder-slate-500 w-40"
+              />
+              <button
+                onClick={handleSearch}
+                className="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-sm"
+              >
+                検索
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Error */}
+        {error && (
+          <div className="bg-red-900/50 border border-red-700 rounded-lg p-4 mb-6">
+            <p className="text-red-300">{error}</p>
+          </div>
+        )}
+
+        {/* Table */}
+        <div className="bg-slate-900 rounded-lg overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-slate-800">
+              <tr>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">completed_at</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">status</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">duration</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">changes</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">trace_id</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">error</th>
+              </tr>
+            </thead>
+            <tbody>
+              {runs.map((run) => (
+                <tr
+                  key={run.run_id}
+                  className="border-t border-slate-800 hover:bg-slate-800/50 cursor-pointer"
+                >
+                  <td className="px-4 py-3">
+                    <Link
+                      href={`/runs/${run.run_id}`}
+                      className="text-violet-400 hover:text-violet-300"
+                    >
+                      {formatDate(run.completed_at)}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={`px-2 py-0.5 rounded text-xs font-medium ${
+                        run.status === "completed"
+                          ? "bg-green-900 text-green-300"
+                          : "bg-red-900 text-red-300"
+                      }`}
+                    >
+                      {run.status}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-slate-300">
+                    {formatDuration(run.duration_ms)}
+                  </td>
+                  <td className="px-4 py-3 text-slate-300">
+                    {run.changes ?? "-"}
+                  </td>
+                  <td className="px-4 py-3 text-slate-500 font-mono text-xs">
+                    {run.trace_id || "-"}
+                  </td>
+                  <td className="px-4 py-3">
+                    {run.error_stage && (
+                      <span className="text-red-400 text-xs">
+                        {run.error_stage}
+                        {run.error_code && `: ${run.error_code}`}
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+              {runs.length === 0 && !loading && (
+                <tr>
+                  <td colSpan={6} className="px-4 py-8 text-center text-slate-500">
+                    データがありません
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Loading / Load More */}
+        <div className="mt-6 text-center">
+          {loading && <p className="text-slate-400">読み込み中...</p>}
+          {!loading && hasMore && (
+            <button
+              onClick={handleLoadMore}
+              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded text-sm"
+            >
+              もっと読み込む
+            </button>
+          )}
+        </div>
+      </div>
+    </main>
+  );
+}
