@@ -25,6 +25,16 @@ interface RunsResponse {
   next_cursor: string | null;
 }
 
+interface StatsResponse {
+  since: string;
+  total: number;
+  completed: number;
+  failed: number;
+  timeouts: number;
+  by_error_stage: { error_stage: string; count: number }[];
+  by_error_code: { error_code: string; count: number }[];
+}
+
 type StatusFilter = "all" | "completed" | "failed";
 
 export default function RunsPage() {
@@ -35,6 +45,7 @@ export default function RunsPage() {
   const [traceIdFilter, setTraceIdFilter] = useState("");
   const [hasMore, setHasMore] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [stats, setStats] = useState<StatsResponse | null>(null);
 
   const fetchRuns = async (cursor?: string) => {
     try {
@@ -65,8 +76,21 @@ export default function RunsPage() {
     }
   };
 
+  const fetchStats = async () => {
+    try {
+      const response = await fetch("/api/runs/stats");
+      if (response.ok) {
+        const data: StatsResponse = await response.json();
+        setStats(data);
+      }
+    } catch {
+      // stats エラーは無視（メイン機能に影響しない）
+    }
+  };
+
   useEffect(() => {
     fetchRuns();
+    fetchStats();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter]);
 
@@ -109,6 +133,51 @@ export default function RunsPage() {
               ← トップに戻る
             </Link>
           </div>
+
+          {/* Stats Cards (24h) */}
+          {stats && (
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              {/* Failed Card */}
+              <button
+                onClick={() => setStatusFilter("failed")}
+                className="bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-red-600 transition-colors text-left"
+              >
+                <p className="text-slate-400 text-xs mb-1">Failed (24h)</p>
+                <p className="text-2xl font-bold text-red-400">{stats.failed}</p>
+                <p className="text-slate-500 text-xs mt-1">
+                  / {stats.total} total
+                </p>
+              </button>
+
+              {/* Top error_stage Card */}
+              <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                <p className="text-slate-400 text-xs mb-1">Top error_stage (24h)</p>
+                {stats.by_error_stage.length > 0 ? (
+                  <div className="space-y-1">
+                    {stats.by_error_stage.slice(0, 3).map((item) => (
+                      <div key={item.error_stage} className="flex justify-between items-center">
+                        <span className="text-amber-400 text-sm">{item.error_stage}</span>
+                        <span className="text-slate-300 text-sm font-mono">{item.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-slate-500 text-sm">-</p>
+                )}
+              </div>
+
+              {/* TIMEOUT Card */}
+              <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                <p className="text-slate-400 text-xs mb-1">TIMEOUT (24h)</p>
+                <p className="text-2xl font-bold text-orange-400">{stats.timeouts}</p>
+                <p className="text-slate-500 text-xs mt-1">
+                  {stats.failed > 0
+                    ? `${Math.round((stats.timeouts / stats.failed) * 100)}% of failed`
+                    : "-"}
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-4">
