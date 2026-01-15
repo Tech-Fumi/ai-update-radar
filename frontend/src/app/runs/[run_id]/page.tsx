@@ -4,6 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
+interface ConversationEntry {
+  ts: string;
+  role: string;
+  source: string;
+  content?: string;
+  event?: string;
+  meta?: Record<string, unknown>;
+}
+
 interface RunDetail {
   task_id: string;
   trace_id: string;
@@ -21,6 +30,7 @@ interface RunDetail {
     diff_path?: string;
     stdout_path?: string;
     stderr_path?: string;
+    conversation_path?: string;
   };
   artifact_hashes?: Record<string, string>;
   created_at: string;
@@ -45,12 +55,14 @@ export default function RunDetailPage() {
   const [diffContent, setDiffContent] = useState<string | null>(null);
   const [stdoutContent, setStdoutContent] = useState<string | null>(null);
   const [stderrContent, setStderrContent] = useState<string | null>(null);
+  const [conversationEntries, setConversationEntries] = useState<ConversationEntry[] | null>(null);
 
   // Collapsed state
   const [showOutput, setShowOutput] = useState(false);
   const [showDiff, setShowDiff] = useState(true);
   const [showStdout, setShowStdout] = useState(false);
   const [showStderr, setShowStderr] = useState(false);
+  const [showConversation, setShowConversation] = useState(false);
 
   useEffect(() => {
     const fetchRun = async () => {
@@ -77,6 +89,18 @@ export default function RunDetailPage() {
           fetch(`/api/runs/${run_id}/artifacts/stderr.log`)
             .then((r) => r.text())
             .then(setStderrContent)
+            .catch(() => {});
+        }
+        if (data.artifacts.conversation_path) {
+          fetch(`/api/runs/${run_id}/artifacts/conversation.jsonl`)
+            .then((r) => r.text())
+            .then((text) => {
+              const entries = text
+                .split("\n")
+                .filter((line) => line.trim())
+                .map((line) => JSON.parse(line) as ConversationEntry);
+              setConversationEntries(entries);
+            })
             .catch(() => {});
         }
       } catch (err) {
@@ -390,6 +414,86 @@ export default function RunDetailPage() {
                   <pre className="bg-slate-950 p-4 rounded text-sm text-red-300 overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto">
                     {stderrContent || "(empty)"}
                   </pre>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Conversation */}
+          {run.artifacts.conversation_path && (
+            <div className="bg-slate-900 rounded-lg">
+              <button
+                onClick={() => setShowConversation(!showConversation)}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 rounded-t-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-amber-400">conversation.jsonl</span>
+                  <a
+                    href={`/api/runs/${run_id}/artifacts/conversation.jsonl`}
+                    download
+                    className="text-xs text-slate-500 hover:text-slate-300"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    [download]
+                  </a>
+                </div>
+                <span className="text-slate-400">{showConversation ? "▼" : "▶"}</span>
+              </button>
+              {showConversation && conversationEntries && (
+                <div className="px-6 pb-6 space-y-3">
+                  {conversationEntries.map((entry, idx) => (
+                    <div
+                      key={idx}
+                      className={`p-3 rounded ${
+                        entry.role === "user"
+                          ? "bg-blue-900/30 border-l-2 border-blue-500"
+                          : entry.role === "assistant"
+                          ? "bg-green-900/30 border-l-2 border-green-500"
+                          : "bg-slate-800/50 border-l-2 border-slate-600"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span
+                          className={`text-xs font-semibold ${
+                            entry.role === "user"
+                              ? "text-blue-400"
+                              : entry.role === "assistant"
+                              ? "text-green-400"
+                              : "text-slate-400"
+                          }`}
+                        >
+                          {entry.role}
+                        </span>
+                        <span className="text-xs text-slate-500">
+                          {entry.source}
+                        </span>
+                        {entry.event && (
+                          <span className="text-xs text-amber-500">
+                            [{entry.event}]
+                          </span>
+                        )}
+                        <span className="text-xs text-slate-600 ml-auto">
+                          {new Date(entry.ts).toLocaleTimeString("ja-JP")}
+                        </span>
+                      </div>
+                      {entry.content && (
+                        <pre className="text-sm text-slate-300 whitespace-pre-wrap">
+                          {entry.content}
+                        </pre>
+                      )}
+                      {entry.meta && Object.keys(entry.meta).length > 0 && (
+                        <div className="mt-2 text-xs text-slate-500">
+                          {entry.meta.model && <span>model: {String(entry.meta.model)}</span>}
+                          {entry.meta.tokens_in !== undefined && (
+                            <span className="ml-2">in: {String(entry.meta.tokens_in)}</span>
+                          )}
+                          {entry.meta.tokens_out !== undefined && (
+                            <span className="ml-2">out: {String(entry.meta.tokens_out)}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
