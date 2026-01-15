@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 interface RunDetail {
   task_id: string;
@@ -30,11 +30,14 @@ interface RunDetail {
 
 export default function RunDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const run_id = params.run_id as string;
 
   const [run, setRun] = useState<RunDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [rerunning, setRerunning] = useState(false);
+  const [rerunError, setRerunError] = useState<string | null>(null);
 
   // Artifact content
   const [diffContent, setDiffContent] = useState<string | null>(null);
@@ -93,6 +96,28 @@ export default function RunDetailPage() {
     if (ms === null) return "-";
     if (ms < 1000) return `${ms}ms`;
     return `${(ms / 1000).toFixed(1)}s`;
+  };
+
+  const handleRerun = async () => {
+    setRerunning(true);
+    setRerunError(null);
+    try {
+      const response = await fetch(`/api/runs/${run_id}/rerun`, {
+        method: "POST",
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to rerun");
+      }
+      const data = await response.json();
+      // 新しい run へ遷移（task_id から）
+      // 注: run_id は非同期で生成されるため、一旦 runs 一覧へ
+      router.push(`/runs?trace_id=${encodeURIComponent(data.trace_id)}`);
+    } catch (err) {
+      setRerunError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setRerunning(false);
+    }
   };
 
   if (loading) {
@@ -181,6 +206,35 @@ export default function RunDetailPage() {
                   </span>
                 )}
               </p>
+            </div>
+          )}
+
+          {/* Actions */}
+          <div className="mt-6 flex items-center gap-3">
+            {/* Retry: failed のときだけ */}
+            {!run.summary.passed && (
+              <button
+                onClick={handleRerun}
+                disabled={rerunning}
+                className="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+              >
+                {rerunning ? "Retrying..." : "Retry"}
+              </button>
+            )}
+            {/* Re-run: 常時 */}
+            <button
+              onClick={handleRerun}
+              disabled={rerunning}
+              className="px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:bg-violet-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+            >
+              {rerunning ? "Re-running..." : "Re-run"}
+            </button>
+          </div>
+
+          {/* Rerun Error */}
+          {rerunError && (
+            <div className="mt-3 p-2 bg-red-900/30 border border-red-800 rounded">
+              <p className="text-red-300 text-sm">{rerunError}</p>
             </div>
           )}
         </section>
