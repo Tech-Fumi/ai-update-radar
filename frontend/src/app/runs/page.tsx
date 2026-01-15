@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+interface ExternalAiMeta {
+  has_conversation: boolean;
+  providers: string[];
+  models: string[];
+}
+
 interface RunItem {
   run_id: string;
   trace_id: string | null;
@@ -17,6 +23,7 @@ interface RunItem {
   created_at: string;
   started_at: string | null;
   completed_at: string | null;
+  external_ai: ExternalAiMeta | null;
 }
 
 interface RunsResponse {
@@ -36,6 +43,7 @@ interface StatsResponse {
 }
 
 type StatusFilter = "all" | "completed" | "failed";
+type ConversationFilter = "all" | "yes" | "no";
 
 export default function RunsPage() {
   const [runs, setRuns] = useState<RunItem[]>([]);
@@ -46,6 +54,10 @@ export default function RunsPage() {
   const [hasMore, setHasMore] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [stats, setStats] = useState<StatsResponse | null>(null);
+  // v0.1.7: 外部AIフィルタ
+  const [conversationFilter, setConversationFilter] = useState<ConversationFilter>("all");
+  const [providerFilter, setProviderFilter] = useState("");
+  const [modelFilter, setModelFilter] = useState("");
 
   const fetchRuns = async (cursor?: string) => {
     try {
@@ -55,6 +67,11 @@ export default function RunsPage() {
       if (cursor) params.set("cursor", cursor);
       if (statusFilter !== "all") params.set("status", statusFilter);
       if (traceIdFilter) params.set("trace_id", traceIdFilter);
+      // v0.1.7: 外部AIフィルタ
+      if (conversationFilter === "yes") params.set("has_conversation", "true");
+      if (conversationFilter === "no") params.set("has_conversation", "false");
+      if (providerFilter) params.set("provider", providerFilter);
+      if (modelFilter) params.set("model", modelFilter);
 
       const response = await fetch(`/api/runs?${params.toString()}`);
       if (!response.ok) throw new Error("Failed to fetch runs");
@@ -92,7 +109,7 @@ export default function RunsPage() {
     fetchRuns();
     fetchStats();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusFilter]);
+  }, [statusFilter, conversationFilter]);
 
   const handleSearch = () => {
     fetchRuns();
@@ -216,13 +233,65 @@ export default function RunsPage() {
                 placeholder="部分一致検索"
                 className="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-sm text-white placeholder-slate-500 w-40"
               />
-              <button
-                onClick={handleSearch}
-                className="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-sm"
-              >
-                検索
-              </button>
             </div>
+
+            {/* v0.1.7: External AI Filters */}
+            {/* Conversation Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400 text-sm">外部AI:</span>
+              <div className="flex gap-1">
+                {(["all", "yes", "no"] as ConversationFilter[]).map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setConversationFilter(c)}
+                    className={`px-3 py-1 rounded text-sm transition-colors ${
+                      conversationFilter === c
+                        ? c === "yes"
+                          ? "bg-cyan-600 text-white"
+                          : c === "no"
+                          ? "bg-slate-600 text-white"
+                          : "bg-violet-600 text-white"
+                        : "bg-slate-800 text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    {c === "all" ? "all" : c === "yes" ? "有り" : "無し"}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Provider Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400 text-sm">provider:</span>
+              <input
+                type="text"
+                value={providerFilter}
+                onChange={(e) => setProviderFilter(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                placeholder="openai..."
+                className="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-sm text-white placeholder-slate-500 w-28"
+              />
+            </div>
+
+            {/* Model Filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400 text-sm">model:</span>
+              <input
+                type="text"
+                value={modelFilter}
+                onChange={(e) => setModelFilter(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                placeholder="gpt-4..."
+                className="px-3 py-1 bg-slate-800 border border-slate-700 rounded text-sm text-white placeholder-slate-500 w-28"
+              />
+            </div>
+
+            <button
+              onClick={handleSearch}
+              className="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-sm"
+            >
+              検索
+            </button>
           </div>
         </header>
 
@@ -242,6 +311,7 @@ export default function RunsPage() {
                 <th className="px-4 py-3 text-left text-slate-400 font-medium">status</th>
                 <th className="px-4 py-3 text-left text-slate-400 font-medium">duration</th>
                 <th className="px-4 py-3 text-left text-slate-400 font-medium">changes</th>
+                <th className="px-4 py-3 text-left text-slate-400 font-medium">外部AI</th>
                 <th className="px-4 py-3 text-left text-slate-400 font-medium">trace_id</th>
                 <th className="px-4 py-3 text-left text-slate-400 font-medium">error</th>
               </tr>
@@ -277,6 +347,20 @@ export default function RunsPage() {
                   <td className="px-4 py-3 text-slate-300">
                     {run.changes ?? "-"}
                   </td>
+                  <td className="px-4 py-3">
+                    {run.external_ai?.has_conversation ? (
+                      <span
+                        className="px-2 py-0.5 rounded text-xs font-medium bg-cyan-900 text-cyan-300"
+                        title={`${run.external_ai.providers.join(", ")} / ${run.external_ai.models.join(", ")}`}
+                      >
+                        {run.external_ai.providers.length > 0
+                          ? run.external_ai.providers.join(",")
+                          : "AI"}
+                      </span>
+                    ) : (
+                      <span className="text-slate-600 text-xs">-</span>
+                    )}
+                  </td>
                   <td className="px-4 py-3 text-slate-500 font-mono text-xs">
                     {run.trace_id || "-"}
                   </td>
@@ -292,7 +376,7 @@ export default function RunsPage() {
               ))}
               {runs.length === 0 && !loading && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center text-slate-500">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500">
                     データがありません
                   </td>
                 </tr>
