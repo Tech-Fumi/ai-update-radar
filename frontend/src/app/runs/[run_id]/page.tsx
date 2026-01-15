@@ -38,6 +38,8 @@ export default function RunDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const [rerunning, setRerunning] = useState(false);
   const [rerunError, setRerunError] = useState<string | null>(null);
+  const [creatingFixTask, setCreatingFixTask] = useState(false);
+  const [fixTaskResult, setFixTaskResult] = useState<{ task_id: string; trace_id: string } | null>(null);
 
   // Artifact content
   const [diffContent, setDiffContent] = useState<string | null>(null);
@@ -117,6 +119,26 @@ export default function RunDetailPage() {
       setRerunError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setRerunning(false);
+    }
+  };
+
+  const handleFixTask = async () => {
+    setCreatingFixTask(true);
+    setFixTaskResult(null);
+    try {
+      const response = await fetch(`/api/runs/${run_id}/fix-task`, {
+        method: "POST",
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to create fix task");
+      }
+      const data = await response.json();
+      setFixTaskResult({ task_id: data.task_id, trace_id: data.trace_id });
+    } catch (err) {
+      setRerunError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setCreatingFixTask(false);
     }
   };
 
@@ -229,7 +251,29 @@ export default function RunDetailPage() {
             >
               {rerunning ? "Re-running..." : "Re-run"}
             </button>
+            {/* Fix Task: failed のときだけ */}
+            {!run.summary.passed && (
+              <button
+                onClick={handleFixTask}
+                disabled={creatingFixTask}
+                className="px-4 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-amber-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+              >
+                {creatingFixTask ? "Creating..." : "Fix Task"}
+              </button>
+            )}
           </div>
+
+          {/* Fix Task Result */}
+          {fixTaskResult && (
+            <div className="mt-3 p-3 bg-green-900/30 border border-green-800 rounded">
+              <p className="text-green-300 text-sm">
+                Fix Task 作成完了: <span className="font-mono">{fixTaskResult.task_id}</span>
+              </p>
+              <p className="text-green-400 text-xs mt-1">
+                trace_id: <span className="font-mono">{fixTaskResult.trace_id}</span>
+              </p>
+            </div>
+          )}
 
           {/* Rerun Error */}
           {rerunError && (
