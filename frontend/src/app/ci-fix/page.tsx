@@ -26,8 +26,6 @@ interface CiFixResponse {
 
 type StatusFilter = "all" | "DETECTED" | "IN_PROGRESS" | "DONE";
 
-const LEDGER_API = process.env.NEXT_PUBLIC_LEDGER_API || "http://localhost:8002";
-
 export default function CiFixPage() {
   const [runs, setRuns] = useState<CiFixRun[]>([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +40,7 @@ export default function CiFixPage() {
       params.set("limit", "50");
       if (statusFilter !== "all") params.set("status", statusFilter);
 
-      const response = await fetch(`${LEDGER_API}/api/ci-fix/runs?${params.toString()}`);
+      const response = await fetch(`/api/ci-fix/runs?${params.toString()}`);
       if (!response.ok) throw new Error("Failed to fetch runs");
 
       const data: CiFixResponse = await response.json();

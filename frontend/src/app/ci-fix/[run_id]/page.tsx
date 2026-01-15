@@ -27,8 +27,6 @@ interface CiFixRunDetail {
   run_url: string | null;
 }
 
-const LEDGER_API = process.env.NEXT_PUBLIC_LEDGER_API || "http://localhost:8002";
-
 export default function CiFixRunDetailPage() {
   const params = useParams();
   const runId = params.run_id as string;
@@ -41,7 +39,7 @@ export default function CiFixRunDetailPage() {
     const fetchRun = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${LEDGER_API}/api/ci-fix/runs/${runId}`);
+        const response = await fetch(`/api/ci-fix/runs/${runId}`);
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error("Run not found");
