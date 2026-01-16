@@ -20,12 +20,20 @@ interface ConversationEntry {
   meta?: ConversationMeta;
 }
 
+interface EvidenceLink {
+  artifact: string;
+  line_from?: number;
+  line_to?: number;
+  note?: string;
+}
+
 interface SummaryCard {
   decision: string;
   hypothesis: string;
   confidence: number;
   key_points: string[];
   evidence: string[];
+  evidence_links?: EvidenceLink[];
   generated_by?: string;
 }
 
@@ -387,8 +395,42 @@ export default function RunDetailPage() {
                 </div>
               )}
 
-              {/* Evidence */}
-              {run.summary_card.evidence.length > 0 && (
+              {/* Evidence Links (v0.2.0) */}
+              {run.summary_card.evidence_links && run.summary_card.evidence_links.length > 0 && (
+                <div>
+                  <p className="text-slate-400 text-sm mb-2">Evidence Links</p>
+                  <ul className="space-y-2">
+                    {run.summary_card.evidence_links.map((link, idx) => (
+                      <li key={idx} className="bg-slate-800 rounded p-2">
+                        <button
+                          onClick={() => {
+                            // Open the corresponding artifact section
+                            if (link.artifact === "conversation.jsonl") setShowConversation(true);
+                            else if (link.artifact === "stdout.log") setShowStdout(true);
+                            else if (link.artifact === "stderr.log") setShowStderr(true);
+                            else if (link.artifact === "patch.diff") setShowDiff(true);
+                          }}
+                          className="text-violet-400 hover:text-violet-300 text-sm font-mono"
+                        >
+                          {link.artifact}
+                          {link.line_from && (
+                            <span className="text-slate-500">
+                              :L{link.line_from}
+                              {link.line_to && link.line_to !== link.line_from && `-${link.line_to}`}
+                            </span>
+                          )}
+                        </button>
+                        {link.note && (
+                          <p className="text-slate-400 text-xs mt-1">{link.note}</p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Evidence (legacy) */}
+              {run.summary_card.evidence.length > 0 && !run.summary_card.evidence_links?.length && (
                 <div>
                   <p className="text-slate-400 text-sm mb-2">Evidence</p>
                   <ul className="space-y-1">
