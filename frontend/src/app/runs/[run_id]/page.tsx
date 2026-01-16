@@ -36,6 +36,7 @@ interface SummaryCard {
   evidence_links?: EvidenceLink[];
   generated_by?: string;
   recommendation?: "retry" | "rerun" | "fix" | "noop";
+  recommendation_reason?: string; // v0.3.1: ルール ID
 }
 
 interface RunDetail {
@@ -150,10 +151,11 @@ export default function RunDetailPage() {
     return `${(ms / 1000).toFixed(1)}s`;
   };
 
-  // v0.3.0: 学習シグナル送信
+  // v0.3.1: 学習シグナル送信（reason 追加）
   const sendLearningSignal = async (chosen: "retry" | "rerun" | "fix") => {
     if (!run) return;
     const recommended = run.summary_card?.recommendation || "noop";
+    const reason = run.summary_card?.recommendation_reason || "UNKNOWN";
     try {
       await fetch("/api/learning/signals", {
         method: "POST",
@@ -164,6 +166,7 @@ export default function RunDetailPage() {
             run_id: run.run_id,
             trace_id: run.trace_id,
             recommended,
+            reason,
             chosen,
             source: "ui",
           },
