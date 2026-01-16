@@ -4,13 +4,29 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
+interface ConversationMeta {
+  model?: string;
+  tokens_in?: number;
+  tokens_out?: number;
+  [key: string]: unknown;
+}
+
 interface ConversationEntry {
   ts: string;
   role: string;
   source: string;
   content?: string;
   event?: string;
-  meta?: Record<string, unknown>;
+  meta?: ConversationMeta;
+}
+
+interface SummaryCard {
+  decision: string;
+  hypothesis: string;
+  confidence: number;
+  key_points: string[];
+  evidence: string[];
+  generated_by?: string;
 }
 
 interface RunDetail {
@@ -36,6 +52,7 @@ interface RunDetail {
   created_at: string;
   started_at: string | null;
   completed_at: string;
+  summary_card?: SummaryCard;
 }
 
 export default function RunDetailPage() {
@@ -306,6 +323,86 @@ export default function RunDetailPage() {
             </div>
           )}
         </section>
+
+        {/* Summary Card (v0.1.9) */}
+        {run.summary_card && (
+          <section className="bg-slate-900 rounded-lg p-6 mb-6">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <span className="text-amber-400">📋</span>
+              Summary Card
+              {run.summary_card.generated_by && (
+                <span className="text-xs text-slate-500 font-normal">
+                  ({run.summary_card.generated_by})
+                </span>
+              )}
+            </h2>
+            <div className="space-y-4">
+              {/* Decision & Confidence */}
+              <div className="flex items-center gap-4">
+                <div className="flex-1">
+                  <p className="text-slate-400 text-sm">Decision</p>
+                  <p className={`text-lg font-semibold ${
+                    run.summary_card.decision === "completed" || run.summary_card.decision === "成功"
+                      ? "text-green-400"
+                      : run.summary_card.decision === "failed" || run.summary_card.decision === "失敗"
+                      ? "text-red-400"
+                      : run.summary_card.decision.includes("再試行") || run.summary_card.decision === "Retry recommended"
+                      ? "text-amber-400"
+                      : "text-slate-300"
+                  }`}>
+                    {run.summary_card.decision}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-sm">Confidence</p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-violet-500"
+                        style={{ width: `${run.summary_card.confidence * 100}%` }}
+                      />
+                    </div>
+                    <span className="text-sm text-slate-300">
+                      {(run.summary_card.confidence * 100).toFixed(0)}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hypothesis */}
+              <div>
+                <p className="text-slate-400 text-sm mb-1">Hypothesis</p>
+                <p className="text-slate-200">{run.summary_card.hypothesis}</p>
+              </div>
+
+              {/* Key Points */}
+              {run.summary_card.key_points.length > 0 && (
+                <div>
+                  <p className="text-slate-400 text-sm mb-2">Key Points</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    {run.summary_card.key_points.map((point, idx) => (
+                      <li key={idx} className="text-slate-300 text-sm">{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Evidence */}
+              {run.summary_card.evidence.length > 0 && (
+                <div>
+                  <p className="text-slate-400 text-sm mb-2">Evidence</p>
+                  <ul className="space-y-1">
+                    {run.summary_card.evidence.map((ev, idx) => (
+                      <li key={idx} className="text-slate-500 text-xs font-mono bg-slate-800 px-2 py-1 rounded">
+                        {ev}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* Output */}
         <section className="bg-slate-900 rounded-lg mb-6">
