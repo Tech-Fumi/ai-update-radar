@@ -150,9 +150,35 @@ export default function RunDetailPage() {
     return `${(ms / 1000).toFixed(1)}s`;
   };
 
-  const handleRerun = async () => {
+  // v0.3.0: 学習シグナル送信
+  const sendLearningSignal = async (chosen: "retry" | "rerun" | "fix") => {
+    if (!run) return;
+    const recommended = run.summary_card?.recommendation || "noop";
+    try {
+      await fetch("/api/learning/signals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_type: "action_chosen",
+          action: {
+            run_id: run.run_id,
+            trace_id: run.trace_id,
+            recommended,
+            chosen,
+            source: "ui",
+          },
+        }),
+      });
+    } catch {
+      // 学習シグナル送信失敗は無視（本体処理を止めない）
+    }
+  };
+
+  const handleRerun = async (actionType: "retry" | "rerun") => {
     setRerunning(true);
     setRerunError(null);
+    // v0.3.0: 学習シグナル送信
+    await sendLearningSignal(actionType);
     try {
       const response = await fetch(`/api/runs/${run_id}/rerun`, {
         method: "POST",
@@ -175,6 +201,8 @@ export default function RunDetailPage() {
   const handleFixTask = async () => {
     setCreatingFixTask(true);
     setFixTaskResult(null);
+    // v0.3.0: 学習シグナル送信
+    await sendLearningSignal("fix");
     try {
       const response = await fetch(`/api/runs/${run_id}/fix-task`, {
         method: "POST",
@@ -286,7 +314,7 @@ export default function RunDetailPage() {
             {/* Retry: failed のときだけ */}
             {!run.summary.passed && (
               <button
-                onClick={handleRerun}
+                onClick={() => handleRerun("retry")}
                 disabled={rerunning}
                 className={`px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors ${
                   run.summary_card?.recommendation === "retry" ? "ring-2 ring-yellow-400 ring-offset-2 ring-offset-slate-950" : ""
@@ -298,7 +326,7 @@ export default function RunDetailPage() {
             )}
             {/* Re-run: 常時 */}
             <button
-              onClick={handleRerun}
+              onClick={() => handleRerun("rerun")}
               disabled={rerunning}
               className={`px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:bg-violet-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors ${
                 run.summary_card?.recommendation === "rerun" ? "ring-2 ring-yellow-400 ring-offset-2 ring-offset-slate-950" : ""
