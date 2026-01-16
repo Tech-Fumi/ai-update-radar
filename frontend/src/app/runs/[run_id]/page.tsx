@@ -35,6 +35,7 @@ interface SummaryCard {
   evidence: string[];
   evidence_links?: EvidenceLink[];
   generated_by?: string;
+  recommendation?: "retry" | "rerun" | "fix" | "noop";
 }
 
 interface RunDetail {
@@ -287,27 +288,36 @@ export default function RunDetailPage() {
               <button
                 onClick={handleRerun}
                 disabled={rerunning}
-                className="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+                className={`px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors ${
+                  run.summary_card?.recommendation === "retry" ? "ring-2 ring-yellow-400 ring-offset-2 ring-offset-slate-950" : ""
+                }`}
               >
                 {rerunning ? "Retrying..." : "Retry"}
+                {run.summary_card?.recommendation === "retry" && <span className="ml-1 text-yellow-300">★</span>}
               </button>
             )}
             {/* Re-run: 常時 */}
             <button
               onClick={handleRerun}
               disabled={rerunning}
-              className="px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:bg-violet-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+              className={`px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:bg-violet-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors ${
+                run.summary_card?.recommendation === "rerun" ? "ring-2 ring-yellow-400 ring-offset-2 ring-offset-slate-950" : ""
+              }`}
             >
               {rerunning ? "Re-running..." : "Re-run"}
+              {run.summary_card?.recommendation === "rerun" && <span className="ml-1 text-yellow-300">★</span>}
             </button>
             {/* Fix Task: failed のときだけ */}
             {!run.summary.passed && (
               <button
                 onClick={handleFixTask}
                 disabled={creatingFixTask}
-                className="px-4 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-amber-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors"
+                className={`px-4 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-amber-800 disabled:cursor-not-allowed rounded text-sm font-medium transition-colors ${
+                  run.summary_card?.recommendation === "fix" ? "ring-2 ring-yellow-400 ring-offset-2 ring-offset-slate-950" : ""
+                }`}
               >
                 {creatingFixTask ? "Creating..." : "Fix Task"}
+                {run.summary_card?.recommendation === "fix" && <span className="ml-1 text-yellow-300">★</span>}
               </button>
             )}
           </div>
@@ -345,7 +355,7 @@ export default function RunDetailPage() {
               )}
             </h2>
             <div className="space-y-4">
-              {/* Decision & Confidence */}
+              {/* Decision & Confidence & Recommendation */}
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <p className="text-slate-400 text-sm">Decision</p>
@@ -375,6 +385,20 @@ export default function RunDetailPage() {
                     </span>
                   </div>
                 </div>
+                {/* Recommendation (v0.2.3) */}
+                {run.summary_card.recommendation && run.summary_card.recommendation !== "noop" && (
+                  <div>
+                    <p className="text-slate-400 text-sm">Recommended</p>
+                    <span className={`inline-flex items-center px-2 py-1 rounded text-sm font-medium ${
+                      run.summary_card.recommendation === "retry" ? "bg-red-900/50 text-red-300 border border-red-700" :
+                      run.summary_card.recommendation === "rerun" ? "bg-violet-900/50 text-violet-300 border border-violet-700" :
+                      run.summary_card.recommendation === "fix" ? "bg-amber-900/50 text-amber-300 border border-amber-700" :
+                      "bg-slate-700 text-slate-300"
+                    }`}>
+                      ★ {run.summary_card.recommendation.toUpperCase()}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Hypothesis */}
