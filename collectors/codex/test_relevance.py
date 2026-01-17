@@ -135,6 +135,40 @@ def test_model_subclassification():
         f"App-server and migration should be in other. Got other_indices={result['other_indices']}"
     print("✅ Test 8 PASS: 複合ケース（App-server + MCP 混在）")
 
+    # ============================================
+    # テストケース 9: classifications の追跡確認
+    # ============================================
+    # Note: classifications は model キーワードでマッチした場合のみ記録
+    highlights_tracking = [
+        "migration_markdown for model info",           # → model:metadata (keyword=migration_markdown)
+        "The model is deprecated and will be removed", # → model:deprecation (keyword=deprecat)
+        "New model options available",                 # → model:neutral (no_match)
+    ]
+    result = analyze_relevance(highlights_tracking, env_info)
+
+    assert 0 in result["classifications"], \
+        f"Index 0 should be in classifications. Got {result['classifications']}"
+    assert result["classifications"][0]["subtype"] == "model:metadata", \
+        f"Index 0 subtype should be model:metadata. Got {result['classifications'][0]}"
+    assert "migration_markdown" in result["classifications"][0]["reason"], \
+        f"Index 0 reason should contain migration_markdown. Got {result['classifications'][0]}"
+
+    assert 1 in result["classifications"], \
+        f"Index 1 should be in classifications. Got {result['classifications']}"
+    assert result["classifications"][1]["subtype"] == "model:deprecation", \
+        f"Index 1 subtype should be model:deprecation. Got {result['classifications'][1]}"
+    assert "deprecat" in result["classifications"][1]["reason"], \
+        f"Index 1 reason should contain deprecat. Got {result['classifications'][1]}"
+
+    assert 2 in result["classifications"], \
+        f"Index 2 should be in classifications. Got {result['classifications']}"
+    assert result["classifications"][2]["subtype"] == "model:neutral", \
+        f"Index 2 subtype should be model:neutral. Got {result['classifications'][2]}"
+    assert result["classifications"][2]["reason"] == "no_match", \
+        f"Index 2 reason should be no_match. Got {result['classifications'][2]}"
+
+    print("✅ Test 9 PASS: classifications 追跡（subtype + reason）")
+
     print("\n" + "=" * 50)
     print("全テスト PASS ✅")
     print("=" * 50)

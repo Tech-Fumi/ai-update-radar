@@ -252,6 +252,7 @@ def analyze_relevance(highlights: list[str], env_info: dict) -> dict:
         "opportunity_indices": [],   # 有効にすると使える（提案）
         "other_indices": [],         # その他
         "opportunities": [],         # 提案の詳細
+        "classifications": {},       # インデックス → {subtype, reason} の追跡用
     }
 
     if not env_info.get("in_use"):
@@ -332,24 +333,44 @@ def analyze_relevance(highlights: list[str], env_info: dict) -> dict:
                     is_impact = any(ik in line_lower for ik in model_impact_keywords)
                     is_fyi = any(fk in line_lower for fk in model_fyi_keywords)
 
-                    # サブタイプを決定（ログ用）
+                    # サブタイプを決定
                     if is_impact:
                         subtype = "model:deprecation"
+                        matched_impact = next((ik for ik in model_impact_keywords if ik in line_lower), None)
                         relevance["affected_indices"].append(i)
+                        relevance["classifications"][i] = {
+                            "subtype": subtype,
+                            "reason": f"keyword={matched_impact}",
+                            "dest": "affected",
+                        }
                     elif is_fyi:
                         subtype = "model:metadata"
+                        matched_fyi = next((fk for fk in model_fyi_keywords if fk in line_lower), None)
                         relevance["other_indices"].append(i)  # FYI = other
+                        relevance["classifications"][i] = {
+                            "subtype": subtype,
+                            "reason": f"keyword={matched_fyi}",
+                            "dest": "other",
+                        }
                     else:
                         # custom_model が有効なら affected、そうでなければ other
                         if features.get("custom_model"):
                             subtype = "model:review"
                             relevance["affected_indices"].append(i)
+                            relevance["classifications"][i] = {
+                                "subtype": subtype,
+                                "reason": "feature=custom_model",
+                                "dest": "affected",
+                            }
                         else:
                             subtype = "model:neutral"
                             relevance["other_indices"].append(i)
+                            relevance["classifications"][i] = {
+                                "subtype": subtype,
+                                "reason": "no_match",
+                                "dest": "other",
+                            }
 
-                    # デバッグログ（必要に応じてコメントアウト）
-                    # print(f"  [{subtype}] {line[:60]}...")
                     categorized = True
                     break
                 else:
