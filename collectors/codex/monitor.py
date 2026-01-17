@@ -300,6 +300,18 @@ def analyze_relevance(highlights: list[str], env_info: dict) -> dict:
     system_info = env_info.get("system", {})
     other_os_keywords = system_info.get("other_os_keywords", [])
 
+    # model カテゴリのサブ分類キーワード
+    model_fyi_keywords = [
+        "migration_markdown", "metadata", "field added", "schema",
+        "model_info", "/models", "クライアント", "client can",
+        "display", "guidance", "ガイド"
+    ]
+    model_impact_keywords = [
+        "deprecat", "removed", "sunset", "breaking",
+        "default changed", "default change", "migration required",
+        "will stop working", "no longer", "廃止", "非推奨"
+    ]
+
     # 各行を分類
     for i, line in enumerate(highlights):
         line_lower = line.lower()
@@ -313,9 +325,38 @@ def analyze_relevance(highlights: list[str], env_info: dict) -> dict:
         # 1. 有効な機能に関連？
         for feature, keywords in enabled_keywords.items():
             if any(kw in line_lower for kw in keywords):
-                relevance["affected_indices"].append(i)
-                categorized = True
-                break
+                matched_keyword = next(kw for kw in keywords if kw in line_lower)
+
+                # model カテゴリのサブ分類
+                if matched_keyword == "model":
+                    is_impact = any(ik in line_lower for ik in model_impact_keywords)
+                    is_fyi = any(fk in line_lower for fk in model_fyi_keywords)
+
+                    # サブタイプを決定（ログ用）
+                    if is_impact:
+                        subtype = "model:deprecation"
+                        relevance["affected_indices"].append(i)
+                    elif is_fyi:
+                        subtype = "model:metadata"
+                        relevance["other_indices"].append(i)  # FYI = other
+                    else:
+                        # custom_model が有効なら affected、そうでなければ other
+                        if features.get("custom_model"):
+                            subtype = "model:review"
+                            relevance["affected_indices"].append(i)
+                        else:
+                            subtype = "model:neutral"
+                            relevance["other_indices"].append(i)
+
+                    # デバッグログ（必要に応じてコメントアウト）
+                    # print(f"  [{subtype}] {line[:60]}...")
+                    categorized = True
+                    break
+                else:
+                    # model 以外は従来通り affected
+                    relevance["affected_indices"].append(i)
+                    categorized = True
+                    break
 
         if categorized:
             continue
