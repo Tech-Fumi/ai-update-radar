@@ -1,0 +1,77 @@
+{
+  "version": "rust-v0.85.0",
+  "analyzed_at": "2026-01-18T04:03:07.052714",
+  "action_items": [
+    {
+      "task": "Codex rust-v0.85.0 のモデル変更を確認",
+      "source_feature": "デフォルトモデル変更",
+      "priority": 1,
+      "project": "MCP Codex",
+      "category": "tooling",
+      "source": "codex"
+    },
+    {
+      "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
+      "source_feature": "機能提案: sandbox",
+      "priority": 2,
+      "project": "infra-automation",
+      "category": "tooling",
+      "source": "codex"
+    },
+    {
+      "task": "Codex rust-v0.81.0 の破壊的変更を確認",
+      "source_feature": "破壊的変更",
+      "priority": 3,
+      "project": "MCP Codex",
+      "category": "tooling",
+      "source": "codex"
+    },
+    {
+      "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
+      "source_feature": "機能提案: sandbox",
+      "priority": 4,
+      "project": "infra-automation",
+      "category": "tooling",
+      "source": "codex"
+    },
+    {
+      "task": "config_toml を有効化: Codex の動作をカスタマイズできます",
+      "source_feature": "機能提案: config_toml",
+      "priority": 5,
+      "project": "infra-automation",
+      "category": "tooling",
+      "source": "codex"
+    }
+  ],
+  "dev_improvements": [
+    {
+      "project": "MCP Codex",
+      "suggestion": "`/models`メタデータにアップグレード移行用のMarkdownが含まれるようになり、クライアントがモデルアップグレードを提案する際により詳細なガイダンスを表示できるようになりました。(#9219)",
+      "source_feature": "影響あり (index 2)",
+      "what_it_is": "以前はモデル更新の詳細が不明だった → 今は更新手順を詳しく案内",
+      "priority": "HIGH"
+    },
+    {
+      "project": "MCP Codex",
+      "suggestion": "#9219 `model_info`に`migration_markdown`を追加 @aibrahim-oai",
+      "source_feature": "影響あり (index 6)",
+      "what_it_is": "以前はモデル情報が基本のみだった → 今は移行ガイドも含む情報",
+      "priority": "HIGH"
+    },
+    {
+      "project": "MCP Codex",
+      "suggestion": "[復元] Linuxサンドボックス機能で、ユーザー名前空間が利用できない場合にLandlock専用制限にフォールバックし、サンドボックスルール適用前に`no_new_privs`を設定するようになりました。(#9250)",
+      "source_feature": "機能提案 (index 3)",
+      "what_it_is": "以前は制限環境で動作が不安定だった → 今は環境に応じて安全に実行",
+      "priority": "MEDIUM"
+    }
+  ],
+  "business_opportunities": [],
+  "explanations": {
+    "0": "以前は他ツールとの連携が見えなかった → 今は作業状況をリアルタイム表示",
+    "2": "以前はモデル更新の詳細が不明だった → 今は更新手順を詳しく案内",
+    "6": "以前はモデル情報が基本のみだった → 今は移行ガイドも含む情報",
+    "8": "以前は連携ツールの動作が不透明だった → 今は動作状況を可視化",
+    "3": "以前は制限環境で動作が不安定だった → 今は環境に応じて安全に実行"
+  }
+}

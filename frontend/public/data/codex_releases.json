@@ -1,0 +1,679 @@
+{
+  "updated_at": "2026-01-18T04:03:07.050301",
+  "releases": [
+    {
+      "version": "rust-v0.88.0-alpha.1",
+      "date": "2026-01-17",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.88.0-alpha.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": []
+      },
+      "categorized_highlights": [],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.87.0",
+      "date": "2026-01-16",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.87.0",
+      "highlights_en": [
+        "User message metadata (text elements and byte ranges) now round-trips through protocol/app-server/core so UI annotations can survive history rebuilds. (#9331)",
+        "Collaboration wait calls can block on multiple IDs in one request, simplifying multi-thread coordination. (#9294)",
+        "User shell commands now run under the user snapshot so aliases and shell config are honored. (#9357)",
+        "The TUI now surfaces approval requests from spawned/unsubscribed threads. (#9232)",
+        "Token estimation during compaction is now accurate, improving budgeting during long sessions. (#9337)",
+        "MCP CallToolResult now includes `threadId` in both `content` and `structuredContent`, and returns a defined output schema for compatibility. (#9338)",
+        "The TUI “Worked for” separator only appears after actual work has occurred. (#8958)",
+        "Piped non-PTY commands no longer hang waiting on stdin. (#9369)",
+        "MCP interface docs updated to reflect structured output schema and `threadId` behavior. (#9338)",
+        "Windows builds enable the PowerShell UTF-8 feature by default. (#9195)"
+      ],
+      "highlights_ja": [
+        "ユーザーメッセージのメタデータ（テキスト要素とバイト範囲）がプロトコル/アプリサーバー/コア間で往復処理されるようになり、履歴再構築時にUI注釈が保持されます。(#9331)",
+        "コラボレーション待機呼び出しで1回のリクエストで複数IDをブロックでき、マルチスレッド調整が簡素化されます。(#9294)",
+        "ユーザーシェルコマンドがユーザースナップショット下で実行され、エイリアスとシェル設定が適用されます。(#9357)",
+        "TUIで生成/非購読スレッドからの承認リクエストが表示されるようになりました。(#9232)",
+        "コンパクション時のトークン推定が正確になり、長時間セッション中の予算管理が改善されます。(#9337)",
+        "MCP CallToolResultで`content`と`structuredContent`の両方に`threadId`が含まれ、互換性のための定義済み出力スキーマを返します。(#9338)",
+        "TUIの「Worked for」区切り線は実際の作業発生後のみ表示されます。(#8958)",
+        "パイプされた非PTYコマンドがstdin待機でハングしなくなりました。(#9369)",
+        "MCPインターフェースドキュメントが構造化出力スキーマと`threadId`動作を反映するよう更新されました。(#9338)",
+        "WindowsビルドでPowerShell UTF-8機能がデフォルトで有効になります。(#9195)"
+      ],
+      "explanations": {
+        "0": "以前は画面を切り替えると注釈が消えた → 今は注釈情報がずっと残る",
+        "5": "以前はツール結果の形式が統一されていなかった → 今は決まった形式で結果が返る",
+        "8": "以前は古い仕様書のままだった → 今は最新機能に対応した説明書になった"
+      },
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": true,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [
+          0,
+          5,
+          8
+        ],
+        "opportunity_indices": [],
+        "other_indices": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          9
+        ],
+        "opportunities": []
+      },
+      "categorized_highlights": [
+        {
+          "text": "User message metadata (text elements and byte ranges) now round-trips through protocol/app-server/core so UI annotations can survive history rebuilds. (#9331)",
+          "category": "improvement"
+        },
+        {
+          "text": "Collaboration wait calls can block on multiple IDs in one request, simplifying multi-thread coordination. (#9294)",
+          "category": "improvement"
+        },
+        {
+          "text": "User shell commands now run under the user snapshot so aliases and shell config are honored. (#9357)",
+          "category": "improvement"
+        },
+        {
+          "text": "The TUI now surfaces approval requests from spawned/unsubscribed threads. (#9232)",
+          "category": "feature"
+        },
+        {
+          "text": "Token estimation during compaction is now accurate, improving budgeting during long sessions. (#9337)",
+          "category": "improvement"
+        },
+        {
+          "text": "MCP CallToolResult now includes `threadId` in both `content` and `structuredContent`, and returns a defined output schema for compatibility. (#9338)",
+          "category": "feature"
+        },
+        {
+          "text": "The TUI “Worked for” separator only appears after actual work has occurred. (#8958)",
+          "category": "improvement"
+        },
+        {
+          "text": "Piped non-PTY commands no longer hang waiting on stdin. (#9369)",
+          "category": "fix"
+        },
+        {
+          "text": "MCP interface docs updated to reflect structured output schema and `threadId` behavior. (#9338)",
+          "category": "improvement"
+        },
+        {
+          "text": "Windows builds enable the PowerShell UTF-8 feature by default. (#9195)",
+          "category": "feature"
+        }
+      ],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.86.0",
+      "date": "2026-01-16",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.86.0",
+      "highlights_en": [
+        "Skill metadata can now be defined in `SKILL.toml` (names, descriptions, icons, brand color, default prompt) and surfaced in the app server and TUI (#9125)",
+        "Clients can explicitly disable web search and signal eligibility via a header to align with server-side rollout controls (#9249)",
+        "Accepting an MCP elicitation now sends an empty JSON payload instead of null to satisfy servers expecting content (#9196)",
+        "Input prompt placeholder styling is back to non-italic to avoid terminal rendering issues (#9307)",
+        "Empty paste events no longer trigger clipboard image reads (#9318)",
+        "Unified exec cleans up background processes to prevent late End events after listeners stop (#9304)",
+        "Refresh the orchestrator prompt to improve internal routing behavior (#9301)",
+        "Reduce noisy `needs_follow_up` error logging (#9272)",
+        "#9301 chore: better orchestrator prompt @jif-oai",
+        "#9304 nit: clean unified exec background processes @jif-oai"
+      ],
+      "highlights_ja": [
+        "スキルメタデータ（名前、説明、アイコン、ブランドカラー、デフォルトプロンプト）を`SKILL.toml`で定義し、アプリサーバーとTUIで表示できるようになりました (#9125)",
+        "クライアントがヘッダー経由でWeb検索を明示的に無効化し、サーバーサイドのロールアウト制御と連携して適格性を通知できるようになりました (#9249)",
+        "MCP elicitationの受諾時に、コンテンツを期待するサーバーに対してnullではなく空のJSONペイロードを送信するようになりました (#9196)",
+        "端末レンダリング問題を避けるため、入力プロンプトプレースホルダーのスタイルを非イタリックに戻しました (#9307)",
+        "空の貼り付けイベントでクリップボード画像読み込みがトリガーされないようになりました (#9318)",
+        "リスナー停止後の遅延Endイベントを防ぐため、Unified execがバックグラウンドプロセスをクリーンアップするようになりました (#9304)",
+        "内部ルーティング動作を改善するためオーケストレータープロンプトを更新しました (#9301)",
+        "`needs_follow_up`エラーログの冗長性を削減しました (#9272)",
+        "#9301 chore: オーケストレータープロンプトの改善 @jif-oai",
+        "#9304 nit: unified execバックグラウンドプロセスのクリーンアップ @jif-oai"
+      ],
+      "explanations": {
+        "0": "以前は設定情報がバラバラだった → 今は一つのファイルで管理できる",
+        "1": "以前はWeb検索の制御が曖昧だった → 今は明確にオン/オフ切替可能",
+        "2": "以前はサーバーとの通信でエラーが発生 → 今は正しくデータ送信される"
+      },
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": true,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [
+          0,
+          1,
+          2
+        ],
+        "opportunity_indices": [],
+        "other_indices": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "opportunities": []
+      },
+      "categorized_highlights": [
+        {
+          "text": "Skill metadata can now be defined in `SKILL.toml` (names, descriptions, icons, brand color, default prompt) and surfaced in the app server and TUI (#9125)",
+          "category": "feature"
+        },
+        {
+          "text": "Clients can explicitly disable web search and signal eligibility via a header to align with server-side rollout controls (#9249)",
+          "category": "improvement"
+        },
+        {
+          "text": "Accepting an MCP elicitation now sends an empty JSON payload instead of null to satisfy servers expecting content (#9196)",
+          "category": "improvement"
+        },
+        {
+          "text": "Input prompt placeholder styling is back to non-italic to avoid terminal rendering issues (#9307)",
+          "category": "fix"
+        },
+        {
+          "text": "Empty paste events no longer trigger clipboard image reads (#9318)",
+          "category": "fix"
+        },
+        {
+          "text": "Unified exec cleans up background processes to prevent late End events after listeners stop (#9304)",
+          "category": "fix"
+        },
+        {
+          "text": "Refresh the orchestrator prompt to improve internal routing behavior (#9301)",
+          "category": "improvement"
+        },
+        {
+          "text": "Reduce noisy `needs_follow_up` error logging (#9272)",
+          "category": "improvement"
+        },
+        {
+          "text": "#9301 chore: better orchestrator prompt @jif-oai",
+          "category": "improvement"
+        },
+        {
+          "text": "#9304 nit: clean unified exec background processes @jif-oai",
+          "category": "improvement"
+        }
+      ],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.87.0-alpha.1",
+      "date": "2026-01-16",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.87.0-alpha.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": []
+      },
+      "categorized_highlights": [],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.85.0",
+      "date": "2026-01-15",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.85.0",
+      "highlights_en": [
+        "App-server v2 now emits collaboration tool calls as item events in the turn stream, so clients can render agent coordination in real time. (#9213)",
+        "Collaboration tools gained richer agent control: `spawn_agent` accepts an agent role preset, and `send_input` can optionally interrupt a running agent before delivering the message. (#9275, #9276)",
+        "`/models` metadata now includes upgrade migration markdown so clients can display richer guidance when suggesting model upgrades. (#9219)",
+        "[revert] Linux sandboxing now falls back to Landlock-only restrictions when user namespaces are unavailable, and sets `no_new_privs` before applying sandbox rules. (#9250)",
+        "`codex resume --last` now respects the current working directory, with `--all` as an explicit override. (#9245)",
+        "Stdin prompt decoding now handles BOMs/UTF-16 and provides clearer errors for invalid encodings. (#9151)",
+        "#9219 Add `migration_markdown` in `model_info` @aibrahim-oai",
+        "#9250 fix: fallback to Landlock-only when user namespaces unavailable and set PR_SET_NO_NEW_PRIVS early @viyatb-oai",
+        "#9213 feat: collab tools app-server event mapping @jif-oai",
+        "#9275 feat: add agent roles to collab tools @jif-oai"
+      ],
+      "highlights_ja": [
+        "App-server v2でコラボレーションツールの呼び出しがターンストリーム内のアイテムイベントとして出力されるようになり、クライアントがエージェントの協調動作をリアルタイムで描画できるようになりました。(#9213)",
+        "コラボレーションツールでより豊富なエージェント制御が可能になりました：`spawn_agent`でエージェントロールプリセットを受け入れ、`send_input`で実行中のエージェントをメッセージ配信前に中断することができます。(#9275, #9276)",
+        "`/models`メタデータにアップグレード移行用のMarkdownが含まれるようになり、クライアントがモデルアップグレードを提案する際により詳細なガイダンスを表示できるようになりました。(#9219)",
+        "[復元] Linuxサンドボックス機能で、ユーザー名前空間が利用できない場合にLandlock専用制限にフォールバックし、サンドボックスルール適用前に`no_new_privs`を設定するようになりました。(#9250)",
+        "`codex resume --last`が現在の作業ディレクトリを尊重するようになり、`--all`で明示的にオーバーライドできるようになりました。(#9245)",
+        "標準入力プロンプトのデコードでBOM/UTF-16を処理し、無効なエンコーディングに対してより明確なエラーメッセージを提供するようになりました。(#9151)",
+        "#9219 `model_info`に`migration_markdown`を追加 @aibrahim-oai",
+        "#9250 修正：ユーザー名前空間が利用できない場合のLandlock専用フォールバックとPR_SET_NO_NEW_PRIVSの早期設定 @viyatb-oai",
+        "#9213 機能：コラボツールのapp-serverイベントマッピング @jif-oai",
+        "#9275 機能：コラボツールにエージェントロールを追加 @jif-oai"
+      ],
+      "explanations": {
+        "0": "以前は他ツールとの連携が見えなかった → 今は作業状況をリアルタイム表示",
+        "2": "以前はモデル更新の詳細が不明だった → 今は更新手順を詳しく案内",
+        "6": "以前はモデル情報が基本のみだった → 今は移行ガイドも含む情報",
+        "8": "以前は連携ツールの動作が不透明だった → 今は動作状況を可視化",
+        "3": "以前は制限環境で動作が不安定だった → 今は環境に応じて安全に実行"
+      },
+      "prerelease": false,
+      "importance": {
+        "level": "medium",
+        "tags": [
+          "model"
+        ]
+      },
+      "relevance": {
+        "applies_to_you": true,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [
+          2,
+          6
+        ],
+        "opportunity_indices": [
+          3
+        ],
+        "other_indices": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          9
+        ],
+        "opportunities": [
+          {
+            "feature": "sandbox",
+            "benefit": "ファイルシステムの保護が強化されます",
+            "projects": [
+              "infra-automation"
+            ]
+          }
+        ]
+      },
+      "categorized_highlights": [
+        {
+          "text": "App-server v2 now emits collaboration tool calls as item events in the turn stream, so clients can render agent coordination in real time. (#9213)",
+          "category": "improvement"
+        },
+        {
+          "text": "Collaboration tools gained richer agent control: `spawn_agent` accepts an agent role preset, and `send_input` can optionally interrupt a running agent before delivering the message. (#9275, #9276)",
+          "category": "feature"
+        },
+        {
+          "text": "`/models` metadata now includes upgrade migration markdown so clients can display richer guidance when suggesting model upgrades. (#9219)",
+          "category": "feature"
+        },
+        {
+          "text": "[revert] Linux sandboxing now falls back to Landlock-only restrictions when user namespaces are unavailable, and sets `no_new_privs` before applying sandbox rules. (#9250)",
+          "category": "improvement"
+        },
+        {
+          "text": "`codex resume --last` now respects the current working directory, with `--all` as an explicit override. (#9245)",
+          "category": "improvement"
+        },
+        {
+          "text": "Stdin prompt decoding now handles BOMs/UTF-16 and provides clearer errors for invalid encodings. (#9151)",
+          "category": "improvement"
+        },
+        {
+          "text": "#9219 Add `migration_markdown` in `model_info` @aibrahim-oai",
+          "category": "feature"
+        },
+        {
+          "text": "#9250 fix: fallback to Landlock-only when user namespaces unavailable and set PR_SET_NO_NEW_PRIVS early @viyatb-oai",
+          "category": "fix"
+        },
+        {
+          "text": "#9213 feat: collab tools app-server event mapping @jif-oai",
+          "category": "feature"
+        },
+        {
+          "text": "#9275 feat: add agent roles to collab tools @jif-oai",
+          "category": "feature"
+        }
+      ],
+      "action_items": [
+        {
+          "task": "Codex rust-v0.85.0 のモデル変更を確認",
+          "source_feature": "デフォルトモデル変更",
+          "category": "model"
+        },
+        {
+          "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
+          "source_feature": "機能提案: sandbox",
+          "category": "opportunity"
+        }
+      ]
+    },
+    {
+      "version": "rust-v0.84.0",
+      "date": "2026-01-15",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.84.0",
+      "highlights_en": [
+        "Extend the Rust protocol/types to include additional metadata on text elements, enabling richer client rendering and schema evolution (#9235)",
+        "Reduce flaky Rust release pipelines (notably on Windows) by increasing the release build job timeout (#9242)",
+        "#9242 fix: increase timeout for release builds from 30 to 60 minutes @bolinfest",
+        "#9235 Add text element metadata to types @charley-oai"
+      ],
+      "highlights_ja": [
+        "Rustプロトコル/型を拡張し、テキスト要素に追加のメタデータを含めることで、クライアントレンダリングの向上とスキーマ進化を実現 (#9235)",
+        "リリースビルドジョブのタイムアウトを増加させることで、不安定なRustリリースパイプライン（特にWindows）を改善 (#9242)",
+        "#9242 修正: リリースビルドのタイムアウトを30分から60分に増加 @bolinfest",
+        "#9235 テキスト要素のメタデータを型に追加 @charley-oai"
+      ],
+      "explanations": {},
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "opportunities": []
+      },
+      "categorized_highlights": [
+        {
+          "text": "Extend the Rust protocol/types to include additional metadata on text elements, enabling richer client rendering and schema evolution (#9235)",
+          "category": "improvement"
+        },
+        {
+          "text": "Reduce flaky Rust release pipelines (notably on Windows) by increasing the release build job timeout (#9242)",
+          "category": "improvement"
+        },
+        {
+          "text": "#9242 fix: increase timeout for release builds from 30 to 60 minutes @bolinfest",
+          "category": "fix"
+        },
+        {
+          "text": "#9235 Add text element metadata to types @charley-oai",
+          "category": "feature"
+        }
+      ],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.86.0-alpha.1",
+      "date": "2026-01-15",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.86.0-alpha.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": []
+      },
+      "categorized_highlights": [],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.85.0-alpha.2",
+      "date": "2026-01-15",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.85.0-alpha.2",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": []
+      },
+      "categorized_highlights": [],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.85.0-alpha.1",
+      "date": "2026-01-15",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.85.0-alpha.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": []
+      },
+      "categorized_highlights": [],
+      "action_items": []
+    },
+    {
+      "version": "rust-v0.81.0",
+      "date": "2026-01-14",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.81.0",
+      "highlights_en": [
+        "Default API model moved to gpt-5.2-codex. (#9188)",
+        "Headless runs now switch to device-code login automatically so sign-in works without a browser. (#8756)",
+        "Linux sandbox can mount paths read-only to better protect files from writes. (#9112)",
+        "Support partial tool calls rendering in `tui`",
+        "Alternate-screen handling now avoids breaking Zellij scrollback and adds a config/flag to control it. (#8555)",
+        "Windows correctly prompts before unsafe commands when running with a read-only sandbox policy. (#9117)",
+        "Config.toml and rules parsing errors are reported to app-server clients/TUI instead of failing silently. (#9182, #9011)",
+        "Worked around a macOS system-configuration crash in proxy discovery. (#8954)",
+        "Invalid user image uploads now surface an error instead of being silently replaced. (#9146)",
+        "Published a generated JSON Schema for `config.toml` in `docs/` to validate configs. (#8956)"
+      ],
+      "highlights_ja": [
+        "デフォルトAPIモデルをgpt-5.2-codexに変更。(#9188)",
+        "ヘッドレス実行時にデバイスコードログインに自動切り替えし、ブラウザなしでサインイン可能に。(#8756)",
+        "Linuxサンドボックスでパスを読み取り専用でマウント可能になり、ファイルの書き込みをより適切に保護。(#9112)",
+        "`tui`で部分的なツール呼び出しレンダリングをサポート",
+        "代替画面処理でZellijスクロールバックの破損を回避し、制御用の設定/フラグを追加。(#8555)",
+        "Windowsで読み取り専用サンドボックスポリシー実行時に、危険なコマンド前に正しくプロンプト表示。(#9117)",
+        "Config.tomlとルール解析エラーを、サイレント失敗ではなくapp-serverクライアント/TUIに報告。(#9182, #9011)",
+        "macOSのプロキシ検出でのシステム設定クラッシュを回避。(#8954)",
+        "無効なユーザー画像アップロード時に、サイレント置換ではなくエラーを表示。(#9146)",
+        "設定検証用の`config.toml`向けJSON Schemaを生成し`docs/`に公開。(#8956)"
+      ],
+      "explanations": {
+        "0": "以前は古いAIモデルを使用 → 今はより高性能なAIが利用可能",
+        "1": "以前は画面操作が必要だった → 今は自動化環境でも認証完了",
+        "6": "以前は設定エラーが分からなかった → 今はエラー内容が明確に表示",
+        "2": "以前はファイル保護が不完全 → 今は重要ファイルを確実に保護",
+        "9": "以前は設定書式が曖昧だった → 今は正しい設定方法が明確化"
+      },
+      "prerelease": false,
+      "importance": {
+        "level": "high",
+        "tags": [
+          "model",
+          "breaking"
+        ]
+      },
+      "relevance": {
+        "applies_to_you": true,
+        "reasons": [
+          "プロジェクト: infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [
+          0,
+          1
+        ],
+        "opportunity_indices": [
+          2,
+          6
+        ],
+        "other_indices": [
+          3,
+          4,
+          5,
+          7,
+          8,
+          9
+        ],
+        "opportunities": [
+          {
+            "feature": "sandbox",
+            "benefit": "ファイルシステムの保護が強化されます",
+            "projects": [
+              "infra-automation"
+            ]
+          },
+          {
+            "feature": "config_toml",
+            "benefit": "Codex の動作をカスタマイズできます",
+            "projects": [
+              "infra-automation"
+            ]
+          }
+        ]
+      },
+      "categorized_highlights": [
+        {
+          "text": "Default API model moved to gpt-5.2-codex. (#9188)",
+          "category": "improvement"
+        },
+        {
+          "text": "Headless runs now switch to device-code login automatically so sign-in works without a browser. (#8756)",
+          "category": "improvement"
+        },
+        {
+          "text": "Linux sandbox can mount paths read-only to better protect files from writes. (#9112)",
+          "category": "improvement"
+        },
+        {
+          "text": "Support partial tool calls rendering in `tui`",
+          "category": "feature"
+        },
+        {
+          "text": "Alternate-screen handling now avoids breaking Zellij scrollback and adds a config/flag to control it. (#8555)",
+          "category": "breaking"
+        },
+        {
+          "text": "Windows correctly prompts before unsafe commands when running with a read-only sandbox policy. (#9117)",
+          "category": "fix"
+        },
+        {
+          "text": "Config.toml and rules parsing errors are reported to app-server clients/TUI instead of failing silently. (#9182, #9011)",
+          "category": "improvement"
+        },
+        {
+          "text": "Worked around a macOS system-configuration crash in proxy discovery. (#8954)",
+          "category": "fix"
+        },
+        {
+          "text": "Invalid user image uploads now surface an error instead of being silently replaced. (#9146)",
+          "category": "improvement"
+        },
+        {
+          "text": "Published a generated JSON Schema for `config.toml` in `docs/` to validate configs. (#8956)",
+          "category": "improvement"
+        }
+      ],
+      "action_items": [
+        {
+          "task": "Codex rust-v0.81.0 の破壊的変更を確認",
+          "source_feature": "破壊的変更",
+          "category": "breaking"
+        },
+        {
+          "task": "Codex rust-v0.81.0 のモデル変更を確認",
+          "source_feature": "デフォルトモデル変更",
+          "category": "model"
+        },
+        {
+          "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
+          "source_feature": "機能提案: sandbox",
+          "category": "opportunity"
+        },
+        {
+          "task": "config_toml を有効化: Codex の動作をカスタマイズできます",
+          "source_feature": "機能提案: config_toml",
+          "category": "opportunity"
+        }
+      ]
+    }
+  ]
+}
