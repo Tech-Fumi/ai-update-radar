@@ -475,7 +475,7 @@ def merge_release(existing: dict, new: dict) -> dict:
     out.update(new)
 
     # 落としたくないフィールドは「新が空なら既存を残す」
-    for key in ("action_items", "relevance", "explanations"):
+    for key in ("action_items", "relevance", "explanations", "highlights_ja"):
         new_val = new.get(key)
         existing_val = existing.get(key)
         # 新が空/None/空リスト/空dictなら既存を保持
