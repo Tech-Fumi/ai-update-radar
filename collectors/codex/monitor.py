@@ -499,6 +499,18 @@ def save_releases(data: dict):
         if not r.get("version"):
             raise ValueError(f"release missing version: {r}")
 
+    # 既存データから翻訳を復元（翻訳消失防止）
+    existing = load_existing_releases()
+    existing_map = {r["version"]: r for r in existing.get("releases", [])}
+    for r in data["releases"]:
+        version = r["version"]
+        if version in existing_map:
+            existing_r = existing_map[version]
+            # highlights_ja が空で、既存に翻訳があれば復元
+            if not r.get("highlights_ja") and existing_r.get("highlights_ja"):
+                r["highlights_ja"] = existing_r["highlights_ja"]
+                print(f"  翻訳復元: {version}")
+
     # 1世代バックアップ
     if releases_file.exists():
         import shutil
