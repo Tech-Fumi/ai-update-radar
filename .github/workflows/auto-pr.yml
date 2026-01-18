@@ -1,0 +1,52 @@
+name: Auto PR
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if PR exists
+        id: check-pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_EXISTS=$(gh pr list --head "${{ github.ref_name }}" --state open --json number --jq 'length')
+          echo "exists=$PR_EXISTS" >> $GITHUB_OUTPUT
+
+      - name: Get commit messages
+        id: commits
+        if: steps.check-pr.outputs.exists == '0'
+        run: |
+          COMMITS=$(git log origin/main..HEAD --pretty=format:"- %s" 2>/dev/null || git log -5 --pretty=format:"- %s")
+          echo "messages<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create PR and enable auto-merge
+        if: steps.check-pr.outputs.exists == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create \
+            --title "${{ github.ref_name }}" \
+            --body "## Commits
+
+          ${{ steps.commits.outputs.messages }}
+
+          ---
+          Auto-generated PR from branch push."
+
+          gh pr merge --auto --squash
