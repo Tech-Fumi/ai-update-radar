@@ -1,6 +1,33 @@
 {
-  "updated_at": "2026-02-07T07:00:20.824359",
+  "updated_at": "2026-02-07T18:03:32.349173",
   "releases": [
+    {
+      "version": "rust-v0.99.0-alpha.9",
+      "date": "2026-02-07",
+      "link": "https://github.com/openai/codex/releases/tag/rust-v0.99.0-alpha.9",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "explanations": {},
+      "prerelease": true,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "relevance": {
+        "applies_to_you": false,
+        "reasons": [
+          "プロジェクト: product-lab, infra-automation",
+          "MCP 経由で Codex を使用中"
+        ],
+        "affected_indices": [],
+        "opportunity_indices": [],
+        "other_indices": [],
+        "opportunities": [],
+        "classifications": {}
+      },
+      "action_items": []
+    },
     {
       "version": "rust-v0.99.0-alpha.6",
       "date": "2026-02-06",
@@ -381,32 +408,6 @@
       "version": "rust-v0.98.0-alpha.2",
       "date": "2026-02-05",
       "link": "https://github.com/openai/codex/releases/tag/rust-v0.98.0-alpha.2",
-      "highlights_en": [],
-      "highlights_ja": [],
-      "categorized_highlights": [],
-      "explanations": {},
-      "prerelease": true,
-      "importance": {
-        "level": "normal",
-        "tags": []
-      },
-      "relevance": {
-        "applies_to_you": false,
-        "reasons": [
-          "Codex を使用していません"
-        ],
-        "affected_indices": [],
-        "opportunity_indices": [],
-        "other_indices": [],
-        "opportunities": [],
-        "classifications": {}
-      },
-      "action_items": []
-    },
-    {
-      "version": "rust-v0.98.0-alpha.1",
-      "date": "2026-02-05",
-      "link": "https://github.com/openai/codex/releases/tag/rust-v0.98.0-alpha.1",
       "highlights_en": [],
       "highlights_ja": [],
       "categorized_highlights": [],

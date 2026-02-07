@@ -1,0 +1,1184 @@
+{
+  "collected_at": "2026-02-07T10:00:47.280068+00:00",
+  "days": 7,
+  "results": [
+    {
+      "source_name": "openai-blog",
+      "source_type": "rss",
+      "collected_at": "2026-02-07T10:00:32.523755+00:00",
+      "entry_count": 13,
+      "entries": [
+        {
+          "title": "Making AI work for everyone, everywhere: our approach to localization",
+          "url": "https://openai.com/index/our-approach-to-localization",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-06T01:00:00+00:00",
+          "summary": "OpenAI shares its approach to AI localization, showing how globally shared frontier models can be adapted to local languages, laws, and cultures without compromising safety.",
+          "categories": [
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "tier",
+            "pro"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Korea privacy policy",
+          "url": "https://openai.com/policies/kr-privacy-policy",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-06T01:00:00+00:00",
+          "summary": "Korea privacy policy",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": ""
+        },
+        {
+          "title": "GPT-5 lowers the cost of cell-free protein synthesis",
+          "url": "https://openai.com/index/gpt-5-lowers-protein-synthesis-cost",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-05T02:00:00+00:00",
+          "summary": "An autonomous lab combining OpenAI’s GPT-5 with Ginkgo Bioworks’ cloud automation cut cell-free protein synthesis costs by 40% through closed-loop experimentation.",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "gpt-5",
+            "cost",
+            "pro"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Introducing Trusted Access for Cyber",
+          "url": "https://openai.com/index/trusted-access-for-cyber",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-05T01:00:00+00:00",
+          "summary": "OpenAI introduces Trusted Access for Cyber, a trust-based framework that expands access to frontier cyber capabilities while strengthening safeguards against misuse.",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "tier",
+            "ga"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Introducing OpenAI Frontier",
+          "url": "https://openai.com/index/introducing-openai-frontier",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-04T21:00:00+00:00",
+          "summary": "OpenAI Frontier is an enterprise platform for building, deploying, and managing AI agents with shared context, onboarding, permissions, and governance.",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "agent",
+            "tier",
+            "enterprise"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Introducing GPT-5.3-Codex",
+          "url": "https://openai.com/index/introducing-gpt-5-3-codex",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-04T15:00:00+00:00",
+          "summary": "GPT-5.3-Codex is a Codex-native agent that pairs frontier coding performance with general reasoning to support long-horizon, real-world technical work.",
+          "categories": [
+            "capability",
+            "constraint"
+          ],
+          "keywords": [
+            "gpt-5",
+            "agent",
+            "reasoning",
+            "tier"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "GPT-5.3-Codex System Card",
+          "url": "https://openai.com/index/gpt-5-3-codex-system-card",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-04T15:00:00+00:00",
+          "summary": "GPT‑5.3-Codex is the most capable agentic coding model to date, combining the frontier coding performance of GPT‑5.2-Codex with the reasoning and professional knowledge capabilities of GPT‑5.2.",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "gpt-5",
+            "agent",
+            "reasoning",
+            "tier",
+            "pro"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Navigating health questions with ChatGPT",
+          "url": "https://openai.com/index/navigating-health-questions",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-04T15:00:00+00:00",
+          "summary": "A family shares how ChatGPT helped them prepare for critical cancer treatment decisions for their son alongside expert guidance from his doctors.",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "ga"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Unlocking the Codex harness: how we built the App Server",
+          "url": "https://openai.com/index/unlocking-the-codex-harness",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-04T04:00:00+00:00",
+          "summary": "Learn how to embed the Codex agent using the Codex App Server, a bidirectional JSON-RPC API powering streaming progress, tool use, approvals, and diffs.",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "agent",
+            "tool use",
+            "pro"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "VfL Wolfsburg turns ChatGPT into a club-wide capability",
+          "url": "https://openai.com/index/vfl-wolfsburg",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-03T15:00:00+00:00",
+          "summary": "By focusing on people, not pilots, the Bundesliga club is scaling efficiency, creativity, and knowledge—without losing its football identity.",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "ga"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "The Sora feed philosophy",
+          "url": "https://openai.com/index/sora-feed-philosophy",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-02T15:00:00+00:00",
+          "summary": "Discover the Sora feed philosophy—built to spark creativity, foster connections, and keep experiences safe with personalized recommendations, parental controls, and strong guardrails.",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": ""
+        },
+        {
+          "title": "Snowflake and OpenAI partner to bring frontier intelligence to enterprise data",
+          "url": "https://openai.com/index/snowflake-partnership",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-01T21:00:00+00:00",
+          "summary": "OpenAI and Snowflake partner in a $200M agreement to bring frontier intelligence into enterprise data, enabling AI agents and insights directly in Snowflake.",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "agent",
+            "tier",
+            "enterprise"
+          ],
+          "raw_content": ""
+        },
+        {
+          "title": "Introducing the Codex app",
+          "url": "https://openai.com/index/introducing-the-codex-app",
+          "source_name": "openai-blog",
+          "source_type": "rss",
+          "published_at": "2026-02-01T15:00:00+00:00",
+          "summary": "Introducing the Codex app for macOS—a command center for AI coding and software development with multiple agents, parallel workflows, and long-running tasks.",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "agent"
+          ],
+          "raw_content": ""
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "openai_python",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:32.908988+00:00",
+      "entry_count": 1,
+      "entries": [
+        {
+          "title": "[openai/openai-python] v2.17.0",
+          "url": "https://github.com/openai/openai-python/releases/tag/v2.17.0",
+          "source_name": "openai_python",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T16:26:56+00:00",
+          "summary": "## 2.17.0 (2026-02-05)\n\nFull Changelog: [v2.16.0...v2.17.0](https://github.com/openai/openai-python/compare/v2.16.0...v2.17.0)\n\n### Features\n\n* **api:** add shell_call_output status field ([1bbaf88](https://github.com/openai/openai-python/commit/1bbaf8865000b338c24c9fdd5e985183feaca10f))\n* **api:** image generation actions for responses; ResponseFunctionCallArgumentsDoneEvent.name ([7d96513](https://github.com/openai/openai-python/commit/7d965135f93f41b0c3dbf3dc9f01796bd9645b6c))\n* **client:** a",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "## 2.17.0 (2026-02-05)\n\nFull Changelog: [v2.16.0...v2.17.0](https://github.com/openai/openai-python/compare/v2.16.0...v2.17.0)\n\n### Features\n\n* **api:** add shell_call_output status field ([1bbaf88](https://github.com/openai/openai-python/commit/1bbaf8865000b338c24c9fdd5e985183feaca10f))\n* **api:** image generation actions for responses; ResponseFunctionCallArgumentsDoneEvent.name ([7d96513](https://github.com/openai/openai-python/commit/7d965135f93f41b0c3dbf3dc9f01796bd9645b6c))\n* **client:** add custom JSON encoder for extended type support ([9f43c8b](https://github.com/openai/openai-python/commit/9f43c8b1a1641db2336cc6d0ec0c6dc470a89103))\n\n\n### Bug Fixes\n\n* **client:** undo change to web search Find action ([8f14eb0](https://github.com/openai/openai-python/commit/8f14eb0a74363fdfc648c5cd5c6d34a85b938d3c))\n* **client:** update type for `find_in_page` action ([ec54dde](https://github.com/openai/openai-python/commit/ec54ddeb357e49edd81cc3fe53d549c297e59a07))"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "anthropic_python",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:33.187098+00:00",
+      "entry_count": 2,
+      "entries": [
+        {
+          "title": "[anthropics/anthropic-sdk-python] v0.78.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.78.0",
+          "source_name": "anthropic_python",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:51:33+00:00",
+          "summary": "## 0.78.0 (2026-02-05)\n\nFull Changelog: [v0.77.1...v0.78.0](https://github.com/anthropics/anthropic-sdk-python/compare/v0.77.1...v0.78.0)\n\n### Features\n\n* **api:** manual updates ([3ef1529](https://github.com/anthropics/anthropic-sdk-python/commit/3ef1529b45c55645646cc6043784f999fda088de))",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "## 0.78.0 (2026-02-05)\n\nFull Changelog: [v0.77.1...v0.78.0](https://github.com/anthropics/anthropic-sdk-python/compare/v0.77.1...v0.78.0)\n\n### Features\n\n* **api:** manual updates ([3ef1529](https://github.com/anthropics/anthropic-sdk-python/commit/3ef1529b45c55645646cc6043784f999fda088de))"
+        },
+        {
+          "title": "[anthropics/anthropic-sdk-python] v0.77.1",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.77.1",
+          "source_name": "anthropic_python",
+          "source_type": "github_release",
+          "published_at": "2026-02-03T17:43:49+00:00",
+          "summary": "## 0.77.1 (2026-02-03)\n\nFull Changelog: [v0.77.0...v0.77.1](https://github.com/anthropics/anthropic-sdk-python/compare/v0.77.0...v0.77.1)\n\n### Bug Fixes\n\n* **structured outputs:** send structured output beta header when format is omitted ([#1158](https://github.com/anthropics/anthropic-sdk-python/issues/1158)) ([258494e](https://github.com/anthropics/anthropic-sdk-python/commit/258494e2b814a6a096b01e50f83560b4cf4a98ad))\n\n\n### Chores\n\n* remove claude-code-review workflow ([#1338](https://github.c",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "beta"
+          ],
+          "raw_content": "## 0.77.1 (2026-02-03)\n\nFull Changelog: [v0.77.0...v0.77.1](https://github.com/anthropics/anthropic-sdk-python/compare/v0.77.0...v0.77.1)\n\n### Bug Fixes\n\n* **structured outputs:** send structured output beta header when format is omitted ([#1158](https://github.com/anthropics/anthropic-sdk-python/issues/1158)) ([258494e](https://github.com/anthropics/anthropic-sdk-python/commit/258494e2b814a6a096b01e50f83560b4cf4a98ad))\n\n\n### Chores\n\n* remove claude-code-review workflow ([#1338](https://github.com/anthropics/anthropic-sdk-python/issues/1338)) ([aec4512](https://github.com/anthropics/anthropic-sdk-python/commit/aec4512305e8dce41df8ef0ab225f4939e099bcf))"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "anthropic_typescript",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:33.456994+00:00",
+      "entry_count": 4,
+      "entries": [
+        {
+          "title": "[anthropics/anthropic-sdk-typescript] vertex-sdk: v0.14.3",
+          "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/vertex-sdk-v0.14.3",
+          "source_name": "anthropic_typescript",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:51:38+00:00",
+          "summary": "## 0.14.3 (2026-02-05)\n\nFull Changelog: [vertex-sdk-v0.14.2...vertex-sdk-v0.14.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/vertex-sdk-v0.14.2...vertex-sdk-v0.14.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "memory"
+          ],
+          "raw_content": "## 0.14.3 (2026-02-05)\n\nFull Changelog: [vertex-sdk-v0.14.2...vertex-sdk-v0.14.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/vertex-sdk-v0.14.2...vertex-sdk-v0.14.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))"
+        },
+        {
+          "title": "[anthropics/anthropic-sdk-typescript] sdk: v0.73.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.73.0",
+          "source_name": "anthropic_typescript",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:51:32+00:00",
+          "summary": "## 0.73.0 (2026-02-05)\n\nFull Changelog: [sdk-v0.72.1...sdk-v0.73.0](https://github.com/anthropics/anthropic-sdk-typescript/compare/sdk-v0.72.1...sdk-v0.73.0)\n\n### Features\n\n* **api:** manual updates ([f741f92](https://github.com/anthropics/anthropic-sdk-typescript/commit/f741f921d10e020d3c67c7a3f8442f0c4adf229d))\n\n\n### Bug Fixes\n\n* **client:** avoid memory leak in abort signal listener ([#895](https://github.com/anthropics/anthropic-sdk-typescript/issues/895)) ([3bdd153](https://github.com/anthr",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "memory",
+            "pro"
+          ],
+          "raw_content": "## 0.73.0 (2026-02-05)\n\nFull Changelog: [sdk-v0.72.1...sdk-v0.73.0](https://github.com/anthropics/anthropic-sdk-typescript/compare/sdk-v0.72.1...sdk-v0.73.0)\n\n### Features\n\n* **api:** manual updates ([f741f92](https://github.com/anthropics/anthropic-sdk-typescript/commit/f741f921d10e020d3c67c7a3f8442f0c4adf229d))\n\n\n### Bug Fixes\n\n* **client:** avoid memory leak in abort signal listener ([#895](https://github.com/anthropics/anthropic-sdk-typescript/issues/895)) ([3bdd153](https://github.com/anthropics/anthropic-sdk-typescript/commit/3bdd153c43280adf233a2d7d7d9bb55cd5ad4c26))\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))\n* **client:** avoid removing abort listener too early ([cd6e832](https://github.com/anthropics/anthropic-sdk-typescript/commit/cd6e83255a2e5644872902ee878c9aba881976cb))\n\n\n### Chores\n\n* **client:** do not parse responses with empty content-length ([2be2df9](https://github.com/anthropics/anthropic-sdk-typescript/commit/2be2df928d1564286cddc9765fd9959f9649d314))\n* **client:** restructure abort controller binding ([0eeacb6](https://github.com/anthropics/anthropic-sdk-typescript/commit/0eeacb6c310d961e09ac3d00b4b2e50957b31e2f))\n* **internal:** fix pagination internals not accepting option promises ([7c23a3f](https://github.com/anthropics/anthropic-sdk-typescript/commit/7c23a3f93d039116845b045ede8863ffbafbad85))\n* remove claude-code-review workflow ([#644](https://github.com/anthropics/anthropic-sdk-typescript/issues/644)) ([ad09c76](https://github.com/anthropics/anthropic-sdk-typescript/commit/ad09c76b0d323c0a867d23f765f20909cddbd885))"
+        },
+        {
+          "title": "[anthropics/anthropic-sdk-typescript] foundry-sdk: v0.2.3",
+          "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/foundry-sdk-v0.2.3",
+          "source_name": "anthropic_typescript",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:51:50+00:00",
+          "summary": "## 0.2.3 (2026-02-05)\n\nFull Changelog: [foundry-sdk-v0.2.2...foundry-sdk-v0.2.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/foundry-sdk-v0.2.2...foundry-sdk-v0.2.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "memory"
+          ],
+          "raw_content": "## 0.2.3 (2026-02-05)\n\nFull Changelog: [foundry-sdk-v0.2.2...foundry-sdk-v0.2.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/foundry-sdk-v0.2.2...foundry-sdk-v0.2.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))"
+        },
+        {
+          "title": "[anthropics/anthropic-sdk-typescript] bedrock-sdk: v0.26.3",
+          "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/bedrock-sdk-v0.26.3",
+          "source_name": "anthropic_typescript",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:51:44+00:00",
+          "summary": "## 0.26.3 (2026-02-05)\n\nFull Changelog: [bedrock-sdk-v0.26.2...bedrock-sdk-v0.26.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/bedrock-sdk-v0.26.2...bedrock-sdk-v0.26.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "memory"
+          ],
+          "raw_content": "## 0.26.3 (2026-02-05)\n\nFull Changelog: [bedrock-sdk-v0.26.2...bedrock-sdk-v0.26.3](https://github.com/anthropics/anthropic-sdk-typescript/compare/bedrock-sdk-v0.26.2...bedrock-sdk-v0.26.3)\n\n### Bug Fixes\n\n* **client:** avoid memory leak with abort signals ([53e47df](https://github.com/anthropics/anthropic-sdk-typescript/commit/53e47dfa6985e6a206c475b8c920b8a97c27e17e))"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "langchain",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:33.746521+00:00",
+      "entry_count": 4,
+      "entries": [
+        {
+          "title": "[langchain-ai/langchain] langchain==1.2.9",
+          "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.2.9",
+          "source_name": "langchain",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T12:39:56+00:00",
+          "summary": "Changes since langchain==1.2.8\n\nfix(langchain): normalize raw schemas in middleware response_format override (#35019)\nfeat: support state updates from `wrap_model_call` with command(s) (#35033)\ntest(langchain): types in `test_tool_call_limit` and `test_model_retry` (#34629)\nfix(langchain): bump min core version and improve approximate token counting (#35026)\nrelease: langchain 1.2.9 (#35023)\nfeat: threading context through `create_agent` flows + middleware (#34978)\nchore: add `make type` target ",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "agent",
+            "tool",
+            "pro"
+          ],
+          "raw_content": "Changes since langchain==1.2.8\n\nfix(langchain): normalize raw schemas in middleware response_format override (#35019)\nfeat: support state updates from `wrap_model_call` with command(s) (#35033)\ntest(langchain): types in `test_tool_call_limit` and `test_model_retry` (#34629)\nfix(langchain): bump min core version and improve approximate token counting (#35026)\nrelease: langchain 1.2.9 (#35023)\nfeat: threading context through `create_agent` flows + middleware (#34978)\nchore: add `make type` target (#35015)\nrevert: \"chore: add typing target in `Makefile`\" (#35013)\nchore: add typing target in `Makefile` (#35012)\nrevert: use usage metadata scaling in SummarizationMiddleware default token counter (#35002)\nfix(langchain): use usage metadata scaling in SummarizationMiddleware default token counter (#35001)\nfix(langchain): avoid UnboundLocalError when no AIMessage exists (#34816)\nchore: enrich `pyproject.toml` files (#34980)"
+        },
+        {
+          "title": "[langchain-ai/langchain] langchain-core==1.2.9",
+          "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.2.9",
+          "source_name": "langchain",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T14:22:02+00:00",
+          "summary": "Changes since langchain-core==1.2.8\n\nrelease(core): 1.2.9 (#35025)\nfix(core): adjust cap when scaling approximate token counts (#35017)\nrevert: precompile hex color regex pattern at module level (#35016)\nchore: add `make type` target (#35015)\nrevert: \"chore: add typing target in `Makefile`\" (#35013)\nchore: add typing target in `Makefile` (#35012)\nfix(core): apply cap when scaling approximate token counts (#35005)\nfeat(core): allow scaling by reported usage when counting tokens approximately (#34",
+          "categories": [
+            "pricing"
+          ],
+          "keywords": [
+            "pro"
+          ],
+          "raw_content": "Changes since langchain-core==1.2.8\n\nrelease(core): 1.2.9 (#35025)\nfix(core): adjust cap when scaling approximate token counts (#35017)\nrevert: precompile hex color regex pattern at module level (#35016)\nchore: add `make type` target (#35015)\nrevert: \"chore: add typing target in `Makefile`\" (#35013)\nchore: add typing target in `Makefile` (#35012)\nfix(core): apply cap when scaling approximate token counts (#35005)\nfeat(core): allow scaling by reported usage when counting tokens approximately (#34996)\ntest(core): increase `delta_time` for flaky test (#34982)\nchore: enrich `pyproject.toml` files (#34980)"
+        },
+        {
+          "title": "[langchain-ai/langchain] langchain==1.2.8",
+          "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.2.8",
+          "source_name": "langchain",
+          "source_type": "github_release",
+          "published_at": "2026-02-02T15:59:10+00:00",
+          "summary": "Changes since langchain==1.2.7\n\nrelease(langchain): 1.2.8 (#34976)\nchore(deps): bump the uv group across 20 directories with 3 updates (#34941)\nfix: reuse ToolStrategy in agent factory to prevent name mismatch (#34871)\nchore: upgrade urllib3 to 2.6.3 (#34940)\nfeat(langchain): add `ToolCallRequest` to middleware exports (#34894)\nstyle(langchain): lint (#34863)\nfix(langchain): blocking unit test (#34866)\ntest(langchain): use blockbuster to detect blocking calls in the async event loop (#34777)",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "agent",
+            "tool"
+          ],
+          "raw_content": "Changes since langchain==1.2.7\n\nrelease(langchain): 1.2.8 (#34976)\nchore(deps): bump the uv group across 20 directories with 3 updates (#34941)\nfix: reuse ToolStrategy in agent factory to prevent name mismatch (#34871)\nchore: upgrade urllib3 to 2.6.3 (#34940)\nfeat(langchain): add `ToolCallRequest` to middleware exports (#34894)\nstyle(langchain): lint (#34863)\nfix(langchain): blocking unit test (#34866)\ntest(langchain): use blockbuster to detect blocking calls in the async event loop (#34777)"
+        },
+        {
+          "title": "[langchain-ai/langchain] langchain-core==1.2.8",
+          "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.2.8",
+          "source_name": "langchain",
+          "source_type": "github_release",
+          "published_at": "2026-02-02T15:35:47+00:00",
+          "summary": "Changes since langchain-core==1.2.7\n\nrelease(core): 1.2.8 (#34975)\ndocs(core): add examples for `pretty_repr`, `pretty_print` (#34968)\ndocs(core): use proper admonition for `get_buffer_string` (#34967)\ndocs: add usage examples to core classes (#34841)\nchore(core): fix docstring format (#34966)\nchore(deps): bump the uv group across 20 directories with 3 updates (#34941)\ndocs: add example to create_message function docstring (#34851)\ndocs(core): clarify @tool decorator argument and return type req",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "tool",
+            "multimodal",
+            "ga",
+            "pro"
+          ],
+          "raw_content": "Changes since langchain-core==1.2.7\n\nrelease(core): 1.2.8 (#34975)\ndocs(core): add examples for `pretty_repr`, `pretty_print` (#34968)\ndocs(core): use proper admonition for `get_buffer_string` (#34967)\ndocs: add usage examples to core classes (#34841)\nchore(core): fix docstring format (#34966)\nchore(deps): bump the uv group across 20 directories with 3 updates (#34941)\ndocs: add example to create_message function docstring (#34851)\ndocs(core): clarify @tool decorator argument and return type requirements (#34860)\nfix(core): fix nested mustache variable extraction and update docs (#34872)\nfix(core): allow base model annotations for empty model (#34932)\nchore: upgrade urllib3 to 2.6.3 (#34940)\nfix(core): prevent crash in ParrotFakeChatModel when messages list is empty (#34943)\nfix(core): google docstring parsing with no arguments/reserved arguments (#34861)\ntest(core): add tests for approximate token counting with multimodal messages (#34898)\nfix(core): replace `Iterable` with `Iterator` for block iteration (#34934)\nfix(core): `yield_blobs` returns `Iterator` (#34935)\ndocs: Fix typo in Runnable description of async variants (#34905)\nfix(core): raise outputparserexception for unknown tools (#34923)\ndocs(core): nit (#34914)\nchore(core): nits (#34897)\nfeat(core): add multimodal support to count_tokens_approximately (#34883)\nfix(core): fix typo 'use a a' -> 'use as a' in check_version.py (#34878)\nstyle(core): lint (#34862)\nfeat(core): add XML format option for `get_buffer_string` (#34802)\nchore(core): relax packaging constraints (#34832)\nchore(deps-dev): bump setuptools from 67.8.0 to 78.1.1 in /libs/core in the uv group across 1 directory (#34825)\nchore(core, langchain): add version consistency check pre-commit hooks (#34782)\ndocs(core): enhance docstring for `RunnableConfig` for clarity on `total=False` (#34756)\ndocs(core): clean up callbacks param descriptions (#34738)\nfix(core): correctly guard against non-text-block types (#34729)\nchore: update twitter URLs (#34736)\nrefactor(core): generalize `comma_list` utility to support any `Iterable` (#34714)\nfix(core): add explicit `tags` parameter to sync `LLMManagerMixin` methods (#34722)\ndocs(core): enhance docstrings for `ToolCall` and `ToolCallChunk` (#34719)\nfix(core): add `tool_call_id` to `on_tool_error` event data (#33731)\nfix(core): improve error message for missing title in JSON schema functions (#34683)\nfix(core): make `yield_keys` prefix keyword-only to match `BaseStore` (#34659)\nchore(core): bump lock (#34695)\nchore(core): improve types for `RunnableLambda` (#34539)\nchore(core): improve types for `StreamingRunnable` (#34540)\nstyle(core): fix some noqa escapes (#34675)\nstyle: bump ruff version to 0.14.11 (#34674)\nfix: remove relative imports (#34680)"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "langgraph",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:34.029763+00:00",
+      "entry_count": 3,
+      "entries": [
+        {
+          "title": "[langchain-ai/langgraph] langgraph==1.0.8",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.0.8",
+          "source_name": "langgraph",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T12:31:26+00:00",
+          "summary": "Changes since 1.0.7\n\n* release(langgraph): 1.0.8 (#6757)\n* chore: shallow copy futures (#6755)\n* fix: pydantic messages double streaming (#6753)\n* chore(deps-dev): bump ruff from 0.14.7 to 0.14.11 in /libs/sdk-py (#6673)\n* chore: Omit lock when using connection pool (#6734)\n* docs: enhance `Runtime` and `ToolRuntime` class descriptions for clarity (#6689)\n* docs: add clarity to use of `thread_id` (#6515)\n* docs: add docstrings to `add_node` overloads (#6514)\n* docs: update notebook links and add",
+          "categories": [
+            "other"
+          ],
+          "keywords": [
+            "graph"
+          ],
+          "raw_content": "Changes since 1.0.7\n\n* release(langgraph): 1.0.8 (#6757)\n* chore: shallow copy futures (#6755)\n* fix: pydantic messages double streaming (#6753)\n* chore(deps-dev): bump ruff from 0.14.7 to 0.14.11 in /libs/sdk-py (#6673)\n* chore: Omit lock when using connection pool (#6734)\n* docs: enhance `Runtime` and `ToolRuntime` class descriptions for clarity (#6689)\n* docs: add clarity to use of `thread_id` (#6515)\n* docs: add docstrings to `add_node` overloads (#6514)\n* docs: update notebook links and add archival notices for examples (#6720)\n* release(cli): 0.4.12 (#6716)"
+        },
+        {
+          "title": "[langchain-ai/langgraph] langgraph-sdk==0.3.4",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.3.4",
+          "source_name": "langgraph",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T00:44:26+00:00",
+          "summary": "Changes since sdk==0.3.3\n\n* chore: release python sdk (#6754)\n* feat(sdk-py): add update method for crons client (#6742)\n* feat(sdk-py): add support for enabling/disabling crons (#6740)\n* chore(deps-dev): bump ruff from 0.14.7 to 0.14.11 in /libs/sdk-py (#6673)\n* chore(deps): upgrade dependencies with `uv lock --upgrade` (#6671)\n* docs: clarify cron job schedule interpretation in UTC (#6692)\n* chore: update twitter URLs (#6683)",
+          "categories": [
+            "other"
+          ],
+          "keywords": [
+            "graph"
+          ],
+          "raw_content": "Changes since sdk==0.3.3\n\n* chore: release python sdk (#6754)\n* feat(sdk-py): add update method for crons client (#6742)\n* feat(sdk-py): add support for enabling/disabling crons (#6740)\n* chore(deps-dev): bump ruff from 0.14.7 to 0.14.11 in /libs/sdk-py (#6673)\n* chore(deps): upgrade dependencies with `uv lock --upgrade` (#6671)\n* docs: clarify cron job schedule interpretation in UTC (#6692)\n* chore: update twitter URLs (#6683)"
+        },
+        {
+          "title": "[langchain-ai/langgraph] langgraph-checkpoint-postgres==3.0.4",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointpostgres%3D%3D3.0.4",
+          "source_name": "langgraph",
+          "source_type": "github_release",
+          "published_at": "2026-01-31T00:46:04+00:00",
+          "summary": "Changes since checkpointpostgres==3.0.3\n\n* chore: Omit lock when using connection pool (#6734)\n* chore(deps): upgrade dependencies with `uv lock --upgrade` (#6671)\n* chore: update twitter URLs (#6683)",
+          "categories": [
+            "other"
+          ],
+          "keywords": [
+            "graph"
+          ],
+          "raw_content": "Changes since checkpointpostgres==3.0.3\n\n* chore: Omit lock when using connection pool (#6734)\n* chore(deps): upgrade dependencies with `uv lock --upgrade` (#6671)\n* chore: update twitter URLs (#6683)"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "autogen",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:34.312301+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "crewai",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:34.601203+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "mcp_specification",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:34.885875+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error 301: Redirect response '301 Moved Permanently' for url 'https://api.github.com/repos/modelcontextprotocol/specification/releases?per_page=10'\nRedirect location: 'https://api.github.com/repositories/862570523/releases?per_page=10'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+      ],
+      "success": false
+    },
+    {
+      "source_name": "mcp_servers",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:35.107040+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "mcp_python",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:35.384378+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "claude_code",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:35.648851+00:00",
+      "entry_count": 6,
+      "entries": [
+        {
+          "title": "[anthropics/claude-code] v2.1.34",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.34",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T14:26:47+00:00",
+          "summary": "## What's changed\n\n- Fixed a crash when agent teams setting changed between renders\n- Fixed a bug where commands excluded from sandboxing (via `sandbox.excludedCommands` or `dangerouslyDisableSandbox`) could bypass the Bash ask permission rule when `autoAllowBashIfSandboxed` was enabled\n",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "agent",
+            "team"
+          ],
+          "raw_content": "## What's changed\n\n- Fixed a crash when agent teams setting changed between renders\n- Fixed a bug where commands excluded from sandboxing (via `sandbox.excludedCommands` or `dangerouslyDisableSandbox`) could bypass the Bash ask permission rule when `autoAllowBashIfSandboxed` was enabled\n"
+        },
+        {
+          "title": "[anthropics/claude-code] v2.1.33",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.33",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T01:47:21+00:00",
+          "summary": "## What's changed\n\n- Fixed agent teammate sessions in tmux to send and receive messages\n- Fixed warnings about agent teams not being available on your current plan\n- Added `TeammateIdle` and `TaskCompleted` hook events for multi-agent workflows\n- Added support for restricting which sub-agents can be spawned via `Task(agent_type)` syntax in agent \"tools\" frontmatter\n- Added `memory` frontmatter field support for agents, enabling persistent memory with `user`, `project`, or `local` scope\n- Added p",
+          "categories": [
+            "capability",
+            "pricing"
+          ],
+          "keywords": [
+            "hook",
+            "agent",
+            "multi-agent",
+            "memory",
+            "persistent",
+            "vscode",
+            "pro",
+            "team"
+          ],
+          "raw_content": "## What's changed\n\n- Fixed agent teammate sessions in tmux to send and receive messages\n- Fixed warnings about agent teams not being available on your current plan\n- Added `TeammateIdle` and `TaskCompleted` hook events for multi-agent workflows\n- Added support for restricting which sub-agents can be spawned via `Task(agent_type)` syntax in agent \"tools\" frontmatter\n- Added `memory` frontmatter field support for agents, enabling persistent memory with `user`, `project`, or `local` scope\n- Added plugin name to skill descriptions and `/skills` menu for better discoverability\n- Fixed an issue where submitting a new message while the model was in extended thinking would interrupt the thinking phase\n- Fixed an API error that could occur when aborting mid-stream, where whitespace text combined with a thinking block would bypass normalization and produce an invalid request\n- Fixed API proxy compatibility issue where 404 errors on streaming endpoints no longer triggered non-streaming fallback\n- Fixed an issue where proxy settings configured via `settings.json` environment variables were not applied to WebFetch and other HTTP requests on the Node.js build\n- Fixed `/resume` session picker showing raw XML markup instead of clean titles for sessions started with slash commands\n- Improved error messages for API connection failures — now shows specific cause (e.g., ECONNREFUSED, SSL errors) instead of generic \"Connection error\"\n- Errors from invalid managed settings are now surfaced\n- VSCode: Added support for remote sessions, allowing OAuth users to browse and resume sessions from claude.ai\n- VSCode: Added git branch and message count to the session picker, with support for searching by branch name\n- VSCode: Fixed scroll-to-bottom under-scrolling on initial session load and session switch\n"
+        },
+        {
+          "title": "[anthropics/claude-code] v2.1.32",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.32",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T17:47:50+00:00",
+          "summary": "## What's changed\n\n- Claude Opus 4.6 is now available!\n- Added research preview agent teams feature for multi-agent collaboration (token-intensive feature, requires setting CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1)\n- Claude now automatically records and recalls memories as it works\n- Added \"Summarize from here\" to the message selector, allowing partial conversation summarization.\n- Skills defined in `.claude/skills/` within additional directories (`--add-dir`) are now loaded automatically.\n- Fixed",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "feature",
+            "agent",
+            "opus",
+            "multi-agent",
+            "vscode",
+            "context window",
+            "team"
+          ],
+          "raw_content": "## What's changed\n\n- Claude Opus 4.6 is now available!\n- Added research preview agent teams feature for multi-agent collaboration (token-intensive feature, requires setting CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1)\n- Claude now automatically records and recalls memories as it works\n- Added \"Summarize from here\" to the message selector, allowing partial conversation summarization.\n- Skills defined in `.claude/skills/` within additional directories (`--add-dir`) are now loaded automatically.\n- Fixed `@` file completion showing incorrect relative paths when running from a subdirectory\n- Updated --resume to re-use --agent value specified in previous conversation by default.\n- Fixed: Bash tool no longer throws \"Bad substitution\" errors when heredocs contain JavaScript template literals like `${index + 1}`, which previously interrupted tool execution\n- Skill character budget now scales with context window (2% of context), so users with larger context windows can see more skill descriptions without truncation\n- Fixed Thai/Lao spacing vowels (สระ า, ำ) not rendering correctly in the input field\n- VSCode: Fixed slash commands incorrectly being executed when pressing Enter with preceding text in the input field\n- VSCode: Added spinner when loading past conversations list\n"
+        },
+        {
+          "title": "[anthropics/claude-code] v2.1.31",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.31",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-02-04T00:44:13+00:00",
+          "summary": "## What's changed\n\n- Added session resume hint on exit, showing how to continue your conversation later\n- Added support for full-width (zenkaku) space input from Japanese IME in checkbox selection\n- Fixed PDF too large errors permanently locking up sessions, requiring users to start a new conversation\n- Fixed bash commands incorrectly reporting failure with \"Read-only file system\" errors when sandbox mode was enabled\n- Fixed a crash that made sessions unusable after entering plan mode when proje",
+          "categories": [
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "ga",
+            "pricing",
+            "pro"
+          ],
+          "raw_content": "## What's changed\n\n- Added session resume hint on exit, showing how to continue your conversation later\n- Added support for full-width (zenkaku) space input from Japanese IME in checkbox selection\n- Fixed PDF too large errors permanently locking up sessions, requiring users to start a new conversation\n- Fixed bash commands incorrectly reporting failure with \"Read-only file system\" errors when sandbox mode was enabled\n- Fixed a crash that made sessions unusable after entering plan mode when project config in `~/.claude.json` was missing default fields\n- Fixed `temperatureOverride` being silently ignored in the streaming API path, causing all streaming requests to use the default temperature (1) regardless of the configured override\n- Fixed LSP shutdown/exit compatibility with strict language servers that reject null params\n- Improved system prompts to more clearly guide the model toward using dedicated tools (Read, Edit, Glob, Grep) instead of bash equivalents (`cat`, `sed`, `grep`, `find`), reducing unnecessary bash command usage\n- Improved PDF and request size error messages to show actual limits (100 pages, 20MB)\n- Reduced layout jitter in the terminal when the spinner appears and disappears during streaming\n- Removed misleading Anthropic API pricing from model selector for third-party provider (Bedrock, Vertex, Foundry) users\n"
+        },
+        {
+          "title": "[anthropics/claude-code] v2.1.30",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.30",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-02-03T18:05:59+00:00",
+          "summary": "## What's changed\n\n- Added `pages` parameter to the Read tool for PDFs, allowing specific page ranges to be read (e.g., `pages: \"1-5\"`). Large PDFs (>10 pages) now return a lightweight reference when `@` mentioned instead of being inlined into context.\n- Added pre-configured OAuth client credentials for MCP servers that don't support Dynamic Client Registration (e.g., Slack). Use `--client-id` and `--client-secret` with `claude mcp add`.\n- Added `/debug` for Claude to help troubleshoot the curre",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "mcp",
+            "agent",
+            "tool use",
+            "memory",
+            "vscode",
+            "rate limit",
+            "pro"
+          ],
+          "raw_content": "## What's changed\n\n- Added `pages` parameter to the Read tool for PDFs, allowing specific page ranges to be read (e.g., `pages: \"1-5\"`). Large PDFs (>10 pages) now return a lightweight reference when `@` mentioned instead of being inlined into context.\n- Added pre-configured OAuth client credentials for MCP servers that don't support Dynamic Client Registration (e.g., Slack). Use `--client-id` and `--client-secret` with `claude mcp add`.\n- Added `/debug` for Claude to help troubleshoot the current session\n- Added support for additional `git log` and `git show` flags in read-only mode (e.g., `--topo-order`, `--cherry-pick`, `--format`, `--raw`)\n- Added token count, tool uses, and duration metrics to Task tool results\n- Added reduced motion mode to the config\n- Fixed phantom \"(no content)\" text blocks appearing in API conversation history, reducing token waste and potential model confusion\n- Fixed prompt cache not correctly invalidating when tool descriptions or input schemas changed, only when tool names changed\n- Fixed 400 errors that could occur after running `/login` when the conversation contained thinking blocks\n- Fixed a hang when resuming sessions with corrupted transcript files containing `parentUuid` cycles\n- Fixed rate limit message showing incorrect \"/upgrade\" suggestion for Max 20x users when extra-usage is unavailable\n- Fixed permission dialogs stealing focus while actively typing\n- Fixed subagents not being able to access SDK-provided MCP tools because they were not synced to the shared application state\n- Fixed a regression where Windows users with a `.bashrc` file could not run bash commands\n- Improved memory usage for `--resume` (68% reduction for users with many sessions) by replacing the session index with lightweight stat-based loading and progressive enrichment\n- Improved `TaskStop` tool to display the stopped command/task description in the result line instead of a generic \"Task stopped\" message\n- Changed `/model` to execute immediately instead of being queued\n- [VSCode] Added multiline input support to the \"Other\" text input in question dialogs (use Shift+Enter for new lines)\n- [VSCode] Fixed duplicate sessions appearing in the session list when starting a new conversation\n"
+        },
+        {
+          "title": "[anthropics/claude-code] v2.1.29",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.29",
+          "source_name": "claude_code",
+          "source_type": "github_release",
+          "published_at": "2026-01-31T23:37:51+00:00",
+          "summary": "## What's changed\n\n- Fixed startup performance issues when resuming sessions that have `saved_hook_context`\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [
+            "hook"
+          ],
+          "raw_content": "## What's changed\n\n- Fixed startup performance issues when resuming sessions that have `saved_hook_context`\n"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "vscode",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:35.936297+00:00",
+      "entry_count": 1,
+      "entries": [
+        {
+          "title": "[microsoft/vscode] January 2026",
+          "url": "https://github.com/microsoft/vscode/releases/tag/1.109.0",
+          "source_name": "vscode",
+          "source_type": "github_release",
+          "published_at": "2026-02-04T21:08:10+00:00",
+          "summary": "Welcome to the January 2026 release of Visual Studio Code. In this release, we are further evolving VS Code to make it the **home for multi-agent development**.\r\n\r\n* **Chat UX**: chat just feels better and snappier with faster streaming, improved reasoning results, and a revamped editor inline chat\r\n\r\n* **Agent Session Management**: it's now easier to delegate tasks to agents across local, background, and cloud and jump in when needed\r\n\r\n* **Agent Customization**: build your own workflows using ",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "copilot",
+            "chat",
+            "inline",
+            "agent",
+            "multi-agent",
+            "browser",
+            "memory",
+            "reasoning",
+            "mcp",
+            "ga",
+            "pro"
+          ],
+          "raw_content": "Welcome to the January 2026 release of Visual Studio Code. In this release, we are further evolving VS Code to make it the **home for multi-agent development**.\r\n\r\n* **Chat UX**: chat just feels better and snappier with faster streaming, improved reasoning results, and a revamped editor inline chat\r\n\r\n* **Agent Session Management**: it's now easier to delegate tasks to agents across local, background, and cloud and jump in when needed\r\n\r\n* **Agent Customization**: build your own workflows using agent orchestrations, and have consistent results with Agent Skills and organization-wide customizations\r\n\r\n* **Agent Extensibility**: reuse your knowledge with Claude agent support and new Anthropic model capabilities, and enjoy rich chat interactions with MCP Apps\r\n\r\n* **Agent Optimizations**: agents work smarter with Copilot Memory and experience faster code search with external indexing\r\n\r\n* **Agent Security & Trust**: feel confident running terminal commands with sandboxing and effective auto-approval rules\r\n\r\n* **Workbench & productivity**: test your apps without leaving the editor with the new integrated browser\r\n\r\n\r\n<img width=\"2400\" height=\"1350\" alt=\"image\" src=\"https://github.com/user-attachments/assets/0eaf57e8-faff-42f3-97b1-f24cd7953306\" />\r\n"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "vercel_ai",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:36.197243+00:00",
+      "entry_count": 10,
+      "entries": [
+        {
+          "title": "[vercel/ai] ai@6.0.77",
+          "url": "https://github.com/vercel/ai/releases/tag/ai%406.0.77",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:42:44+00:00",
+          "summary": "### Patch Changes\n\n-   Updated dependencies [eea5d30]\n    -   @ai-sdk/gateway@3.0.39\n",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "ga"
+          ],
+          "raw_content": "### Patch Changes\n\n-   Updated dependencies [eea5d30]\n    -   @ai-sdk/gateway@3.0.39\n"
+        },
+        {
+          "title": "[vercel/ai] ai@6.0.76",
+          "url": "https://github.com/vercel/ai/releases/tag/ai%406.0.76",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T05:40:18+00:00",
+          "summary": "### Patch Changes\n\n-   Updated dependencies [70028ab]\n    -   @ai-sdk/gateway@3.0.38\n",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "ga"
+          ],
+          "raw_content": "### Patch Changes\n\n-   Updated dependencies [70028ab]\n    -   @ai-sdk/gateway@3.0.38\n"
+        },
+        {
+          "title": "[vercel/ai] ai@5.0.129",
+          "url": "https://github.com/vercel/ai/releases/tag/ai%405.0.129",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:12:41+00:00",
+          "summary": "### Patch Changes\n\n-   Updated dependencies [a207442]\n    -   @ai-sdk/gateway@2.0.35\n",
+          "categories": [
+            "constraint"
+          ],
+          "keywords": [
+            "ga"
+          ],
+          "raw_content": "### Patch Changes\n\n-   Updated dependencies [a207442]\n    -   @ai-sdk/gateway@2.0.35\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/vue@3.0.77",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/vue%403.0.77",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:43:08+00:00",
+          "summary": "### Patch Changes\n\n-   ai@6.0.77\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@6.0.77\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/vue@3.0.76",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/vue%403.0.76",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T05:40:09+00:00",
+          "summary": "### Patch Changes\n\n-   ai@6.0.76\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@6.0.76\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/vue@2.0.129",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/vue%402.0.129",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:12:47+00:00",
+          "summary": "### Patch Changes\n\n-   ai@5.0.129\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@5.0.129\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/svelte@4.0.77",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/svelte%404.0.77",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:42:59+00:00",
+          "summary": "### Patch Changes\n\n-   ai@6.0.77\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@6.0.77\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/svelte@4.0.76",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/svelte%404.0.76",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T05:40:06+00:00",
+          "summary": "### Patch Changes\n\n-   ai@6.0.76\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@6.0.76\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/svelte@3.0.129",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/svelte%403.0.129",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:13:02+00:00",
+          "summary": "### Patch Changes\n\n-   ai@5.0.129\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@5.0.129\n"
+        },
+        {
+          "title": "[vercel/ai] @ai-sdk/rsc@2.0.77",
+          "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk/rsc%402.0.77",
+          "source_name": "vercel_ai",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T06:43:05+00:00",
+          "summary": "### Patch Changes\n\n-   ai@6.0.77\n",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "### Patch Changes\n\n-   ai@6.0.77\n"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "litellm",
+      "source_type": "github_release",
+      "collected_at": "2026-02-07T10:00:36.465943+00:00",
+      "entry_count": 9,
+      "entries": [
+        {
+          "title": "[BerriAI/litellm] v1.81.0-stable.1",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.0-stable.1",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-07T02:36:15+00:00",
+          "summary": "## What's Changed\n* [Hotfix] v1.81.0-stable patch /key/list user_id issue by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20624\n\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.80.0-stable.opus-4-6...v1.81.0-stable.1",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "opus"
+          ],
+          "raw_content": "## What's Changed\n* [Hotfix] v1.81.0-stable patch /key/list user_id issue by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20624\n\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.80.0-stable.opus-4-6...v1.81.0-stable.1"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.0-patch3",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.0-patch3",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-06T18:35:53+00:00",
+          "summary": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.0-patch...v1.81.0-patch3",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.0-patch...v1.81.0-patch3"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.8-nightly",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.8-nightly",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T06:22:11+00:00",
+          "summary": "## What's Changed\n* [Fix] Unique Constraint on Daily Tables + Logging When Updates Fail by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20394\n* [Feature] UI - Search Tools: Show Config Defined Search Tools by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20436\n* Fix mypy regression: TypedDict key error in fireworks_ai transformation by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20391\n* langfuse doc update by @shivamrawat1 in https://github.com/BerriAI/lit",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "provider",
+            "model",
+            "proxy",
+            "mcp",
+            "ga",
+            "pro"
+          ],
+          "raw_content": "## What's Changed\n* [Fix] Unique Constraint on Daily Tables + Logging When Updates Fail by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20394\n* [Feature] UI - Search Tools: Show Config Defined Search Tools by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20436\n* Fix mypy regression: TypedDict key error in fireworks_ai transformation by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20391\n* langfuse doc update by @shivamrawat1 in https://github.com/BerriAI/litellm/pull/20443\n* fix(a2a): use text/event-stream SSE format for message/stream endpoint by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20365\n* Revert \"fix(a2a): use text/event-stream SSE format for message/stream endpoint\" by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20446\n* [Fix] inconsistent response format in anthropic.messages.acreate() when using non anthropic providers  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20442\n* [Feat] UI - Add support for MCP Semantic Filtering on UI by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20454\n* docs: improve Okta SSO setup guide with step-by-step instructions by @michelligabriele in https://github.com/BerriAI/litellm/pull/20353\n* fix(lint): remove unused Any/cast imports in github_copilot transformation by @jquinter in https://github.com/BerriAI/litellm/pull/20431\n* feat(openrouter): add Qwen3-235B models by @Chesars in https://github.com/BerriAI/litellm/pull/20455\n* bump: litellm-proxy-extras 0.4.29 → 0.4.30 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20458\n* chore: update poetry.lock for litellm-proxy-extras 0.4.30 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20460\n* [Infra] Fixing UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20461\n* Litellm cicd 5 feb 2026 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20464\n* Merge pull request #20464 from BerriAI/litellm_cicd_5_feb_2026 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20467\n\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.7.dev1...v1.81.8-nightly"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.6.rc.1",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.6.rc.1",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T03:12:39+00:00",
+          "summary": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.6-nightly...v1.81.6.rc.1",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.6-nightly...v1.81.6.rc.1"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.80.0-stable.opus-4-6",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.80.0-stable.opus-4-6",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-05T19:56:46+00:00",
+          "summary": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.0-stable...v1.80.0-stable.opus-4-6",
+          "categories": [
+            "capability"
+          ],
+          "keywords": [
+            "opus"
+          ],
+          "raw_content": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.0-stable...v1.80.0-stable.opus-4-6"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.7.dev1",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.7.dev1",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-04T16:55:37+00:00",
+          "summary": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/Berri",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "provider",
+            "model",
+            "proxy",
+            "gpt-5",
+            "sonnet",
+            "agent",
+            "realtime",
+            "reasoning",
+            "mcp",
+            "vscode",
+            "tpm",
+            "tier",
+            "beta",
+            "ga",
+            "cost",
+            "pro",
+            "team"
+          ],
+          "raw_content": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/BerriAI/litellm/pull/19877\n* fix: allow tool_choice for Azure GPT-5 chat models by @jayy-77 in https://github.com/BerriAI/litellm/pull/19813\n* fix: tool with antropic #19800 by @zifeo in https://github.com/BerriAI/litellm/pull/19805\n* inspect BadRequestError after all other policy types by @demoray in https://github.com/BerriAI/litellm/pull/19878\n* fix(main): use local tiktoken cache in lazy loading by @Chesars in https://github.com/BerriAI/litellm/pull/19774\n* fix(gemini): subtract implicit cached tokens from text_tokens for correct cost calculation by @Chesars in https://github.com/BerriAI/litellm/pull/19775\n* fix Prompt Studio history to load tools and system messages by @naaa760 in https://github.com/BerriAI/litellm/pull/19920\n* [Release Day] - Fixed CI/CD issues & changed processes by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19902\n* [Feat] - Search API add /list endpoint to list what search tools exist in router  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19969\n* [Feature] UI - Tables: Reusable Table Sort Component by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19970\n* [Feature] UI - Logs: Adding Error message search to ui spend logs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19963\n* [Feat] LiteLLM Vector Stores - Add permission management for users, teams by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19972\n* feat: Add new OpenRouter models: `xiaomi/mimo-v2-flash`, `z-ai/glm-4.… by @rushilchugh01 in https://github.com/BerriAI/litellm/pull/19938\n* fix gemini gemini-robotics-er-1.5-preview entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19974\n* fix(vertex_ai): convert image URLs to base64 in tool messages for Anthropic by @Chesars in https://github.com/BerriAI/litellm/pull/19896\n* Fix/router search tools v2 by @Harshit28j in https://github.com/BerriAI/litellm/pull/19840\n* [Infra] Remove _experimental/out routes from gitignore + UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19976\n* [Feature] UI - Usage Export: Breakdown by Teams and Keys by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19953\n* Fix stream_chunk_builder to preserve images from streaming chunks by @Chesars in https://github.com/BerriAI/litellm/pull/19654\n* fix(docker): add libsndfile to main Dockerfile for ARM64 audio processing by @Chesars in https://github.com/BerriAI/litellm/pull/19776\n* fix(proxy): add datadog_llm_observability to /health/services allowed… by @michelligabriele in https://github.com/BerriAI/litellm/pull/19952\n* fix(proxy): prevent provider-prefixed model leaks by @bcdonadio in https://github.com/BerriAI/litellm/pull/19943\n* fix(hosted_vllm): route through base_llm_http_handler to support ssl_verify by @cfchase in https://github.com/BerriAI/litellm/pull/19893\n* Add OpenRouter Kimi K2.5 by @ayim in https://github.com/BerriAI/litellm/pull/19872\n* Add test to check if model map is corretly formatted by @Sameerlite in https://github.com/BerriAI/litellm/pull/19992\n* Add validation of model cost map as job by @Sameerlite in https://github.com/BerriAI/litellm/pull/19993\n* Fix model map path in validation test by @Sameerlite in https://github.com/BerriAI/litellm/pull/19994\n* Fix: litellm_fix_robotic_model_map_entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19997\n* oss staging 01/28/2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19906\n* Add custom_llm_provider as gemini translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/19988\n* [Fix] Sorting for /v2/model/info by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19971\n* [Feature] Bulk Update Keys Endpoint by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19886\n* [Fix] error_code in Spend Logs metadata by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20015\n* [Feature] UI - Spend Logs: Show Current Store and Retention Status by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20017\n* [Feature] UI - New Badge Dot Render by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20024\n* Add event-driven coordination for global spend query to prevent cache stampede by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20030\n* [Feat] New Model - amazon.nova-2-pro-preview-20251202-v1:0 by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20033\n* [Feat] LiteLLM x Claude Agent SDK Integration  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20035\n* [Docs] Claude Agents SDK x LiteLLM Guide  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20036\n* fix: run prisma generate as nobody user in non-root container by @milan-berri in https://github.com/BerriAI/litellm/pull/20000\n* merge main in passthrough by @Sameerlite in https://github.com/BerriAI/litellm/pull/20042\n* Add /openai_passthrough route for openai passthrough requests: by @Sameerlite in https://github.com/BerriAI/litellm/pull/19989\n* fix(gemini): support file retrieval in GoogleAIStudioFilesHandle by @varunsripad123 in https://github.com/BerriAI/litellm/pull/20018\n* fix(ResponseAPILoggingUtils): extract input tokens details as dict by @nht1206 in https://github.com/BerriAI/litellm/pull/20046\n* Fix `max_input_tokens` for `gpt-5.2-codex` by @genga6 in https://github.com/BerriAI/litellm/pull/20009\n* Litellm oss staging 01 29 2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19975\n* feat: add /delete endpoint support for gemini by @Sameerlite in https://github.com/BerriAI/litellm/pull/20055\n* Fix: Batch and File user level permissions by @Sameerlite in https://github.com/BerriAI/litellm/pull/19981\n* [Feat]Add cost tracking and usage object in aretrieve_batch call type by @Sameerlite in https://github.com/BerriAI/litellm/pull/19986\n* Add routing of xai chat completions to responses when web search options is present by @Sameerlite in https://github.com/BerriAI/litellm/pull/20051\n* Add disable flag for anthropic gemini cache translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/20052\n* fix aspectRatio mapping in image edit by @Sameerlite in https://github.com/BerriAI/litellm/pull/20053\n* Fix: vllm embedding format by @Sameerlite in https://github.com/BerriAI/litellm/pull/20056\n* Fix: remove unsupported prompt-caching-scope-2026-01-05 header for vertex ai by @Sameerlite in https://github.com/BerriAI/litellm/pull/20058\n* [Feature] UI - Usage: Model Breakdown Per Key by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20039\n* Add mock client factory pattern and mock support for PostHog, Helicone, and Braintrust integrations by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19707\n* Realtime API benchmarks by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20074\n* fixes: ci pipeline router coverage failure by @Harshit28j in https://github.com/BerriAI/litellm/pull/20065\n* [cookbook] - add section for using claude agent sdk + MCPs with LiteLLM by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20081\n* [Feat] Add async_post_call_response_headers_hook to CustomLogger by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20083\n* fix(proxy): resolve high CPU when router_settings in DB by avoiding REGISTRY.collect() in PrometheusServicesLogger by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20087\n* Revert logs view commits by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20090\n* [Fix] UI - Navbar: Fixed Default Logo + Bound Logo Box by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20092\n* [Refactor] UI - Navbar: User Dropdown by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20095\n* [Feat] v2 - Logs view with side panel and improved UX by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20091\n* [Feat] UI - New View to render \"Tools\" on Logs View  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20093\n* [Feat] UI - Add Pretty print view of request/response  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20096\n* fixed mcp tools instructions on ui to show comma seprated str instead… by @shivamrawat1 in https://github.com/BerriAI/litellm/pull/20101\n* litellm_fix: add missing timezone import to proxy_server.py by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20121\n* litellm_fix(proxy): reduce PLR0915 complexity (minimal) by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20127\n* litellm_fix(ui): remove unused ToolOutlined import by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20129\n* litellm_fix(e2e): disable bedrock-converse-claude-sonnet-4.5 in tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20131\n* litellm_fix(test): fix Azure AI cost calculator test - use Logging class by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20134\n* litellm_fix(test): fix Bedrock tool search header test regression by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20135\n* litellm_fix(test): allow comment field in schema and exclude robotics models from tpm check by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20139\n* litellm_docs: add missing environment variable documentation by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20138\n* litellm_fix(test): add acancel_batch to Azure SDK client initialization test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20143\n* litellm_fix: handle unknown models in Azure AI cost calculator by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20150\n* litellm_fix(test): fix router silent experiment tests to properly mock async functions by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20140\n* [Feature] UI - Dark Mode: Delete Resource Modal by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20098\n* [Fix] UI - Vector Store: Allow Config Defined Models to Be Selected  by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20031\n* [Fix] Add WATSONX_ZENAPIKEY to WatsonX credentials by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20086\n* [Infa] UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20154\n* litellm_fix: use get_async_httpx_client for logo download by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20155\n* litellm_fix: check for agent mode before requiring DD_API_KEY/DD_SITE by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20156\n* litellm_fix: handle empty dict for web_search_options in Nova grounding by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20159\n* litellm_mypy_fix_batch1: fix type errors in files, opentelemetry, gemini transformation, key management by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20161\n* litellm_fix(test): update Prometheus metric test assertions with new labels by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20162\n* litellm_fix: remove hosted_vllm from OpenAI client tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20163\n* litellm_fix: bump litellm-proxy-extras version to 0.4.28 by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20166\n* litellm_fix(mypy): fix remaining type errors by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20164\n* litellm_fix(security): allowlist Next.js CVEs for 7 days by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20169\n* litellm_fix(router): use safe_deep_copy in _get_silent_experiment_kwargs by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20170\n* docs(embeddings): add supported input formats section by @Chesars in https://github.com/BerriAI/litellm/pull/20073\n* litellm_fix(lint): remove unused ToolNameValidationResult imports by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20176\n* litellm_fix(azure): Fix acancel_batch not using Azure SDK client initialization by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20168\n* [Fix] Model Name During Fallback by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20177\n* [Fix] Health Endpoints when Callback Objects Defined by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20182\n* fix(test): add router.acancel_batch coverage by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20183\n* fix(mypy): fix validate_tool_name return type signatures by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20184\n* litellm_fix_flaky_batch_completion_test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20186\n* litellm_fix_cost_calc_test: correct prompt_tokens in test_string_cost_values by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20185\n* docs/blog index page by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20188\n* [Docs] UI Spend Logs Settings Docs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20197\n* [Doc] Fixing Image by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20198\n* litellm_fix_mapped_tests_core: clear client cache and fix isinstance checks by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20196\n* docs: fix dead links in v1.81.6 release notes by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20218\n* litellm_fix_mapped_tests_core: fix test isolation and mock injection issues by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20209\n* docs: Update v1.81.6 release notes - Logs v2 with Tool Call Tracing by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20225\n* feat: Support dimensions param for Cohere embed v4 by @amirzaushnizer in https://github.com/BerriAI/litellm/pull/20235\n* feat: add User-Agent customization support by @jayy-77 in https://github.com/BerriAI/litellm/pull/19881\n* feat(bedrock): add 1hr tiered caching costs for long-context models (#18988) by @cscguochang in https://github.com/BerriAI/litellm/pull/20214\n* Update Vertex AI Text to Speech doc to show use of audio by @Sameerlite in https://github.com/BerriAI/litellm/pull/20255\n* fix: add reasoning param support for GPT OSS cerebras by @Sameerlite in https://github.com/BerriAI/litellm/pull/20258\n* Fix: Slack alert issue by @Sameerlite in https://github.com/BerriAI/litellm/pull/20257\n* fix: Map reasoning content to anthropic thinking block(streaming+non-streaming) by @Sameerlite in https://github.com/BerriAI/litellm/pull/20254\n* Fix open_ai_embedding_models to have custom_llm_provider None by @Sameerlite in https://github.com/BerriAI/litellm/pull/20253\n* [Feat] Add support for 0 cost models by @Sameerlite in https://github.com/BerriAI/litellm/pull/20249\n* Add Anthropic caching and context tests by @Sameerlite in https://github.com/BerriAI/litellm/pull/20247\n* Litellm test bedrock optional params embeddings dimension by @Sameerlite in https://github.com/BerriAI/litellm/pull/20262\n* [Feat]Add support for nova sonic Speech to speech model by @Sameerlite in https://github.com/BerriAI/litellm/pull/20244\n* Litellm oss staging 01 31 2026 3 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20266\n* perf: optimize wrapper_async with CallTypes caching and reduced lookups by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20204\n* perf: cache _get_relevant_args_to_use_for_logging() at module level by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20077\n* docs: Add FAQ for setting up and verifying LITELLM_LICENSE by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20284\n* Model request tags documentation by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20290\n* [Infra] UI - Update next to 16.1.6 by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20220\n* [Fix] Remove Key Blocking on Login by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20210\n* feat: add Kimi K2.5 model entries for Moonshot provider by @krauckbot in https://github.com/BerriAI/litellm/pull/20273\n* fix: MCP \"Session not found\" error on VSCode reconnect by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20298\n* [Feature] SSO Config Team Mappings by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20111\n* feat: add base /scim/v2 endpoint for SCIM resource discovery by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20301\n* docs: add Prisma migration troubleshooting guide by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20300\n* [Fix] UI  - Team Settings: Disable Global Guardrail Persistence by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20307\n* [Feature] Key reset_spend endpoint by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20305\n* [Feature] UI - SSO: Add Team Mappings by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20299\n* Add blog post: Achieving Sub-Millisecond Proxy Overhead by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20309\n* [Feat] - MCP Semantic Filtering Support  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20296\n* Litellm docs mcp filtering semantic by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20316\n* feat(guardrails): implement team-based isolation guardrails mgmnt by @Harshit28j in https://github.com/BerriAI/litellm/pull/19889\n* fixes failure metrics labels by @Harshit28j in https://github.com/BerriAI/litellm/pull/20152\n* fix: proxy failure cases, now log ip and user agent, key hash, name by @Harshit28j in https://github.com/BerriAI/litellm/pull/20145\n* [Feat] /chat/completions - allow using OpenAI style tools for `web_search` with VertexAI/gemini models  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20280\n* Add documentation correctly for nova sonic by @Sameerlite in https://github.com/BerriAI/litellm/pull/20320\n* [Feature] UI - Default Team Settings: Migrate Default Team Settings to use Reusable Model Select by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20310\n* [Feature] UI - Navbar: Option to Hide Community Engagement Buttons by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20308\n* feat(sdk): add proxy_auth for auto OAuth2/JWT token management by @Chesars in https://github.com/BerriAI/litellm/pull/20238\n* fix(github_copilot): preserve system prompts and auto-add headers                                                                                       by @Chesars in https://github.com/BerriAI/litellm/pull/20113\n* fix: add missing capability flags to vercel_ai_gateway models by @krauckbot in https://github.com/BerriAI/litellm/pull/20276\n* Litellm tuesday cicd release by @Sameerlite in https://github.com/BerriAI/litellm/pull/20328\n* Revert \"Litellm tuesday cicd release\" by @Sameerlite in https://github.com/BerriAI/litellm/pull/20330\n* Litellm tuesday cicd release final by @Sameerlite in https://github.com/BerriAI/litellm/pull/20333\n* bump litellm 1.81.7 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20336\n* update 02 staging PR by @Sameerlite in https://github.com/BerriAI/litellm/pull/20337\n* adding together ai models to litellm models json by @FelipeRodriguesGare in https://github.com/BerriAI/litellm/pull/20319\n* [Feat] Allow calling A2A agents through LiteLLM /chat/completions API  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20358\n* UI - Show team alias on Models health page by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20359\n* fix: check for model_response_choices before guardrail input by @agrattan0820 in https://github.com/BerriAI/litellm/pull/19784\n* Fix fail-open for grayswan and pass metadata to cygnal api endpoint by @Reapor-Yurnero in https://github.com/BerriAI/litellm/pull/19837\n* [Feat] Use A2A registered agents with /chat/completions  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20362\n* [Feature] UI - Keys: Allowed Routes to Key Info and Edit Pages by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20369\n* fix: revert httpx client caching that caused closed client errors by @michelligabriele in https://github.com/BerriAI/litellm/pull/20025\n* Chore: Antd Modal Deprecated Props by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20317\n* [Fix] /user/update Allow for max_budget Resets by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20375\n* [Feature] UI - User Budget Page: Unlimited Budget Checkbox by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20380\n* [Bug] Ensure MCP permissions are enforced when using JWT Auth by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20383\n* Add support for delete and GET via file_id for gemini by @Sameerlite in https://github.com/BerriAI/litellm/pull/20329\n* Fix: Extra inputs are not permitted, field: 'messages[2].provider_specific_fields by @Sameerlite in https://github.com/BerriAI/litellm/pull/20334\n* Fix: Managed Batches: Inconsistent State Management for list and cancel batches by @Sameerlite in https://github.com/BerriAI/litellm/pull/20331\n* fix(proxy): forward extra headers in chat by @naaa760 in https://github.com/BerriAI/litellm/pull/20386\n* Custom Code Guardrails UI Playground by @krrishdholakia in https://github.com/BerriAI/litellm/pull/20377\n* [Feat] Add xAI /realtime API Support - works with LiveKitSDK  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20381\n* [Feature] Include Config Defined Search Tools in /search_tools/list by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20371\n* Revert \"feat(guardrails): implement team-based isolation guardrails mgmnt\" by @krrishdholakia in https://github.com/BerriAI/litellm/pull/20393\n* Semantic filter test skip by @krrishdholakia in https://github.com/BerriAI/litellm/pull/20387\n* Add gemini deep research in model cost map by @Sameerlite in https://github.com/BerriAI/litellm/pull/20406\n* [DOCS]Add copilotkit sdk doc as supported agents sdk by @Sameerlite in https://github.com/BerriAI/litellm/pull/20396\n* Revert \"fix: proxy failure cases, now log ip and user agent, key hash, name\" by @Sameerlite in https://github.com/BerriAI/litellm/pull/20413\n* feat(guardrails): implement team-based isolation guardrails mgmnt (#1… by @krrishdholakia in https://github.com/BerriAI/litellm/pull/20318\n* Add Key info endpoint object permission data by @Sameerlite in https://github.com/BerriAI/litellm/pull/20407\n* Fix supports_native_streaming for gemini and vertex ai and claude models by @Sameerlite in https://github.com/BerriAI/litellm/pull/20408\n* Fix: empty assistant message for converse API by @Sameerlite in https://github.com/BerriAI/litellm/pull/20390\n* Add mapping for responses tools in file ids by @Sameerlite in https://github.com/BerriAI/litellm/pull/20402\n\n## New Contributors\n* @zifeo made their first contribution in https://github.com/BerriAI/litellm/pull/19805\n* @rushilchugh01 made their first contribution in https://github.com/BerriAI/litellm/pull/19938\n* @cfchase made their first contribution in https://github.com/BerriAI/litellm/pull/19893\n* @ayim made their first contribution in https://github.com/BerriAI/litellm/pull/19872\n* @varunsripad123 made their first contribution in https://github.com/BerriAI/litellm/pull/20018\n* @nht1206 made their first contribution in https://github.com/BerriAI/litellm/pull/20046\n* @genga6 made their first contribution in https://github.com/BerriAI/litellm/pull/20009\n* @shin-bot-litellm made their first contribution in https://github.com/BerriAI/litellm/pull/20121\n* @amirzaushnizer made their first contribution in https://github.com/BerriAI/litellm/pull/20235\n* @cscguochang made their first contribution in https://github.com/BerriAI/litellm/pull/20214\n* @krauckbot made their first contribution in https://github.com/BerriAI/litellm/pull/20273\n* @agrattan0820 made their first contribution in https://github.com/BerriAI/litellm/pull/19784\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.3.rc.5...v1.81.7.dev1"
+        },
+        {
+          "title": "[BerriAI/litellm] 1.81.3.rc.6",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/1.81.3.rc.6",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-04T19:59:36+00:00",
+          "summary": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.3.rc.5...1.81.3.rc.6",
+          "categories": [
+            "other"
+          ],
+          "keywords": [],
+          "raw_content": "**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.3.rc.5...1.81.3.rc.6"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.7-nightly",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.7-nightly",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-03T20:09:14+00:00",
+          "summary": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/Berri",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "provider",
+            "model",
+            "proxy",
+            "gpt-5",
+            "sonnet",
+            "agent",
+            "realtime",
+            "reasoning",
+            "mcp",
+            "vscode",
+            "tpm",
+            "tier",
+            "beta",
+            "ga",
+            "cost",
+            "pro",
+            "team"
+          ],
+          "raw_content": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/BerriAI/litellm/pull/19877\n* fix: allow tool_choice for Azure GPT-5 chat models by @jayy-77 in https://github.com/BerriAI/litellm/pull/19813\n* fix: tool with antropic #19800 by @zifeo in https://github.com/BerriAI/litellm/pull/19805\n* inspect BadRequestError after all other policy types by @demoray in https://github.com/BerriAI/litellm/pull/19878\n* fix(main): use local tiktoken cache in lazy loading by @Chesars in https://github.com/BerriAI/litellm/pull/19774\n* fix(gemini): subtract implicit cached tokens from text_tokens for correct cost calculation by @Chesars in https://github.com/BerriAI/litellm/pull/19775\n* fix Prompt Studio history to load tools and system messages by @naaa760 in https://github.com/BerriAI/litellm/pull/19920\n* [Release Day] - Fixed CI/CD issues & changed processes by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19902\n* [Feat] - Search API add /list endpoint to list what search tools exist in router  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19969\n* [Feature] UI - Tables: Reusable Table Sort Component by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19970\n* [Feature] UI - Logs: Adding Error message search to ui spend logs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19963\n* [Feat] LiteLLM Vector Stores - Add permission management for users, teams by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19972\n* feat: Add new OpenRouter models: `xiaomi/mimo-v2-flash`, `z-ai/glm-4.… by @rushilchugh01 in https://github.com/BerriAI/litellm/pull/19938\n* fix gemini gemini-robotics-er-1.5-preview entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19974\n* fix(vertex_ai): convert image URLs to base64 in tool messages for Anthropic by @Chesars in https://github.com/BerriAI/litellm/pull/19896\n* Fix/router search tools v2 by @Harshit28j in https://github.com/BerriAI/litellm/pull/19840\n* [Infra] Remove _experimental/out routes from gitignore + UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19976\n* [Feature] UI - Usage Export: Breakdown by Teams and Keys by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19953\n* Fix stream_chunk_builder to preserve images from streaming chunks by @Chesars in https://github.com/BerriAI/litellm/pull/19654\n* fix(docker): add libsndfile to main Dockerfile for ARM64 audio processing by @Chesars in https://github.com/BerriAI/litellm/pull/19776\n* fix(proxy): add datadog_llm_observability to /health/services allowed… by @michelligabriele in https://github.com/BerriAI/litellm/pull/19952\n* fix(proxy): prevent provider-prefixed model leaks by @bcdonadio in https://github.com/BerriAI/litellm/pull/19943\n* fix(hosted_vllm): route through base_llm_http_handler to support ssl_verify by @cfchase in https://github.com/BerriAI/litellm/pull/19893\n* Add OpenRouter Kimi K2.5 by @ayim in https://github.com/BerriAI/litellm/pull/19872\n* Add test to check if model map is corretly formatted by @Sameerlite in https://github.com/BerriAI/litellm/pull/19992\n* Add validation of model cost map as job by @Sameerlite in https://github.com/BerriAI/litellm/pull/19993\n* Fix model map path in validation test by @Sameerlite in https://github.com/BerriAI/litellm/pull/19994\n* Fix: litellm_fix_robotic_model_map_entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19997\n* oss staging 01/28/2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19906\n* Add custom_llm_provider as gemini translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/19988\n* [Fix] Sorting for /v2/model/info by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19971\n* [Feature] Bulk Update Keys Endpoint by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19886\n* [Fix] error_code in Spend Logs metadata by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20015\n* [Feature] UI - Spend Logs: Show Current Store and Retention Status by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20017\n* [Feature] UI - New Badge Dot Render by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20024\n* Add event-driven coordination for global spend query to prevent cache stampede by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20030\n* [Feat] New Model - amazon.nova-2-pro-preview-20251202-v1:0 by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20033\n* [Feat] LiteLLM x Claude Agent SDK Integration  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20035\n* [Docs] Claude Agents SDK x LiteLLM Guide  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20036\n* fix: run prisma generate as nobody user in non-root container by @milan-berri in https://github.com/BerriAI/litellm/pull/20000\n* merge main in passthrough by @Sameerlite in https://github.com/BerriAI/litellm/pull/20042\n* Add /openai_passthrough route for openai passthrough requests: by @Sameerlite in https://github.com/BerriAI/litellm/pull/19989\n* fix(gemini): support file retrieval in GoogleAIStudioFilesHandle by @varunsripad123 in https://github.com/BerriAI/litellm/pull/20018\n* fix(ResponseAPILoggingUtils): extract input tokens details as dict by @nht1206 in https://github.com/BerriAI/litellm/pull/20046\n* Fix `max_input_tokens` for `gpt-5.2-codex` by @genga6 in https://github.com/BerriAI/litellm/pull/20009\n* Litellm oss staging 01 29 2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19975\n* feat: add /delete endpoint support for gemini by @Sameerlite in https://github.com/BerriAI/litellm/pull/20055\n* Fix: Batch and File user level permissions by @Sameerlite in https://github.com/BerriAI/litellm/pull/19981\n* [Feat]Add cost tracking and usage object in aretrieve_batch call type by @Sameerlite in https://github.com/BerriAI/litellm/pull/19986\n* Add routing of xai chat completions to responses when web search options is present by @Sameerlite in https://github.com/BerriAI/litellm/pull/20051\n* Add disable flag for anthropic gemini cache translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/20052\n* fix aspectRatio mapping in image edit by @Sameerlite in https://github.com/BerriAI/litellm/pull/20053\n* Fix: vllm embedding format by @Sameerlite in https://github.com/BerriAI/litellm/pull/20056\n* Fix: remove unsupported prompt-caching-scope-2026-01-05 header for vertex ai by @Sameerlite in https://github.com/BerriAI/litellm/pull/20058\n* [Feature] UI - Usage: Model Breakdown Per Key by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20039\n* Add mock client factory pattern and mock support for PostHog, Helicone, and Braintrust integrations by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19707\n* Realtime API benchmarks by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20074\n* fixes: ci pipeline router coverage failure by @Harshit28j in https://github.com/BerriAI/litellm/pull/20065\n* [cookbook] - add section for using claude agent sdk + MCPs with LiteLLM by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20081\n* [Feat] Add async_post_call_response_headers_hook to CustomLogger by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20083\n* fix(proxy): resolve high CPU when router_settings in DB by avoiding REGISTRY.collect() in PrometheusServicesLogger by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20087\n* Revert logs view commits by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20090\n* [Fix] UI - Navbar: Fixed Default Logo + Bound Logo Box by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20092\n* [Refactor] UI - Navbar: User Dropdown by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20095\n* [Feat] v2 - Logs view with side panel and improved UX by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20091\n* [Feat] UI - New View to render \"Tools\" on Logs View  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20093\n* [Feat] UI - Add Pretty print view of request/response  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20096\n* fixed mcp tools instructions on ui to show comma seprated str instead… by @shivamrawat1 in https://github.com/BerriAI/litellm/pull/20101\n* litellm_fix: add missing timezone import to proxy_server.py by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20121\n* litellm_fix(proxy): reduce PLR0915 complexity (minimal) by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20127\n* litellm_fix(ui): remove unused ToolOutlined import by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20129\n* litellm_fix(e2e): disable bedrock-converse-claude-sonnet-4.5 in tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20131\n* litellm_fix(test): fix Azure AI cost calculator test - use Logging class by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20134\n* litellm_fix(test): fix Bedrock tool search header test regression by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20135\n* litellm_fix(test): allow comment field in schema and exclude robotics models from tpm check by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20139\n* litellm_docs: add missing environment variable documentation by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20138\n* litellm_fix(test): add acancel_batch to Azure SDK client initialization test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20143\n* litellm_fix: handle unknown models in Azure AI cost calculator by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20150\n* litellm_fix(test): fix router silent experiment tests to properly mock async functions by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20140\n* [Feature] UI - Dark Mode: Delete Resource Modal by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20098\n* [Fix] UI - Vector Store: Allow Config Defined Models to Be Selected  by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20031\n* [Fix] Add WATSONX_ZENAPIKEY to WatsonX credentials by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20086\n* [Infa] UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20154\n* litellm_fix: use get_async_httpx_client for logo download by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20155\n* litellm_fix: check for agent mode before requiring DD_API_KEY/DD_SITE by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20156\n* litellm_fix: handle empty dict for web_search_options in Nova grounding by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20159\n* litellm_mypy_fix_batch1: fix type errors in files, opentelemetry, gemini transformation, key management by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20161\n* litellm_fix(test): update Prometheus metric test assertions with new labels by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20162\n* litellm_fix: remove hosted_vllm from OpenAI client tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20163\n* litellm_fix: bump litellm-proxy-extras version to 0.4.28 by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20166\n* litellm_fix(mypy): fix remaining type errors by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20164\n* litellm_fix(security): allowlist Next.js CVEs for 7 days by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20169\n* litellm_fix(router): use safe_deep_copy in _get_silent_experiment_kwargs by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20170\n* docs(embeddings): add supported input formats section by @Chesars in https://github.com/BerriAI/litellm/pull/20073\n* litellm_fix(lint): remove unused ToolNameValidationResult imports by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20176\n* litellm_fix(azure): Fix acancel_batch not using Azure SDK client initialization by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20168\n* [Fix] Model Name During Fallback by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20177\n* [Fix] Health Endpoints when Callback Objects Defined by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20182\n* fix(test): add router.acancel_batch coverage by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20183\n* fix(mypy): fix validate_tool_name return type signatures by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20184\n* litellm_fix_flaky_batch_completion_test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20186\n* litellm_fix_cost_calc_test: correct prompt_tokens in test_string_cost_values by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20185\n* docs/blog index page by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20188\n* [Docs] UI Spend Logs Settings Docs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20197\n* [Doc] Fixing Image by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20198\n* litellm_fix_mapped_tests_core: clear client cache and fix isinstance checks by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20196\n* docs: fix dead links in v1.81.6 release notes by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20218\n* litellm_fix_mapped_tests_core: fix test isolation and mock injection issues by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20209\n* docs: Update v1.81.6 release notes - Logs v2 with Tool Call Tracing by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20225\n* feat: Support dimensions param for Cohere embed v4 by @amirzaushnizer in https://github.com/BerriAI/litellm/pull/20235\n* feat: add User-Agent customization support by @jayy-77 in https://github.com/BerriAI/litellm/pull/19881\n* feat(bedrock): add 1hr tiered caching costs for long-context models (#18988) by @cscguochang in https://github.com/BerriAI/litellm/pull/20214\n* Update Vertex AI Text to Speech doc to show use of audio by @Sameerlite in https://github.com/BerriAI/litellm/pull/20255\n* fix: add reasoning param support for GPT OSS cerebras by @Sameerlite in https://github.com/BerriAI/litellm/pull/20258\n* Fix: Slack alert issue by @Sameerlite in https://github.com/BerriAI/litellm/pull/20257\n* fix: Map reasoning content to anthropic thinking block(streaming+non-streaming) by @Sameerlite in https://github.com/BerriAI/litellm/pull/20254\n* Fix open_ai_embedding_models to have custom_llm_provider None by @Sameerlite in https://github.com/BerriAI/litellm/pull/20253\n* [Feat] Add support for 0 cost models by @Sameerlite in https://github.com/BerriAI/litellm/pull/20249\n* Add Anthropic caching and context tests by @Sameerlite in https://github.com/BerriAI/litellm/pull/20247\n* Litellm test bedrock optional params embeddings dimension by @Sameerlite in https://github.com/BerriAI/litellm/pull/20262\n* [Feat]Add support for nova sonic Speech to speech model by @Sameerlite in https://github.com/BerriAI/litellm/pull/20244\n* Litellm oss staging 01 31 2026 3 by @Sameerlite in https://github.com/BerriAI/litellm/pull/20266\n* perf: optimize wrapper_async with CallTypes caching and reduced lookups by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20204\n* perf: cache _get_relevant_args_to_use_for_logging() at module level by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20077\n* docs: Add FAQ for setting up and verifying LITELLM_LICENSE by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20284\n* Model request tags documentation by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20290\n* [Infra] UI - Update next to 16.1.6 by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20220\n* [Fix] Remove Key Blocking on Login by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20210\n* feat: add Kimi K2.5 model entries for Moonshot provider by @krauckbot in https://github.com/BerriAI/litellm/pull/20273\n* fix: MCP \"Session not found\" error on VSCode reconnect by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20298\n* [Feature] SSO Config Team Mappings by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20111\n* feat: add base /scim/v2 endpoint for SCIM resource discovery by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20301\n* docs: add Prisma migration troubleshooting guide by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20300\n* [Fix] UI  - Team Settings: Disable Global Guardrail Persistence by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20307\n* [Feature] Key reset_spend endpoint by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20305\n* [Feature] UI - SSO: Add Team Mappings by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20299\n* Add blog post: Achieving Sub-Millisecond Proxy Overhead by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20309\n* [Feat] - MCP Semantic Filtering Support  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20296\n* Litellm docs mcp filtering semantic by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20316\n* [Feat] /chat/completions - allow using OpenAI style tools for `web_search` with VertexAI/gemini models  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20280\n* Add documentation correctly for nova sonic by @Sameerlite in https://github.com/BerriAI/litellm/pull/20320\n* [Feature] UI - Default Team Settings: Migrate Default Team Settings to use Reusable Model Select by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20310\n* [Feature] UI - Navbar: Option to Hide Community Engagement Buttons by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20308\n* Litellm tuesday cicd release by @Sameerlite in https://github.com/BerriAI/litellm/pull/20328\n* Revert \"Litellm tuesday cicd release\" by @Sameerlite in https://github.com/BerriAI/litellm/pull/20330\n* Litellm tuesday cicd release final by @Sameerlite in https://github.com/BerriAI/litellm/pull/20333\n\n## New Contributors\n* @zifeo made their first contribution in https://github.com/BerriAI/litellm/pull/19805\n* @rushilchugh01 made their first contribution in https://github.com/BerriAI/litellm/pull/19938\n* @cfchase made their first contribution in https://github.com/BerriAI/litellm/pull/19893\n* @ayim made their first contribution in https://github.com/BerriAI/litellm/pull/19872\n* @varunsripad123 made their first contribution in https://github.com/BerriAI/litellm/pull/20018\n* @nht1206 made their first contribution in https://github.com/BerriAI/litellm/pull/20046\n* @genga6 made their first contribution in https://github.com/BerriAI/litellm/pull/20009\n* @shin-bot-litellm made their first contribution in https://github.com/BerriAI/litellm/pull/20121\n* @amirzaushnizer made their first contribution in https://github.com/BerriAI/litellm/pull/20235\n* @cscguochang made their first contribution in https://github.com/BerriAI/litellm/pull/20214\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.3.rc.5...v1.81.7-nightly"
+        },
+        {
+          "title": "[BerriAI/litellm] v1.81.6-nightly",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.81.6-nightly",
+          "source_name": "litellm",
+          "source_type": "github_release",
+          "published_at": "2026-02-01T04:30:02+00:00",
+          "summary": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/Berri",
+          "categories": [
+            "capability",
+            "constraint",
+            "pricing"
+          ],
+          "keywords": [
+            "provider",
+            "model",
+            "proxy",
+            "gpt-5",
+            "sonnet",
+            "agent",
+            "realtime",
+            "mcp",
+            "tpm",
+            "beta",
+            "ga",
+            "cost",
+            "pro",
+            "team"
+          ],
+          "raw_content": "## What's Changed\n* test(proxy): add regression tests for vertex passthrough model names … by @michelligabriele in https://github.com/BerriAI/litellm/pull/19855\n* fix: guardrails issues streaming-response regex by @Harshit28j in https://github.com/BerriAI/litellm/pull/19901\n* fix: add fix for migration issue and and stable image by @Harshit28j in https://github.com/BerriAI/litellm/pull/19843\n* fix: filter unsupported beta headers for AWS Bedrock Invoke API by @jayy-77 in https://github.com/BerriAI/litellm/pull/19877\n* fix: allow tool_choice for Azure GPT-5 chat models by @jayy-77 in https://github.com/BerriAI/litellm/pull/19813\n* fix: tool with antropic #19800 by @zifeo in https://github.com/BerriAI/litellm/pull/19805\n* inspect BadRequestError after all other policy types by @demoray in https://github.com/BerriAI/litellm/pull/19878\n* fix(main): use local tiktoken cache in lazy loading by @Chesars in https://github.com/BerriAI/litellm/pull/19774\n* fix(gemini): subtract implicit cached tokens from text_tokens for correct cost calculation by @Chesars in https://github.com/BerriAI/litellm/pull/19775\n* fix Prompt Studio history to load tools and system messages by @naaa760 in https://github.com/BerriAI/litellm/pull/19920\n* [Release Day] - Fixed CI/CD issues & changed processes by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19902\n* [Feat] - Search API add /list endpoint to list what search tools exist in router  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19969\n* [Feature] UI - Tables: Reusable Table Sort Component by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19970\n* [Feature] UI - Logs: Adding Error message search to ui spend logs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19963\n* [Feat] LiteLLM Vector Stores - Add permission management for users, teams by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/19972\n* feat: Add new OpenRouter models: `xiaomi/mimo-v2-flash`, `z-ai/glm-4.… by @rushilchugh01 in https://github.com/BerriAI/litellm/pull/19938\n* fix gemini gemini-robotics-er-1.5-preview entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19974\n* fix(vertex_ai): convert image URLs to base64 in tool messages for Anthropic by @Chesars in https://github.com/BerriAI/litellm/pull/19896\n* Fix/router search tools v2 by @Harshit28j in https://github.com/BerriAI/litellm/pull/19840\n* [Infra] Remove _experimental/out routes from gitignore + UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19976\n* [Feature] UI - Usage Export: Breakdown by Teams and Keys by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19953\n* Fix stream_chunk_builder to preserve images from streaming chunks by @Chesars in https://github.com/BerriAI/litellm/pull/19654\n* fix(docker): add libsndfile to main Dockerfile for ARM64 audio processing by @Chesars in https://github.com/BerriAI/litellm/pull/19776\n* fix(proxy): add datadog_llm_observability to /health/services allowed… by @michelligabriele in https://github.com/BerriAI/litellm/pull/19952\n* fix(proxy): prevent provider-prefixed model leaks by @bcdonadio in https://github.com/BerriAI/litellm/pull/19943\n* fix(hosted_vllm): route through base_llm_http_handler to support ssl_verify by @cfchase in https://github.com/BerriAI/litellm/pull/19893\n* Add OpenRouter Kimi K2.5 by @ayim in https://github.com/BerriAI/litellm/pull/19872\n* Add test to check if model map is corretly formatted by @Sameerlite in https://github.com/BerriAI/litellm/pull/19992\n* Add validation of model cost map as job by @Sameerlite in https://github.com/BerriAI/litellm/pull/19993\n* Fix model map path in validation test by @Sameerlite in https://github.com/BerriAI/litellm/pull/19994\n* Fix: litellm_fix_robotic_model_map_entry by @Sameerlite in https://github.com/BerriAI/litellm/pull/19997\n* oss staging 01/28/2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19906\n* Add custom_llm_provider as gemini translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/19988\n* [Fix] Sorting for /v2/model/info by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19971\n* [Feature] Bulk Update Keys Endpoint by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/19886\n* [Fix] error_code in Spend Logs metadata by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20015\n* [Feature] UI - Spend Logs: Show Current Store and Retention Status by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20017\n* [Feature] UI - New Badge Dot Render by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20024\n* Add event-driven coordination for global spend query to prevent cache stampede by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20030\n* [Feat] New Model - amazon.nova-2-pro-preview-20251202-v1:0 by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20033\n* [Feat] LiteLLM x Claude Agent SDK Integration  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20035\n* [Docs] Claude Agents SDK x LiteLLM Guide  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20036\n* fix: run prisma generate as nobody user in non-root container by @milan-berri in https://github.com/BerriAI/litellm/pull/20000\n* merge main in passthrough by @Sameerlite in https://github.com/BerriAI/litellm/pull/20042\n* Add /openai_passthrough route for openai passthrough requests: by @Sameerlite in https://github.com/BerriAI/litellm/pull/19989\n* fix(gemini): support file retrieval in GoogleAIStudioFilesHandle by @varunsripad123 in https://github.com/BerriAI/litellm/pull/20018\n* fix(ResponseAPILoggingUtils): extract input tokens details as dict by @nht1206 in https://github.com/BerriAI/litellm/pull/20046\n* Fix `max_input_tokens` for `gpt-5.2-codex` by @genga6 in https://github.com/BerriAI/litellm/pull/20009\n* Litellm oss staging 01 29 2026 by @krrishdholakia in https://github.com/BerriAI/litellm/pull/19975\n* feat: add /delete endpoint support for gemini by @Sameerlite in https://github.com/BerriAI/litellm/pull/20055\n* Fix: Batch and File user level permissions by @Sameerlite in https://github.com/BerriAI/litellm/pull/19981\n* [Feat]Add cost tracking and usage object in aretrieve_batch call type by @Sameerlite in https://github.com/BerriAI/litellm/pull/19986\n* Add routing of xai chat completions to responses when web search options is present by @Sameerlite in https://github.com/BerriAI/litellm/pull/20051\n* Add disable flag for anthropic gemini cache translation by @Sameerlite in https://github.com/BerriAI/litellm/pull/20052\n* fix aspectRatio mapping in image edit by @Sameerlite in https://github.com/BerriAI/litellm/pull/20053\n* Fix: vllm embedding format by @Sameerlite in https://github.com/BerriAI/litellm/pull/20056\n* Fix: remove unsupported prompt-caching-scope-2026-01-05 header for vertex ai by @Sameerlite in https://github.com/BerriAI/litellm/pull/20058\n* [Feature] UI - Usage: Model Breakdown Per Key by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20039\n* Add mock client factory pattern and mock support for PostHog, Helicone, and Braintrust integrations by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/19707\n* Realtime API benchmarks by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20074\n* fixes: ci pipeline router coverage failure by @Harshit28j in https://github.com/BerriAI/litellm/pull/20065\n* [cookbook] - add section for using claude agent sdk + MCPs with LiteLLM by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20081\n* [Feat] Add async_post_call_response_headers_hook to CustomLogger by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20083\n* fix(proxy): resolve high CPU when router_settings in DB by avoiding REGISTRY.collect() in PrometheusServicesLogger by @AlexsanderHamir in https://github.com/BerriAI/litellm/pull/20087\n* Revert logs view commits by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20090\n* [Fix] UI - Navbar: Fixed Default Logo + Bound Logo Box by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20092\n* [Refactor] UI - Navbar: User Dropdown by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20095\n* [Feat] v2 - Logs view with side panel and improved UX by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20091\n* [Feat] UI - New View to render \"Tools\" on Logs View  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20093\n* [Feat] UI - Add Pretty print view of request/response  by @ishaan-jaff in https://github.com/BerriAI/litellm/pull/20096\n* fixed mcp tools instructions on ui to show comma seprated str instead… by @shivamrawat1 in https://github.com/BerriAI/litellm/pull/20101\n* litellm_fix: add missing timezone import to proxy_server.py by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20121\n* litellm_fix(proxy): reduce PLR0915 complexity (minimal) by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20127\n* litellm_fix(ui): remove unused ToolOutlined import by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20129\n* litellm_fix(e2e): disable bedrock-converse-claude-sonnet-4.5 in tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20131\n* litellm_fix(test): fix Azure AI cost calculator test - use Logging class by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20134\n* litellm_fix(test): fix Bedrock tool search header test regression by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20135\n* litellm_fix(test): allow comment field in schema and exclude robotics models from tpm check by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20139\n* litellm_docs: add missing environment variable documentation by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20138\n* litellm_fix(test): add acancel_batch to Azure SDK client initialization test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20143\n* litellm_fix: handle unknown models in Azure AI cost calculator by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20150\n* litellm_fix(test): fix router silent experiment tests to properly mock async functions by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20140\n* [Feature] UI - Dark Mode: Delete Resource Modal by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20098\n* [Fix] UI - Vector Store: Allow Config Defined Models to Be Selected  by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20031\n* [Fix] Add WATSONX_ZENAPIKEY to WatsonX credentials by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20086\n* [Infa] UI Build by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20154\n* litellm_fix: use get_async_httpx_client for logo download by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20155\n* litellm_fix: check for agent mode before requiring DD_API_KEY/DD_SITE by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20156\n* litellm_fix: handle empty dict for web_search_options in Nova grounding by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20159\n* litellm_mypy_fix_batch1: fix type errors in files, opentelemetry, gemini transformation, key management by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20161\n* litellm_fix(test): update Prometheus metric test assertions with new labels by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20162\n* litellm_fix: remove hosted_vllm from OpenAI client tests by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20163\n* litellm_fix: bump litellm-proxy-extras version to 0.4.28 by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20166\n* litellm_fix(mypy): fix remaining type errors by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20164\n* litellm_fix(security): allowlist Next.js CVEs for 7 days by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20169\n* litellm_fix(router): use safe_deep_copy in _get_silent_experiment_kwargs by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20170\n* docs(embeddings): add supported input formats section by @Chesars in https://github.com/BerriAI/litellm/pull/20073\n* litellm_fix(lint): remove unused ToolNameValidationResult imports by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20176\n* litellm_fix(azure): Fix acancel_batch not using Azure SDK client initialization by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20168\n* [Fix] Model Name During Fallback by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20177\n* [Fix] Health Endpoints when Callback Objects Defined by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20182\n* fix(test): add router.acancel_batch coverage by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20183\n* fix(mypy): fix validate_tool_name return type signatures by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20184\n* litellm_fix_flaky_batch_completion_test by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20186\n* litellm_fix_cost_calc_test: correct prompt_tokens in test_string_cost_values by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20185\n* docs/blog index page by @ryan-crabbe in https://github.com/BerriAI/litellm/pull/20188\n* [Docs] UI Spend Logs Settings Docs by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20197\n* [Doc] Fixing Image by @yuneng-jiang in https://github.com/BerriAI/litellm/pull/20198\n* litellm_fix_mapped_tests_core: clear client cache and fix isinstance checks by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20196\n* docs: fix dead links in v1.81.6 release notes by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20218\n* litellm_fix_mapped_tests_core: fix test isolation and mock injection issues by @shin-bot-litellm in https://github.com/BerriAI/litellm/pull/20209\n\n## New Contributors\n* @zifeo made their first contribution in https://github.com/BerriAI/litellm/pull/19805\n* @rushilchugh01 made their first contribution in https://github.com/BerriAI/litellm/pull/19938\n* @cfchase made their first contribution in https://github.com/BerriAI/litellm/pull/19893\n* @ayim made their first contribution in https://github.com/BerriAI/litellm/pull/19872\n* @varunsripad123 made their first contribution in https://github.com/BerriAI/litellm/pull/20018\n* @nht1206 made their first contribution in https://github.com/BerriAI/litellm/pull/20046\n* @genga6 made their first contribution in https://github.com/BerriAI/litellm/pull/20009\n\n**Full Changelog**: https://github.com/BerriAI/litellm/compare/v1.81.3.rc.5...v1.81.6-nightly"
+        }
+      ],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "openai-changelog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:36.781668+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error: Client error '403 Forbidden' for url 'https://platform.openai.com/docs/changelog'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+      ],
+      "success": false
+    },
+    {
+      "source_name": "openai-pricing",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:36.831731+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error: Client error '403 Forbidden' for url 'https://openai.com/api/pricing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+      ],
+      "success": false
+    },
+    {
+      "source_name": "anthropic-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:36.871708+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "anthropic-release-notes",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:37.603943+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "anthropic-agent-docs",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:38.615858+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "anthropic-pricing",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:39.301670+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "google-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:39.814564+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error: Client error '404 Not Found' for url 'https://ai.google/discover/latest-news/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+      ],
+      "success": false
+    },
+    {
+      "source_name": "google-vertex",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:41.697846+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "mistral-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:43.150407+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "meta-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:44.036075+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "xai-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:46.124126+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error: Client error '403 Forbidden' for url 'https://x.ai/blog'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+      ],
+      "success": false
+    },
+    {
+      "source_name": "cohere-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:46.161048+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [],
+      "success": true
+    },
+    {
+      "source_name": "perplexity-blog",
+      "source_type": "page_diff",
+      "collected_at": "2026-02-07T10:00:47.245094+00:00",
+      "entry_count": 0,
+      "entries": [],
+      "errors": [
+        "HTTP error: Client error '403 Forbidden' for url 'https://www.perplexity.ai/hub'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+      ],
+      "success": false
+    }
+  ]
+}

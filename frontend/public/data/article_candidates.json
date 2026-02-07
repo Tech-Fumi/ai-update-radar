@@ -1,7 +1,96 @@
 {
-  "evaluated_at": "",
-  "total": 0,
-  "llm_evaluated": 0,
-  "fallback_used": 0,
-  "evaluations": []
+  "evaluated_at": "2026-02-07T10:26:09.250634+00:00",
+  "total": 8,
+  "llm_evaluated": 3,
+  "fallback_used": 5,
+  "evaluations": [
+    {
+      "url": "https://zenn.dev/gaku1234/articles/script-development-complete-guide-2026-intro",
+      "title": "【2026年版】スクリプト開発完全ガイドを公開しました【Shell・Python・Node.js自動化の実践】",
+      "relevance": 2,
+      "actionability": 1,
+      "summary_ja": "【2026年版】スクリプト開発完全ガイドを公開しました【Sh",
+      "recommended_action": "watch",
+      "prefilter_score": 1,
+      "source_topic": "devops",
+      "evaluation_source": "fallback"
+    },
+    {
+      "url": "https://zenn.dev/gaku1234/books/script-development-complete-guide-2026",
+      "title": "スクリプト開発完全ガイド 2026【Shell・Python・Node.js自動化の実践】",
+      "relevance": 2,
+      "actionability": 1,
+      "summary_ja": "スクリプト開発完全ガイド 2026【Shell・Python",
+      "recommended_action": "watch",
+      "prefilter_score": 1,
+      "source_topic": "devops",
+      "evaluation_source": "fallback"
+    },
+    {
+      "url": "https://zenn.dev/smasu/articles/claude-code-migration-skill",
+      "title": "Claude CodeでDBマイグレーションを自動化できるか試してみた",
+      "relevance": 4,
+      "actionability": 3,
+      "summary_ja": "Claude CodeでDB変更自動化",
+      "recommended_action": "watch",
+      "prefilter_score": 2,
+      "source_topic": "devops",
+      "evaluation_source": "llm"
+    },
+    {
+      "url": "https://zenn.dev/deloitte_jp_eng/articles/dac6ffb48c3864",
+      "title": "AWS DevOps AgentのGitHub連携有無による調査精度の違いを検証してみた",
+      "relevance": 3,
+      "actionability": 1,
+      "summary_ja": "AWS DevOps AgentのGitHub連携有無による",
+      "recommended_action": "watch",
+      "prefilter_score": 4,
+      "source_topic": "devops",
+      "evaluation_source": "fallback"
+    },
+    {
+      "url": "https://zenn.dev/gaku1234/articles/cicd-automation-complete-guide-2026-intro",
+      "title": "【2026年版】CI/CD自動化完全ガイドを公開しました",
+      "relevance": 4,
+      "actionability": 2,
+      "summary_ja": "CI/CD自動化ガイド公開告知",
+      "recommended_action": "watch",
+      "prefilter_score": 2,
+      "source_topic": "devops",
+      "evaluation_source": "llm"
+    },
+    {
+      "url": "https://zenn.dev/dolphin0609/articles/601e3a0e381d96",
+      "title": "Claude Codeの無人運用で事故らないために：危険なBashを実行直前に止める（exit 2）",
+      "relevance": 2,
+      "actionability": 1,
+      "summary_ja": "Claude Codeの無人運用で事故らないために：危険なB",
+      "recommended_action": "watch",
+      "prefilter_score": 2,
+      "source_topic": "devops",
+      "evaluation_source": "fallback"
+    },
+    {
+      "url": "https://zenn.dev/kewa8579/articles/b287095670aa34",
+      "title": "AI時代に輝くLinuxコマンド＆シェルスクリプトの熟練術：実践Tips",
+      "relevance": 2,
+      "actionability": 1,
+      "summary_ja": "AI時代に輝くLinuxコマンド＆シェルスクリプトの熟練術：",
+      "recommended_action": "watch",
+      "prefilter_score": 1,
+      "source_topic": "devops",
+      "evaluation_source": "fallback"
+    },
+    {
+      "url": "https://zenn.dev/t_kanazawa/articles/must-have-antigravity-skills",
+      "title": "Google Antigravityでエンジニアが今すぐ作るべきSkills 5選",
+      "relevance": 4,
+      "actionability": 3,
+      "summary_ja": "Agentic AIスキル設計の指針",
+      "recommended_action": "watch",
+      "prefilter_score": 4,
+      "source_topic": "automation",
+      "evaluation_source": "llm"
+    }
+  ]
 }
