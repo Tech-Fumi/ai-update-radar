@@ -120,6 +120,22 @@ repositories:
       - "mcp"
       - "agent"
 
+  # === エディタ・IDE ===
+
+  vscode:
+    repo: "microsoft/vscode"
+    priority: 1
+    watch:
+      - releases
+    keywords:
+      - "copilot"
+      - "ai"
+      - "language model"
+      - "chat"
+      - "inline"
+      - "agent"
+      - "extension"
+
   # === インフラ・ツール ===
 
   vercel_ai:

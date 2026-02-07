@@ -27,9 +27,15 @@ if [[ -d "$PROJECT_DIR/.venv" ]]; then
     source "$PROJECT_DIR/.venv/bin/activate"
 fi
 
-# 収集実行
+# 収集実行（汎用コレクター: RSS + GitHub + PageDiff）
 cd "$PROJECT_DIR"
 python -m collectors.cli collect --days 7 --export 2>&1 | tee -a "$LOG_FILE"
+
+echo "" | tee -a "$LOG_FILE"
+
+# VS Code リリース監視
+echo "--- VS Code リリース収集 ---" | tee -a "$LOG_FILE"
+python -m collectors.vscode.monitor 2>&1 | tee -a "$LOG_FILE"
 
 echo "" | tee -a "$LOG_FILE"
 echo "完了: $(date)" | tee -a "$LOG_FILE"

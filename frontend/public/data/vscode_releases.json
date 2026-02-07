@@ -1,0 +1,227 @@
+{
+  "updated_at": "2026-02-07T18:53:59.760828",
+  "releases": [
+    {
+      "version": "1.109.0",
+      "date": "2026-02-04",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.109.0",
+      "highlights_en": [
+        "Chat UX**: chat just feels better and snappier with faster streaming, improved reasoning results, and a revamped editor inline chat",
+        "Agent Session Management**: it's now easier to delegate tasks to agents across local, background, and cloud and jump in when needed",
+        "Agent Customization**: build your own workflows using agent orchestrations, and have consistent results with Agent Skills and organization-wide customizations",
+        "Agent Extensibility**: reuse your knowledge with Claude agent support and new Anthropic model capabilities, and enjoy rich chat interactions with MCP Apps",
+        "Agent Optimizations**: agents work smarter with Copilot Memory and experience faster code search with external indexing",
+        "Agent Security & Trust**: feel confident running terminal commands with sandboxing and effective auto-approval rules"
+      ],
+      "highlights_ja": [
+        "**チャット UX**: より高速なストリーミング、改良された推論結果、刷新されたエディターインラインチャットにより、チャット機能がより快適でスナッピーになりました",
+        "**エージェントセッション管理**: ローカル、バックグラウンド、クラウド間でエージェントにタスクを委任し、必要に応じて介入することが簡単になりました",
+        "**エージェントカスタマイゼーション**: エージェントオーケストレーションを使用して独自のワークフローを構築し、エージェントスキルと組織全体のカスタマイゼーションにより一貫した結果を得られます",
+        "**エージェント拡張性**: Claudeエージェントサポートと新しいAnthropic modelの機能で知識を再利用し、MCP Appsによるリッチなチャットインタラクションを楽しめます",
+        "**エージェント最適化**: Copilot Memoryによりエージェントがより賢く動作し、外部インデックス化により高速なコード検索を体験できます",
+        "**エージェントセキュリティと信頼**: サンドボックス化と効果的な自動承認ルールにより、ターミナルコマンドを安心して実行できます"
+      ],
+      "categorized_highlights": [
+        {
+          "text": "Chat UX**: chat just feels better and snappier with faster streaming, improved reasoning results, and a revamped editor inline chat",
+          "category": "improvement"
+        },
+        {
+          "text": "Agent Session Management**: it's now easier to delegate tasks to agents across local, background, and cloud and jump in when needed",
+          "category": "improvement"
+        },
+        {
+          "text": "Agent Customization**: build your own workflows using agent orchestrations, and have consistent results with Agent Skills and organization-wide customizations",
+          "category": "improvement"
+        },
+        {
+          "text": "Agent Extensibility**: reuse your knowledge with Claude agent support and new Anthropic model capabilities, and enjoy rich chat interactions with MCP Apps",
+          "category": "feature"
+        },
+        {
+          "text": "Agent Optimizations**: agents work smarter with Copilot Memory and experience faster code search with external indexing",
+          "category": "improvement"
+        },
+        {
+          "text": "Agent Security & Trust**: feel confident running terminal commands with sandboxing and effective auto-approval rules",
+          "category": "security"
+        }
+      ],
+      "prerelease": false,
+      "importance": {
+        "level": "high",
+        "tags": [
+          "security",
+          "copilot"
+        ]
+      },
+      "action_items": [
+        {
+          "task": "VS Code 1.109.0 に更新（セキュリティ修正）",
+          "source_feature": "セキュリティ修正",
+          "category": "security"
+        },
+        {
+          "task": "VS Code 1.109.0 の Copilot/LM API 変更を確認",
+          "source_feature": "Copilot/Language Model API 変更",
+          "category": "copilot"
+        }
+      ]
+    },
+    {
+      "version": "1.108.2",
+      "date": "2026-01-23",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.108.2",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.108.1",
+      "date": "2026-01-16",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.108.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.108.0",
+      "date": "2026-01-08",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.108.0",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.107.1",
+      "date": "2025-12-17",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.107.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.107.0",
+      "date": "2025-12-10",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.107.0",
+      "highlights_en": [
+        "Agent HQ**: You can use GitHub Copilot alongside your other coding agents to complete multiple tasks. Leverage background, cloud, or local agents and their relative strengths for the right job, all at the same time.",
+        "Background agents** work in their own isolated workspaces, managed for you by VS Code.",
+        "Custom agents for organizations:** Your team can now share custom agents at the org level."
+      ],
+      "highlights_ja": [
+        "**Agent HQ**: GitHub Copilotと他のコーディングエージェントを同時に使用して、複数のタスクを完了できます。バックグラウンド、クラウド、またはローカルエージェントとそれぞれの強みを活用し、適切な作業を同時に実行できます。",
+        "**バックグラウンドエージェント**: VS Codeが管理する独立したワークスペース内で動作します。",
+        "**組織向けカスタムエージェント**: チームが組織レベルでカスタムエージェントを共有できるようになりました。"
+      ],
+      "categorized_highlights": [
+        {
+          "text": "Agent HQ**: You can use GitHub Copilot alongside your other coding agents to complete multiple tasks. Leverage background, cloud, or local agents and their relative strengths for the right job, all at the same time.",
+          "category": "improvement"
+        },
+        {
+          "text": "Background agents** work in their own isolated workspaces, managed for you by VS Code.",
+          "category": "improvement"
+        },
+        {
+          "text": "Custom agents for organizations:** Your team can now share custom agents at the org level.",
+          "category": "improvement"
+        }
+      ],
+      "prerelease": false,
+      "importance": {
+        "level": "medium",
+        "tags": [
+          "copilot"
+        ]
+      },
+      "action_items": [
+        {
+          "task": "VS Code 1.107.0 の Copilot/LM API 変更を確認",
+          "source_feature": "Copilot/Language Model API 変更",
+          "category": "copilot"
+        }
+      ]
+    },
+    {
+      "version": "1.106.3",
+      "date": "2025-11-26",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.106.3",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.106.2",
+      "date": "2025-11-19",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.106.2",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.106.1",
+      "date": "2025-11-17",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.106.1",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    },
+    {
+      "version": "1.106.0",
+      "date": "2025-11-12",
+      "link": "https://github.com/microsoft/vscode/releases/tag/1.106.0",
+      "highlights_en": [],
+      "highlights_ja": [],
+      "categorized_highlights": [],
+      "prerelease": false,
+      "importance": {
+        "level": "normal",
+        "tags": []
+      },
+      "action_items": []
+    }
+  ]
+}
