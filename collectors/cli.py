@@ -20,6 +20,7 @@ from collectors.models import Category, CollectedEntry, CollectionResult
 from collectors.page_diff_collector import PageDiffCollector
 from collectors.rss_collector import RSSCollector
 from collectors.zenn_collector import ZennCollector
+from evaluators.article_evaluator import ArticleEvaluator, EvaluationResult
 
 app = typer.Typer(help="AI Update Radar - AI アップデート監視ツール")
 console = Console()
@@ -659,6 +660,181 @@ def zenn(
             json.dump(export_data, f, indent=2, ensure_ascii=False)
 
         console.print(f"[green]✅ エクスポート完了: {export_path}[/green]")
+
+
+@app.command(name="evaluate-articles")
+def evaluate_articles(
+    days: Optional[int] = typer.Option(None, help="Zenn 記事を収集してから評価（過去N日分）"),
+    input_file: Optional[str] = typer.Option(None, "--input", help="既存エクスポート JSON を入力"),
+    output: Optional[str] = typer.Option(None, help="出力ファイル名"),
+    min_score: Optional[int] = typer.Option(None, help="Zenn 収集時の最低スコア"),
+):
+    """
+    Zenn 記事を AI 評価（段階フィルター方式 ②）
+
+    send_consultation 経由で LLM に記事を評価させる。
+    --days: Zenn 収集 + 評価のワンショット
+    --input: 既存エクスポート JSON を入力として評価
+    """
+    sources_dir, cache_dir, keywords_path, exports_dir = get_paths()
+
+    if days is None and input_file is None:
+        console.print("[red]--days または --input のいずれかを指定してください[/red]")
+        raise typer.Exit(1)
+
+    entries = []
+
+    if input_file:
+        # 既存 JSON から読み込み
+        import_path = exports_dir / input_file if not Path(input_file).is_absolute() else Path(input_file)
+        if not import_path.exists():
+            console.print(f"[red]ファイルが見つかりません: {import_path}[/red]")
+            raise typer.Exit(1)
+
+        console.print(f"[bold]📂 {import_path.name} から読み込み中...[/bold]")
+        with open(import_path) as f:
+            data = json.load(f)
+
+        # zenn コマンドのエクスポート形式から CollectedEntry を復元
+        result_data = data.get("result", {})
+        for entry_data in result_data.get("entries", []):
+            entries.append(CollectedEntry.from_dict(entry_data))
+
+    else:
+        # Zenn 記事を収集
+        since = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        since = since - timedelta(days=days)
+
+        console.print(f"[bold]📰 Zenn 記事収集中（過去 {days} 日）...[/bold]")
+        collector = ZennCollector(
+            sources_dir=sources_dir,
+            cache_dir=cache_dir,
+            keywords_path=keywords_path,
+        )
+        result = collector.collect(since=since, min_score=min_score)
+        entries = result.entries
+
+        if result.errors:
+            for err in result.errors:
+                console.print(f"[yellow]Warning: {err}[/yellow]")
+
+    if not entries:
+        console.print("[dim]評価対象の記事がありません[/dim]")
+        raise typer.Exit(0)
+
+    console.print(f"[bold]🔍 {len(entries)} 件を AI 評価中...[/bold]")
+
+    # send_consultation 関数を注入
+    # MCP 経由で呼び出す場合は外部から send_fn を注入する想定
+    # CLI 単体では send_fn が None → エラーメッセージを表示
+    send_fn = _get_send_fn()
+    if send_fn is None:
+        console.print("[red]send_consultation が利用できません。[/red]")
+        console.print("[dim]MCP 経由で実行するか、--input でフォールバック評価を使用してください[/dim]")
+        raise typer.Exit(1)
+
+    evaluator = ArticleEvaluator(send_fn=send_fn)
+    eval_result = evaluator.evaluate_batch(entries)
+
+    # 結果表示
+    if eval_result.evaluations:
+        # relevance 降順でソート
+        sorted_evals = sorted(
+            eval_result.evaluations,
+            key=lambda e: (e.relevance, e.actionability),
+            reverse=True,
+        )
+
+        table = Table(title=f"AI 評価結果 ({len(sorted_evals)} 件)")
+        table.add_column("関連性", width=5, justify="center")
+        table.add_column("実用性", width=5, justify="center")
+        table.add_column("判定", width=6)
+        table.add_column("タイトル", width=40)
+        table.add_column("要約", width=25)
+        table.add_column("元", width=4)
+
+        action_styles = {
+            "adopt": "bold green",
+            "watch": "yellow",
+            "skip": "dim",
+        }
+
+        for ev in sorted_evals[:30]:
+            rel_style = "green" if ev.relevance >= 4 else "yellow" if ev.relevance >= 3 else "dim"
+            act_style = action_styles.get(ev.recommended_action, "")
+            src_mark = "LLM" if ev.evaluation_source == "llm" else "FB"
+            table.add_row(
+                f"[{rel_style}]{ev.relevance}[/{rel_style}]",
+                f"{ev.actionability}",
+                f"[{act_style}]{ev.recommended_action}[/{act_style}]",
+                ev.title[:40],
+                ev.summary_ja[:25],
+                src_mark,
+            )
+
+        console.print(table)
+
+    # サマリ
+    adopt_count = sum(1 for e in eval_result.evaluations if e.recommended_action == "adopt")
+    watch_count = sum(1 for e in eval_result.evaluations if e.recommended_action == "watch")
+    skip_count = sum(1 for e in eval_result.evaluations if e.recommended_action == "skip")
+
+    summary_panel = Panel(
+        f"📊 AI 評価完了\n"
+        f"  • 評価: {eval_result.total} 件（LLM: {eval_result.llm_evaluated}, フォールバック: {eval_result.fallback_used}）\n"
+        f"  • 採用推奨: [bold green]{adopt_count}[/bold green] 件\n"
+        f"  • 注視: [yellow]{watch_count}[/yellow] 件\n"
+        f"  • スキップ: [dim]{skip_count}[/dim] 件",
+        title="評価サマリ",
+        border_style="green",
+    )
+    console.print(summary_panel)
+
+    # エクスポート
+    exports_dir.mkdir(parents=True, exist_ok=True)
+    if output:
+        export_path = exports_dir / output
+    else:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        export_path = exports_dir / f"article_evaluations_{timestamp}.json"
+
+    with open(export_path, "w") as f:
+        json.dump(eval_result.to_dict(), f, indent=2, ensure_ascii=False)
+
+    console.print(f"[green]✅ 評価結果エクスポート: {export_path}[/green]")
+
+
+def _get_send_fn():
+    """send_consultation 関数を取得（MCP 経由）
+
+    環境変数 SEND_CONSULTATION_URL が設定されていれば HTTP 経由で呼び出す。
+    未設定の場合は None を返す（フォールバック評価のみ可能）。
+    """
+    url = os.environ.get("SEND_CONSULTATION_URL")
+    if not url:
+        return None
+
+    import urllib.request
+
+    def send_fn(situation: str, options: list, question: str, consultation_type: str) -> str:
+        payload = json.dumps({
+            "situation": situation,
+            "options": options,
+            "question": question,
+            "consultation_type": consultation_type,
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            return result.get("response", result.get("result", ""))
+
+    return send_fn
 
 
 @app.command()

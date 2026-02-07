@@ -53,7 +53,34 @@ class CollectedEntry:
             "summary": self.summary,
             "categories": [c.value for c in self.categories],
             "keywords": self.keywords,
+            "raw_content": self.raw_content,
         }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "CollectedEntry":
+        """辞書から復元"""
+        published_at = None
+        if data.get("published_at"):
+            published_at = datetime.fromisoformat(data["published_at"])
+
+        categories = []
+        for c in data.get("categories", []):
+            try:
+                categories.append(Category(c))
+            except ValueError:
+                pass
+
+        return cls(
+            title=data.get("title", ""),
+            url=data.get("url", ""),
+            source_name=data.get("source_name", ""),
+            source_type=SourceType(data.get("source_type", "rss")),
+            published_at=published_at,
+            summary=data.get("summary", ""),
+            categories=categories,
+            keywords=data.get("keywords", []),
+            raw_content=data.get("raw_content", ""),
+        )
 
 
 @dataclass
