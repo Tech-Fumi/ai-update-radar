@@ -1,0 +1,59 @@
+# 技術記事フィード定義
+# 段階フィルター方式 ① の自動収集対象
+
+feeds:
+  zenn:
+    name: "Zenn"
+    base_url: "https://zenn.dev"
+    feeds:
+      - slug: "ai"
+        url: "https://zenn.dev/topics/ai/feed"
+        priority: 1
+        tags: ["AI", "LLM"]
+      - slug: "devops"
+        url: "https://zenn.dev/topics/devops/feed"
+        priority: 1
+        tags: ["DevOps", "CI/CD"]
+      - slug: "automation"
+        url: "https://zenn.dev/topics/automation/feed"
+        priority: 2
+        tags: ["自動化"]
+      - slug: "mcp"
+        url: "https://zenn.dev/topics/mcp/feed"
+        priority: 1
+        tags: ["MCP", "Claude"]
+      - slug: "claudecode"
+        url: "https://zenn.dev/topics/claudecode/feed"
+        priority: 1
+        tags: ["Claude", "Claude Code"]
+
+    # soft filter（ハードブロックせず、スコア+理由をログ）
+    prefilter:
+      default_min_score: -1  # これ以下はエクスポート時にデフォルト非表示
+      boost_keywords:   # マッチでスコア +1/語
+        - "AI"
+        - "自動化"
+        - "MCP"
+        - "Claude"
+        - "GPT"
+        - "LLM"
+        - "エージェント"
+        - "DevOps"
+        - "CI/CD"
+        - "インフラ"
+        - "agent"
+        - "agentic"
+      penalize_keywords:  # マッチでスコア -1/語（除外はしない）
+        - "入門"
+        - "初心者"
+        - "ハンズオン"
+
+    # 重複検知
+    dedup:
+      key_priority: ["entry_id", "normalized_url"]
+      url_normalization:
+        remove_tracking: ["utm_*", "ref", "source", "fbclid", "gclid"]
+        remove_fragment: true
+        normalize_trailing_slash: true
+        lowercase_host: true
+      on_duplicate: "skip"

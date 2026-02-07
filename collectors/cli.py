@@ -16,9 +16,10 @@ from rich.panel import Panel
 from rich.table import Table
 
 from collectors.github_collector import GitHubCollector
-from collectors.models import Category, CollectionResult
+from collectors.models import Category, CollectedEntry, CollectionResult
 from collectors.page_diff_collector import PageDiffCollector
 from collectors.rss_collector import RSSCollector
+from collectors.zenn_collector import ZennCollector
 
 app = typer.Typer(help="AI Update Radar - AI アップデート監視ツール")
 console = Console()
@@ -550,6 +551,114 @@ def export(
                 console.print("[dim]  記録対象なし（深掘り判断なし）[/dim]")
         except Exception as e:
             console.print(f"[red]記録エラー: {e}[/red]")
+
+
+@app.command()
+def zenn(
+    days: int = typer.Option(7, help="過去N日分を収集"),
+    export: bool = typer.Option(False, help="JSON にエクスポート"),
+    min_score: Optional[int] = typer.Option(None, help="最低スコア（None で設定値を使用、-999 で全件）"),
+    output: Optional[str] = typer.Option(None, help="エクスポート先ファイル名"),
+):
+    """
+    Zenn 記事を収集（段階フィルター方式 ①）
+
+    トピック別 RSS から記事を収集し、soft filter でスコア付け
+    """
+    sources_dir, cache_dir, keywords_path, exports_dir = get_paths()
+
+    since = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    since = since - timedelta(days=days)
+
+    console.print("[bold]📰 Zenn 記事収集中...[/bold]")
+
+    collector = ZennCollector(
+        sources_dir=sources_dir,
+        cache_dir=cache_dir,
+        keywords_path=keywords_path,
+    )
+
+    result = collector.collect(since=since, min_score=min_score)
+
+    # 結果表示
+    if result.entries:
+        # スコア順でソート
+        def get_score(entry: CollectedEntry) -> int:
+            try:
+                data = json.loads(entry.raw_content)
+                return data.get("prefilter_score", 0)
+            except (json.JSONDecodeError, TypeError):
+                return 0
+
+        sorted_entries = sorted(result.entries, key=get_score, reverse=True)
+
+        table = Table(title=f"Zenn 記事 ({len(sorted_entries)} 件)")
+        table.add_column("日付", style="dim", width=6)
+        table.add_column("スコア", width=5, justify="right")
+        table.add_column("タイトル", width=50)
+        table.add_column("トピック", width=10)
+        table.add_column("マッチ", style="cyan", width=20)
+
+        for entry in sorted_entries[:30]:
+            date_str = entry.published_at.strftime("%m/%d") if entry.published_at else "-"
+            try:
+                filter_data = json.loads(entry.raw_content)
+                score = filter_data.get("prefilter_score", 0)
+                topic = filter_data.get("source_topic", "")
+                matched = ", ".join(filter_data.get("boost_matched", [])[:3])
+            except (json.JSONDecodeError, TypeError):
+                score = 0
+                topic = ""
+                matched = ""
+
+            score_style = "green" if score >= 2 else "yellow" if score >= 0 else "red"
+            table.add_row(
+                date_str,
+                f"[{score_style}]{score}[/{score_style}]",
+                entry.title[:50],
+                topic,
+                matched,
+            )
+
+        console.print(table)
+    else:
+        console.print("[dim]新しい記事はありません[/dim]")
+
+    # エラー表示
+    for err in result.errors:
+        console.print(f"[red]Error: {err}[/red]")
+
+    # サマリ
+    summary_panel = Panel(
+        f"📊 収集完了\n"
+        f"  • 記事: {len(result.entries)} 件\n"
+        f"  • エラー: {len(result.errors)} 件\n"
+        f"  • 期間: 過去 {days} 日",
+        title="Zenn 収集サマリ",
+        border_style="green" if not result.errors else "yellow",
+    )
+    console.print(summary_panel)
+
+    # エクスポート
+    if export:
+        exports_dir.mkdir(parents=True, exist_ok=True)
+        if output:
+            export_path = exports_dir / output
+        else:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            export_path = exports_dir / f"zenn_{timestamp}.json"
+
+        export_data = {
+            "collected_at": datetime.now(timezone.utc).isoformat(),
+            "days": days,
+            "min_score": min_score,
+            "result": result.to_dict(),
+        }
+
+        with open(export_path, "w") as f:
+            json.dump(export_data, f, indent=2, ensure_ascii=False)
+
+        console.print(f"[green]✅ エクスポート完了: {export_path}[/green]")
 
 
 @app.command()
