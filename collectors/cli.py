@@ -729,8 +729,9 @@ def evaluate_articles(
     # CLI 単体では send_fn が None → エラーメッセージを表示
     send_fn = _get_send_fn()
     if send_fn is None:
-        console.print("[red]send_consultation が利用できません。[/red]")
-        console.print("[dim]MCP 経由で実行するか、--input でフォールバック評価を使用してください[/dim]")
+        console.print("[red]LLM が利用できません。以下のいずれかを設定してください:[/red]")
+        console.print("[dim]  • ANTHROPIC_API_KEY: Anthropic API で直接評価[/dim]")
+        console.print("[dim]  • SEND_CONSULTATION_URL: MCP gateway 経由で評価[/dim]")
         raise typer.Exit(1)
 
     evaluator = ArticleEvaluator(send_fn=send_fn)
@@ -805,36 +806,70 @@ def evaluate_articles(
 
 
 def _get_send_fn():
-    """send_consultation 関数を取得（MCP 経由）
+    """send_consultation 関数を取得
 
-    環境変数 SEND_CONSULTATION_URL が設定されていれば HTTP 経由で呼び出す。
-    未設定の場合は None を返す（フォールバック評価のみ可能）。
+    優先順位:
+    1. SEND_CONSULTATION_URL → MCP gateway 経由（既存インフラ利用）
+    2. ANTHROPIC_API_KEY → Anthropic API 直接呼び出し（自己完結）
     """
+    # 1. MCP gateway 経由
     url = os.environ.get("SEND_CONSULTATION_URL")
-    if not url:
-        return None
+    if url:
+        import urllib.request
 
-    import urllib.request
+        def send_via_mcp(situation: str, options: list, question: str, consultation_type: str) -> str:
+            payload = json.dumps({
+                "situation": situation,
+                "options": options,
+                "question": question,
+                "consultation_type": consultation_type,
+            }).encode("utf-8")
 
-    def send_fn(situation: str, options: list, question: str, consultation_type: str) -> str:
-        payload = json.dumps({
-            "situation": situation,
-            "options": options,
-            "question": question,
-            "consultation_type": consultation_type,
-        }).encode("utf-8")
+            req = urllib.request.Request(
+                url,
+                data=payload,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+                return result.get("response", result.get("result", ""))
 
-        req = urllib.request.Request(
-            url,
-            data=payload,
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
-            return result.get("response", result.get("result", ""))
+        return send_via_mcp
 
-    return send_fn
+    # 2. Anthropic API 直接呼び出し
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if api_key:
+        import urllib.request
+
+        def send_via_anthropic(situation: str, options: list, question: str, consultation_type: str) -> str:
+            payload = json.dumps({
+                "model": "claude-sonnet-4-5-20250929",
+                "max_tokens": 4096,
+                "messages": [{"role": "user", "content": question}],
+            }).encode("utf-8")
+
+            req = urllib.request.Request(
+                "https://api.anthropic.com/v1/messages",
+                data=payload,
+                headers={
+                    "Content-Type": "application/json",
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                },
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+                # Anthropic API のレスポンスからテキストを抽出
+                content = result.get("content", [])
+                if content and isinstance(content, list):
+                    return content[0].get("text", "")
+                return ""
+
+        return send_via_anthropic
+
+    return None
 
 
 @app.command()
