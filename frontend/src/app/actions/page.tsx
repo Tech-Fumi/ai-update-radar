@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -89,7 +89,7 @@ interface SubmitResult {
 
 type RelayStatus = "checking" | "connected" | "disconnected";
 
-export default function ActionsPage() {
+function ActionsContent() {
   const searchParams = useSearchParams();
   const initialSource = searchParams.get("source") === "codex" ? "codex" : "claude";
   const [sourceTab, setSourceTab] = useState<SourceTab>(initialSource);
@@ -922,5 +922,13 @@ export default function ActionsPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function ActionsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">Loading...</div>}>
+      <ActionsContent />
+    </Suspense>
   );
 }
