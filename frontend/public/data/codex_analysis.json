@@ -1,44 +1,12 @@
 {
-  "version": "rust-v0.85.0",
-  "analyzed_at": "2026-01-18T04:34:31.979958",
+  "version": "rust-v0.98.0",
+  "analyzed_at": "2026-02-07T07:00:20.827898",
   "action_items": [
     {
-      "task": "Codex rust-v0.85.0 のモデル変更を確認",
+      "task": "Codex rust-v0.98.0 のモデル変更を確認",
       "source_feature": "デフォルトモデル変更",
       "priority": 1,
       "project": "MCP Codex",
-      "category": "tooling",
-      "source": "codex"
-    },
-    {
-      "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
-      "source_feature": "機能提案: sandbox",
-      "priority": 2,
-      "project": "infra-automation",
-      "category": "tooling",
-      "source": "codex"
-    },
-    {
-      "task": "Codex rust-v0.81.0 の破壊的変更を確認",
-      "source_feature": "破壊的変更",
-      "priority": 3,
-      "project": "MCP Codex",
-      "category": "tooling",
-      "source": "codex"
-    },
-    {
-      "task": "sandbox を有効化: ファイルシステムの保護が強化されます",
-      "source_feature": "機能提案: sandbox",
-      "priority": 4,
-      "project": "infra-automation",
-      "category": "tooling",
-      "source": "codex"
-    },
-    {
-      "task": "config_toml を有効化: Codex の動作をカスタマイズできます",
-      "source_feature": "機能提案: config_toml",
-      "priority": 5,
-      "project": "infra-automation",
       "category": "tooling",
       "source": "codex"
     }
@@ -46,18 +14,30 @@
   "dev_improvements": [
     {
       "project": "MCP Codex",
-      "suggestion": "[復元] Linuxサンドボックス機能で、ユーザー名前空間が利用できない場合にLandlock専用制限にフォールバックし、サンドボックスルール適用前に`no_new_privs`を設定するようになりました。(#9250)",
-      "source_feature": "機能提案 (index 3)",
-      "what_it_is": "以前は制限環境で動作が不安定だった → 今は環境に応じて安全に実行",
-      "priority": "MEDIUM"
+      "suggestion": "会話途中でのモデル変更や異なるモデルでの再開時のモデル指示処理を修正し、正しい開発者指示が適用されるようになりました。(#10651, #10719)",
+      "source_feature": "影響あり (index 2)",
+      "what_it_is": "以前は会話中にモデル変更すると指示が消えた → 今は正しい指示が維持される",
+      "priority": "HIGH"
+    },
+    {
+      "project": "MCP Codex",
+      "suggestion": "クラウド要件がログイン直後に即座に再読み込みされ、後の更新パスを待つ必要がなくなりました。(#10725)",
+      "source_feature": "影響あり (index 4)",
+      "what_it_is": "以前はログイン後に設定更新を待つ必要があった → 今はすぐに最新設定が反映される",
+      "priority": "HIGH"
+    },
+    {
+      "project": "MCP Codex",
+      "suggestion": "#10651 修正(コア) モデル切り替え時にモデル指示を追加 @dylan-hurd-oai",
+      "source_feature": "影響あり (index 9)",
+      "what_it_is": "以前はモデル切替時に開発指示が失われた → 今は自動で指示が引き継がれる",
+      "priority": "HIGH"
     }
   ],
   "business_opportunities": [],
   "explanations": {
-    "0": "以前は他ツールとの連携が見えなかった → 今は作業状況をリアルタイム表示",
-    "2": "以前はモデル更新の詳細が不明だった → 今は更新手順を詳しく案内",
-    "6": "以前はモデル情報が基本のみだった → 今は移行ガイドも含む情報",
-    "8": "以前は連携ツールの動作が不透明だった → 今は動作状況を可視化",
-    "3": "以前は制限環境で動作が不安定だった → 今は環境に応じて安全に実行"
+    "2": "以前は会話中にモデル変更すると指示が消えた → 今は正しい指示が維持される",
+    "4": "以前はログイン後に設定更新を待つ必要があった → 今はすぐに最新設定が反映される",
+    "9": "以前はモデル切替時に開発指示が失われた → 今は自動で指示が引き継がれる"
   }
 }
