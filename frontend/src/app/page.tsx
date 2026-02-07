@@ -109,6 +109,23 @@ interface CodexReleasesData {
   releases: CodexRelease[];
 }
 
+interface VscodeRelease {
+  version: string;
+  date: string;
+  link: string;
+  highlights_en: string[];
+  highlights_ja?: string[];
+  categorized_highlights?: CategorizedHighlight[];
+  prerelease: boolean;
+  importance: CodexImportance;
+  action_items?: CodexActionItem[];
+}
+
+interface VscodeReleasesData {
+  updated_at: string;
+  releases: VscodeRelease[];
+}
+
 interface ArticleEvaluation {
   url: string;
   title: string;
@@ -173,7 +190,7 @@ const links = [
 ];
 
 type Lang = "en" | "ja";
-type Tool = "claude" | "codex" | "articles";
+type Tool = "claude" | "codex" | "articles" | "vscode";
 
 function HomeContent() {
   const [data, setData] = useState<ReleasesData | null>(null);
@@ -185,6 +202,8 @@ function HomeContent() {
   const [activeTool, setActiveTool] = useState<Tool>("claude");
   const [articleData, setArticleData] = useState<ArticleCandidatesData | null>(null);
   const [articleDecisions, setArticleDecisions] = useState<Record<string, ArticleDecision>>({});
+  const [vscodeData, setVscodeData] = useState<VscodeReleasesData | null>(null);
+  const [vscodeAnalysis, setVscodeAnalysis] = useState<AnalysisData | null>(null);
   const searchParams = useSearchParams();
 
   // URL パラメータから初期タブを設定
@@ -194,6 +213,8 @@ function HomeContent() {
       setActiveTool("codex");
     } else if (source === "articles") {
       setActiveTool("articles");
+    } else if (source === "vscode") {
+      setActiveTool("vscode");
     }
   }, [searchParams]);
 
@@ -229,13 +250,17 @@ function HomeContent() {
       fetch(`/data/codex_releases.json${cacheBust}`).then((res) => res.json()).catch(() => null),
       fetch(`/data/codex_analysis.json${cacheBust}`).then((res) => res.json()).catch(() => null),
       fetch(`/data/article_candidates.json${cacheBust}`).then((res) => res.json()).catch(() => null),
+      fetch(`/data/vscode_releases.json${cacheBust}`).then((res) => res.json()).catch(() => null),
+      fetch(`/data/vscode_analysis.json${cacheBust}`).then((res) => res.json()).catch(() => null),
     ])
-      .then(([releasesJson, analysisJson, codexJson, codexAnalysisJson, articleJson]) => {
+      .then(([releasesJson, analysisJson, codexJson, codexAnalysisJson, articleJson, vscodeJson, vscodeAnalysisJson]) => {
         setData(releasesJson);
         setAnalysis(analysisJson);
         setCodexData(codexJson);
         setCodexAnalysis(codexAnalysisJson);
         setArticleData(articleJson);
+        setVscodeData(vscodeJson);
+        setVscodeAnalysis(vscodeAnalysisJson);
         setLoading(false);
       })
       .catch((err) => {
@@ -252,6 +277,12 @@ function HomeContent() {
     .filter((r) => !r.prerelease)
     .slice(0, 3) ?? [];
   const codexLatestVersion = codexData?.releases.find((r) => !r.prerelease)?.version ?? "...";
+
+  // VS Code: 最新リリース（prerelease除外）
+  const vscodeImportantReleases = vscodeData?.releases
+    .filter((r) => !r.prerelease)
+    .slice(0, 3) ?? [];
+  const vscodeLatestVersion = vscodeData?.releases.find((r) => !r.prerelease)?.version ?? "...";
 
   const getImportanceStyle = (level: string) => {
     switch (level) {
@@ -430,6 +461,21 @@ function HomeContent() {
                 {articleData && articleData.evaluations.length > 0 && (
                   <span className="ml-1.5 px-1.5 py-0.5 text-xs bg-sky-500/80 text-white rounded">
                     {articleData.evaluations.length}
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={() => setActiveTool("vscode")}
+                className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${
+                  activeTool === "vscode"
+                    ? "bg-teal-600 text-white"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                VS Code
+                {vscodeImportantReleases.some(r => r.importance.level !== "normal") && (
+                  <span className="ml-1.5 px-1.5 py-0.5 text-xs bg-red-500/80 text-white rounded">
+                    {vscodeImportantReleases.filter(r => r.importance.level !== "normal").length}
                   </span>
                 )}
               </button>
@@ -721,6 +767,107 @@ function HomeContent() {
                 </div>
               )}
             </div>
+          ) : activeTool === "vscode" ? (
+            /* VS Code Tab Content */
+            <div className="space-y-4">
+              {vscodeImportantReleases.length > 0 ? (
+                vscodeImportantReleases.map((release) => {
+                  const highlights = lang === "ja" && release.highlights_ja && release.highlights_ja.length > 0
+                    ? release.highlights_ja
+                    : release.highlights_en;
+                  const hasJa = release.highlights_ja && release.highlights_ja.length > 0;
+                  const hasVscodeAnalysis = vscodeAnalysis?.version === release.version;
+                  const vscodeActionCount = hasVscodeAnalysis ? vscodeAnalysis?.action_items?.length ?? 0 : 0;
+
+                  return (
+                    <div
+                      key={release.version}
+                      className="p-4 bg-slate-900 border border-slate-800 rounded-lg"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg font-bold text-teal-400">
+                            {release.version}
+                          </span>
+                          <span className="text-sm text-slate-500">{release.date}</span>
+                          <span className={`text-xs px-2 py-0.5 rounded border ${getImportanceStyle(release.importance.level)}`}>
+                            {release.importance.level}
+                          </span>
+                          {release.importance.tags.map((tag) => (
+                            <span key={tag} className="text-xs px-2 py-0.5 bg-slate-700 text-slate-300 rounded">
+                              {tag}
+                            </span>
+                          ))}
+                          {!hasJa && lang === "ja" && (
+                            <span className="text-xs px-2 py-0.5 bg-slate-700 text-slate-400 rounded">
+                              翻訳なし
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs px-2 py-1 bg-teal-900/50 text-teal-300 rounded">
+                            {vscodeActionCount} アクション
+                          </span>
+                          <a
+                            href={release.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-slate-400 hover:text-slate-200"
+                          >
+                            GitHub →
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Highlights リスト（カテゴリ別） */}
+                      {release.categorized_highlights && release.categorized_highlights.length > 0 ? (
+                        <div className="space-y-3">
+                          {Object.entries(CODEX_CATEGORY_CONFIG)
+                            .sort(([, a], [, b]) => a.order - b.order)
+                            .map(([categoryKey, config]) => {
+                              const itemsWithIndex = release.categorized_highlights!
+                                .map((h, idx) => ({ ...h, originalIndex: idx }))
+                                .filter((h) => h.category === categoryKey);
+                              if (itemsWithIndex.length === 0) return null;
+
+                              return (
+                                <div key={categoryKey}>
+                                  <h4 className={`text-sm font-semibold mb-1 ${config.color}`}>
+                                    {config.label}
+                                  </h4>
+                                  <ul className="text-slate-300 text-sm space-y-0.5 pl-2">
+                                    {itemsWithIndex.map((item) => {
+                                      const displayText = lang === "ja" && hasJa && release.highlights_ja?.[item.originalIndex]
+                                        ? release.highlights_ja[item.originalIndex]
+                                        : item.text;
+                                      return (
+                                        <li key={item.originalIndex}>{displayText}</li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      ) : (
+                        <ul className="text-slate-300 text-sm space-y-1">
+                          {highlights.map((h, idx) => (
+                            <li key={idx}>{h}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
+                  <p className="text-slate-400 text-sm">重要な更新なし（最新: {vscodeLatestVersion}）</p>
+                </div>
+              )}
+              <p className="text-xs text-slate-500 mt-2">
+                ※ 軽量監視: AI 関連の変更（security / breaking / copilot）のみ表示
+              </p>
+            </div>
           ) : null}
         </section>
 
@@ -794,6 +941,25 @@ function HomeContent() {
                 <div className="text-slate-400 text-sm">重要な更新</div>
               </div>
             </div>
+          ) : activeTool === "vscode" ? (
+            <div className="grid grid-cols-3 gap-4">
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg text-center">
+                <div className="text-3xl font-bold text-teal-400">
+                  {vscodeData?.releases.filter(r => !r.prerelease).length ?? "..."}
+                </div>
+                <div className="text-slate-400 text-sm">取得リリース数</div>
+              </div>
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg text-center">
+                <div className="text-3xl font-bold text-teal-400">{vscodeLatestVersion}</div>
+                <div className="text-slate-400 text-sm">最新バージョン</div>
+              </div>
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg text-center">
+                <div className="text-3xl font-bold text-red-400">
+                  {vscodeImportantReleases.filter(r => r.importance.level !== "normal").length}
+                </div>
+                <div className="text-slate-400 text-sm">重要な更新</div>
+              </div>
+            </div>
           ) : (
             /* Articles Stats */
             <div className="grid grid-cols-3 gap-4">
@@ -822,7 +988,7 @@ function HomeContent() {
         {/* Monitoring Status */}
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">監視設定</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
@@ -857,6 +1023,18 @@ function HomeContent() {
                 <li>・Zenn RSS から AI 関連記事を収集</li>
                 <li>・LLM で転用可能性を自動評価</li>
                 <li>・collectors/cli.py evaluate-articles</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-3 h-3 bg-teal-500 rounded-full animate-pulse"></span>
+                <span className="font-semibold text-teal-400">VS Code</span>
+                <span className="text-xs px-2 py-0.5 bg-teal-900/50 text-teal-300 rounded">軽量監視</span>
+              </div>
+              <ul className="text-slate-400 text-sm space-y-1">
+                <li>・GitHub Releases を定期チェック</li>
+                <li>・AI 関連変更（copilot/agent/MCP）を抽出</li>
+                <li>・collectors/vscode/</li>
               </ul>
             </div>
           </div>
