@@ -793,7 +793,7 @@ def evaluate_articles(
     # エクスポート
     exports_dir.mkdir(parents=True, exist_ok=True)
     if output:
-        export_path = exports_dir / output
+        export_path = Path(output) if Path(output).is_absolute() else exports_dir / output
     else:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         export_path = exports_dir / f"article_evaluations_{timestamp}.json"
@@ -805,9 +805,10 @@ def evaluate_articles(
 
 
 def _get_send_fn():
-    """send_consultation 関数を取得（MCP 経由）
+    """send_consultation 関数を取得（MCP gateway /call 経由）
 
-    環境変数 SEND_CONSULTATION_URL が設定されていれば HTTP 経由で呼び出す。
+    環境変数 SEND_CONSULTATION_URL が設定されていれば MCP gateway の
+    /call エンドポイント経由で send_consultation を呼び出す。
     未設定の場合は None を返す（フォールバック評価のみ可能）。
     """
     url = os.environ.get("SEND_CONSULTATION_URL")
@@ -817,11 +818,15 @@ def _get_send_fn():
     import urllib.request
 
     def send_fn(situation: str, options: list, question: str, consultation_type: str) -> str:
+        # MCP gateway /call 形式でラップ
         payload = json.dumps({
-            "situation": situation,
-            "options": options,
-            "question": question,
-            "consultation_type": consultation_type,
+            "name": "mcp__task_receiver__send_consultation",
+            "arguments": {
+                "situation": situation,
+                "options": options,
+                "question": question,
+                "consultation_type": consultation_type,
+            },
         }).encode("utf-8")
 
         req = urllib.request.Request(
@@ -832,7 +837,25 @@ def _get_send_fn():
         )
         with urllib.request.urlopen(req, timeout=120) as resp:
             result = json.loads(resp.read().decode("utf-8"))
-            return result.get("response", result.get("result", ""))
+            # gateway レスポンス形式: {"structuredContent": {"result": "..."}, "content": [...]}
+            structured = result.get("structuredContent", {})
+            if structured:
+                raw = structured.get("result", "")
+            else:
+                # フォールバック: content[0].text
+                content = result.get("content", [])
+                raw = content[0].get("text", "") if content and isinstance(content, list) else ""
+
+            # consultation ラッパーから GPT 回答部分のみ抽出
+            # 形式: "...📥 【ChatGPT の回答】\n<回答>\n\n---\nModel:..."
+            marker = "【ChatGPT の回答】"
+            if marker in raw:
+                after_marker = raw[raw.index(marker) + len(marker):]
+                # 末尾の "---\nModel:" 以降を除去
+                if "\n---\n" in after_marker:
+                    after_marker = after_marker[:after_marker.rindex("\n---\n")]
+                return after_marker.strip()
+            return raw
 
     return send_fn
 
