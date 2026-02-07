@@ -15,7 +15,10 @@ mkdir -p "$EXPORTS_DIR"
 
 # 環境変数読み込み（存在する場合）
 if [[ -f "$PROJECT_DIR/.env" ]]; then
-    export $(grep -v '^#' "$PROJECT_DIR/.env" | xargs)
+    set -a
+    # shellcheck disable=SC1090
+    source "$PROJECT_DIR/.env" 2>/dev/null || true
+    set +a
 fi
 
 echo "=== AI Update Radar 週次収集 ===" | tee -a "$LOG_FILE"
