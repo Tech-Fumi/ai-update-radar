@@ -872,6 +872,194 @@ def _get_send_fn():
     return None
 
 
+def _post_to_mastodon(articles: list[dict]) -> list[dict]:
+    """Mastodon に記事を投稿"""
+    api_url = os.environ.get("MASTODON_API_URL")
+    token = os.environ.get("MASTODON_ACCESS_TOKEN")
+    if not api_url or not token:
+        return []
+
+    import urllib.request
+
+    results = []
+    for article in articles:
+        status = (
+            f"📰 {article['title']}\n\n"
+            f"{article.get('summary_ja', '')}\n\n"
+            f"関連性: {'⭐' * article.get('relevance', 0)}\n"
+            f"{article['url']}\n\n"
+            f"#AI #自動化 #技術記事"
+        )
+
+        payload = json.dumps({"status": status, "visibility": "unlisted"}).encode("utf-8")
+        req = urllib.request.Request(
+            f"{api_url}/api/v1/statuses",
+            data=payload,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token}",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+                results.append({"url": article["url"], "toot_id": result.get("id"), "success": True})
+        except Exception as e:
+            results.append({"url": article["url"], "success": False, "error": str(e)})
+
+    return results
+
+
+@app.command(name="notify-articles")
+def notify_articles(
+    input_file: Optional[str] = typer.Option(None, "--input", help="記事候補 JSON（article_candidates.json）"),
+    decisions_file: Optional[str] = typer.Option(None, "--decisions", help="承認結果 JSON（article_decisions.json）"),
+    dry_run: bool = typer.Option(False, help="投稿せず表示のみ"),
+):
+    """
+    承認済み記事を通知（段階フィルター方式 ③）
+
+    --input: AI 評価結果 JSON
+    --decisions: フロントエンドからエクスポートした承認結果 JSON
+    Mastodon に投稿する場合は MASTODON_API_URL と MASTODON_ACCESS_TOKEN を設定
+    """
+    base_dir = Path(__file__).parent.parent
+    default_candidates_path = base_dir / "frontend" / "public" / "data" / "article_candidates.json"
+
+    # 1. article_candidates.json を読み込む
+    if input_file:
+        candidates_path = Path(input_file) if Path(input_file).is_absolute() else base_dir / input_file
+    else:
+        candidates_path = default_candidates_path
+
+    if not candidates_path.exists():
+        console.print(f"[red]ファイルが見つかりません: {candidates_path}[/red]")
+        raise typer.Exit(1)
+
+    console.print(f"[bold]📂 記事候補を読み込み中: {candidates_path.name}[/bold]")
+    try:
+        with open(candidates_path) as f:
+            candidates_data = json.load(f)
+    except (json.JSONDecodeError, OSError) as e:
+        console.print(f"[red]読み込みエラー: {e}[/red]")
+        raise typer.Exit(1)
+
+    # candidates_data は list または dict（evaluations キー付き）
+    if isinstance(candidates_data, list):
+        all_candidates = candidates_data
+    elif isinstance(candidates_data, dict):
+        all_candidates = candidates_data.get("evaluations", candidates_data.get("articles", []))
+    else:
+        all_candidates = []
+
+    # 2. decisions を読み込み、承認済み記事を決定
+    approved_articles = []
+
+    if decisions_file:
+        decisions_path = Path(decisions_file) if Path(decisions_file).is_absolute() else base_dir / decisions_file
+        if not decisions_path.exists():
+            console.print(f"[red]承認結果ファイルが見つかりません: {decisions_path}[/red]")
+            raise typer.Exit(1)
+
+        console.print(f"[bold]📋 承認結果を読み込み中: {decisions_path.name}[/bold]")
+        try:
+            with open(decisions_path) as f:
+                decisions_data = json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            console.print(f"[red]承認結果の読み込みエラー: {e}[/red]")
+            raise typer.Exit(1)
+
+        approved_articles = decisions_data.get("approved", [])
+        console.print(f"[dim]  承認日時: {decisions_data.get('exported_at', '不明')}[/dim]")
+    else:
+        # decisions がない場合は recommended_action == "adopt" の記事を自動選択
+        console.print("[dim]承認結果なし → recommended_action == 'adopt' の記事を自動選択[/dim]")
+        for article in all_candidates:
+            if article.get("recommended_action") == "adopt":
+                approved_articles.append(article)
+
+    if not approved_articles:
+        console.print("[yellow]承認済み記事がありません[/yellow]")
+        raise typer.Exit(0)
+
+    # 3. 承認済み記事をテーブル表示
+    table = Table(title=f"承認済み記事 ({len(approved_articles)} 件)")
+    table.add_column("関連性", width=5, justify="center")
+    table.add_column("タイトル", width=45)
+    table.add_column("判定", width=6)
+    table.add_column("投稿", width=6)
+
+    # 4. Mastodon 投稿
+    post_results = []
+    if not dry_run:
+        api_url = os.environ.get("MASTODON_API_URL")
+        token = os.environ.get("MASTODON_ACCESS_TOKEN")
+        if api_url and token:
+            console.print("[bold]📤 Mastodon に投稿中...[/bold]")
+            post_results = _post_to_mastodon(approved_articles)
+        else:
+            console.print("[dim]Mastodon 環境変数未設定（MASTODON_API_URL, MASTODON_ACCESS_TOKEN）→ 投稿スキップ[/dim]")
+    else:
+        console.print("[yellow]dry-run モード: 投稿をスキップ[/yellow]")
+
+    # 投稿結果をルックアップ用に変換
+    post_result_map = {r["url"]: r for r in post_results}
+
+    # テーブルに行を追加
+    success_count = 0
+    error_count = 0
+    for article in approved_articles:
+        relevance = article.get("relevance", 0)
+        rel_style = "green" if relevance >= 4 else "yellow" if relevance >= 3 else "dim"
+        action = article.get("recommended_action", "-")
+
+        # 投稿結果
+        pr = post_result_map.get(article.get("url", ""))
+        if pr:
+            if pr.get("success"):
+                post_status = "[green]OK[/green]"
+                success_count += 1
+            else:
+                post_status = "[red]NG[/red]"
+                error_count += 1
+        elif dry_run:
+            post_status = "[dim]skip[/dim]"
+        else:
+            post_status = "[dim]-[/dim]"
+
+        table.add_row(
+            f"[{rel_style}]{relevance}[/{rel_style}]",
+            article.get("title", "")[:45],
+            action,
+            post_status,
+        )
+
+    console.print(table)
+
+    # 5. サマリ表示
+    summary_parts = [
+        f"📊 通知完了",
+        f"  • 承認記事: {len(approved_articles)} 件",
+    ]
+    if post_results:
+        summary_parts.append(f"  • 投稿成功: [green]{success_count}[/green] 件")
+        if error_count > 0:
+            summary_parts.append(f"  • 投稿エラー: [red]{error_count}[/red] 件")
+    elif dry_run:
+        summary_parts.append(f"  • 投稿: dry-run（スキップ）")
+    else:
+        summary_parts.append(f"  • 投稿: 環境変数未設定（スキップ）")
+
+    border_style = "green" if error_count == 0 else "yellow"
+    summary_panel = Panel(
+        "\n".join(summary_parts),
+        title="通知サマリ",
+        border_style=border_style,
+    )
+    console.print(summary_panel)
+
+
 @app.command()
 def marketing(
     trends: bool = typer.Option(True, help="トレンド検知を実行"),
