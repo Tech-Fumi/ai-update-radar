@@ -1,0 +1,28 @@
+{
+  "projects": [
+    "/home/fumi/ScrimAutomationEngine",
+    "/home/fumi/StreamFlowEngine",
+    "/home/fumi/infra-automation",
+    "/home/fumi/ai-company-os"
+  ],
+  "analysis_settings": {
+    "use_ai": true,
+    "fallback_to_keywords": true,
+    "max_pain_points": 10,
+    "include_todos_as_pain_points": true
+  },
+  "business_keywords": {
+    "revenue": ["収益", "売上", "課金", "サブスク", "revenue", "monetization"],
+    "growth": ["成長", "拡大", "スケール", "growth", "scale"],
+    "efficiency": ["効率", "自動化", "省力", "efficiency", "automation"],
+    "competitive": ["競合", "差別化", "優位", "competitive", "advantage"],
+    "user_experience": ["UX", "体験", "満足度", "experience", "engagement"]
+  },
+  "dev_keywords": {
+    "performance": ["速度", "パフォーマンス", "高速", "performance", "faster", "latency"],
+    "stability": ["安定", "信頼性", "エラー削減", "stability", "reliability"],
+    "maintainability": ["保守性", "リファクタ", "技術負債", "maintainability", "refactor"],
+    "security": ["セキュリティ", "脆弱性", "認証", "security", "vulnerability"],
+    "scalability": ["スケーラビリティ", "負荷", "分散", "scalability", "load"]
+  }
+}

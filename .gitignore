@@ -44,3 +44,13 @@ experiments/**/results/
 **/secrets.*
 logs/
 drafts/
+
+# 自動同期・バックアップ
+claude-docs/
+*.bak
+
+# テスト結果
+frontend/test-results/
+
+# ランタイム状態
+collectors/claude_code/.monitor_state.json

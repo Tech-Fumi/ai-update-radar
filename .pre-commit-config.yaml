@@ -1,0 +1,21 @@
+# 外部AIレビュー必須チェック
+# インストール: pip install pre-commit && pre-commit install
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        exclude: "templates/"
+
+  # 外部AIレビューチェック（共通スクリプト参照）
+  - repo: local
+    hooks:
+      - id: check-external-review
+        name: Check external AI review completed
+        entry: python3 /home/fumi/.claude/scripts/check_external_review.py --ci
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]

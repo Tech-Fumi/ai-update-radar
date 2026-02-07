@@ -1,0 +1,9 @@
+# Space Definition - ai-update-radar
+space_id: radar
+purpose: ai-update-monitoring
+impact_level: sandbox
+cross_space_policy:
+  default: read-only
+meta:
+  owner: fumi
+  created: 2026-01-17
