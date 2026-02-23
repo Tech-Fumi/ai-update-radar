@@ -17,6 +17,7 @@ from rich.table import Table
 
 from collectors.github_collector import GitHubCollector
 from collectors.models import Category, CollectedEntry, CollectionResult
+from collectors.news_crosscheck import NewsCrosscheckCollector
 from collectors.page_diff_collector import PageDiffCollector
 from collectors.rss_collector import RSSCollector
 from collectors.zenn_collector import ZennCollector
@@ -79,6 +80,10 @@ def collect(
     rss: bool = typer.Option(True, help="RSS を収集"),
     github: bool = typer.Option(True, help="GitHub リリースを収集"),
     pages: bool = typer.Option(True, help="ページ差分を検出"),
+    include_tags: str = typer.Option(
+        "tech,dev,ai",
+        help="収集対象タグ（カンマ区切り）。Zenn/NewsCrosscheck に適用",
+    ),
     export: bool = typer.Option(False, help="JSON にエクスポート"),
     output: Optional[str] = typer.Option(None, help="エクスポート先ファイル名"),
 ):
@@ -91,6 +96,7 @@ def collect(
 
     since = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     since = since - timedelta(days=days)
+    include_tags_list = [tag.strip() for tag in include_tags.split(",") if tag.strip()]
 
     all_results: list[CollectionResult] = []
 
@@ -136,6 +142,40 @@ def collect(
         format_results_table(page_results, "ページ差分")
         print_errors(page_results)
         console.print()
+
+    # Zenn 記事収集（タグフィルタ）
+    console.print("[bold]📝 Zenn 記事収集中...[/bold]")
+    try:
+        zenn_collector = ZennCollector(
+            sources_dir=sources_dir,
+            cache_dir=cache_dir,
+            keywords_path=keywords_path,
+        )
+        zenn_result = zenn_collector.collect(since=since, include_tags=include_tags_list)
+        all_results.append(zenn_result)
+        format_results_table([zenn_result], "Zenn")
+        for err in zenn_result.errors:
+            console.print(f"[yellow]Warning (zenn): {err}[/yellow]")
+    except Exception as e:
+        console.print(f"[yellow]Warning (zenn): {e}[/yellow]")
+    console.print()
+
+    # ニュース横断収集（タグフィルタ）
+    console.print("[bold]🌐 ニュース横断収集中...[/bold]")
+    try:
+        news_collector = NewsCrosscheckCollector(
+            sources_dir=sources_dir,
+            cache_dir=cache_dir,
+            keywords_path=keywords_path,
+        )
+        news_result = news_collector.collect(since=since, include_tags=include_tags_list)
+        all_results.append(news_result)
+        format_results_table([news_result], "News Crosscheck")
+        for err in news_result.errors:
+            console.print(f"[yellow]Warning (news_crosscheck): {err}[/yellow]")
+    except Exception as e:
+        console.print(f"[yellow]Warning (news_crosscheck): {e}[/yellow]")
+    console.print()
 
     # サマリ
     total_entries = sum(len(r.entries) for r in all_results)

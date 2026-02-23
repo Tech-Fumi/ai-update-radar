@@ -15,6 +15,7 @@ import yaml
 
 from collectors.models import CollectedEntry, CollectionResult, SourceType
 from collectors.rss_collector import RSSCollector
+from collectors.tag_filter import matches_include_tags
 
 
 # トラッキングパラメータ（除去対象）
@@ -72,12 +73,23 @@ class ZennCollector:
         # articles.yaml 読み込み
         self.config = self._load_config()
 
-    def _load_config(self) -> dict:
+    def _load_config(self, include_tags: list[str] | None = None) -> dict:
         """articles.yaml を読み込み"""
         config_path = self.sources_dir / "articles.yaml"
         if config_path.exists():
             with open(config_path) as f:
-                return yaml.safe_load(f) or {}
+                config = yaml.safe_load(f) or {}
+            if include_tags is None:
+                return config
+
+            feeds = config.get("feeds", {}).get("zenn", {}).get("feeds", [])
+            filtered = [
+                feed
+                for feed in feeds
+                if matches_include_tags(feed.get("tags", []), include_tags)
+            ]
+            config.setdefault("feeds", {}).setdefault("zenn", {})["feeds"] = filtered
+            return config
         return {}
 
     def _get_zenn_config(self) -> dict:
@@ -147,6 +159,7 @@ class ZennCollector:
         self,
         since: Optional[datetime] = None,
         min_score: Optional[int] = None,
+        include_tags: list[str] | None = None,
     ) -> CollectionResult:
         """Zenn の全トピックから記事を収集
 
@@ -154,7 +167,10 @@ class ZennCollector:
             since: この日時以降の記事のみ収集
             min_score: この値以上のスコアのエントリのみ含める（None で設定値を使用）
         """
-        zenn_config = self._get_zenn_config()
+        if include_tags is None:
+            zenn_config = self._get_zenn_config()
+        else:
+            zenn_config = self._load_config(include_tags).get("feeds", {}).get("zenn", {})
         prefilter = self._get_prefilter_config()
 
         if min_score is None:

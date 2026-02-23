@@ -9,23 +9,23 @@ feeds:
       - slug: "ai"
         url: "https://zenn.dev/topics/ai/feed"
         priority: 1
-        tags: ["AI", "LLM"]
+        tags: [tech, ai]
       - slug: "devops"
         url: "https://zenn.dev/topics/devops/feed"
         priority: 1
-        tags: ["DevOps", "CI/CD"]
+        tags: [tech, dev]
       - slug: "automation"
         url: "https://zenn.dev/topics/automation/feed"
         priority: 2
-        tags: ["自動化"]
+        tags: [tech, dev]
       - slug: "mcp"
         url: "https://zenn.dev/topics/mcp/feed"
         priority: 1
-        tags: ["MCP", "Claude"]
+        tags: [tech, dev, ai]
       - slug: "claudecode"
         url: "https://zenn.dev/topics/claudecode/feed"
         priority: 1
-        tags: ["Claude", "Claude Code"]
+        tags: [tech, dev, ai]
 
     # soft filter（ハードブロックせず、スコア+理由をログ）
     prefilter:
